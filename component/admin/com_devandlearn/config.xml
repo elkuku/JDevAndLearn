@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <fieldset
+            name="settings"
+            label="Settings"
+            >
+        <field
+                name="configPath"
+                type="text"
+                size="60"
+                label="Config Path"
+                description="The path to the scripts/confix.xml file"
+                />
+    </fieldset>
+    <fieldset
+            name="permissions"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            description="JCONFIG_PERMISSIONS_DESC"
+            >
+        <field
+                name="rules"
+                type="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                class="inputbox"
+                validate="rules"
+                filter="rules"
+                component="com_devandlearn"
+                section="component"
+                />
+    </fieldset>
+</config>

@@ -1,0 +1,21 @@
+h1.DalHeader {
+    background-color: #eee;
+    border: 1px solid silver;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+i.iconJoomla {
+    background-image: url("../img/favicon_t.ico");
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+a.httpLink {
+    min-width: 100px;
+    display: inline-block;
+}
