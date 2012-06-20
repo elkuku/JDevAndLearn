@@ -1,0 +1,28 @@
+body {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+div.breadcrumbs {
+    padding-left: 1em;
+    padding-bottom: 5px;
+}
+
+pre.console {
+    background-color: #111;
+    color: #eee;
+    border: 1px solid silver;
+}
+
+blockquote p {
+    /*font-size: 13px;*/
+}
+
+input.invalid {
+    border-color: #B94A48;
+    color: #B94A48;
+}
