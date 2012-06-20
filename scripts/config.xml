@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <global>
+        <backupDir>/home/jtester/backup</backupDir>
+        <downloadDir>/home/jtester/downloads</downloadDir>
+        <repoDir>/home/jtester/repos</repoDir>
+        <httpDir url="http://dev.local">/home/jtester/srv/htdocs</httpDir>
+    </global>
+
+    <backups>
+        <backupName>JDLBackup_</backupName>
+        <backupTimestamp>Y-m-d_Hi</backupTimestamp>
+
+        <backup base="~" title="home-base">
+            <file>.bashrc</file>
+            <file>.gitignore</file>
+        </backup>
+
+        <backup base="~" title="home-joomla">
+            <folder>joomla</folder>
+        </backup>
+
+        <backup base="~/.mozilla/firefox/y281g4zi.default" title="home-firefox">
+            <folder>extensions</folder>
+	    <folder>OxygenKDE</folder>
+<!-- 	    <folder></folder> -->
+        </backup>
+
+        <backup base="~/Desktop" title="home-desktop">
+            <file>Start.desktop</file>
+            <file>Passwords</file>
+            <folder>Scripts</folder>
+        </backup>
+
+        <backup base="~" title="home-scripts">
+            <folder>scripts</folder>
+        </backup>
+
+	<backup base="~/repos" title="home-repos-EasyCreator">
+            <folder>EasyCreator</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-lilhelpers">
+            <folder>elkuku-lilhelpers</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-jacli">
+            <folder>jacli</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-JDevLearn">
+            <folder>JDevLearn</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-JeJoo">
+            <folder>JeJoo</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-joomla-cms">
+            <folder>joomla-cms</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-joomla-platform">
+            <folder>joomla-platform</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-MarkdownGitWiki">
+            <folder>MarkdownGitWiki</folder>
+        </backup>
+	<backup base="~/repos" title="home-repos-square-one-cms">
+            <folder>square-one-cms</folder>
+        </backup>
+
+	<backup base="~/srv" title="home-srv">
+            <file>00local.conf</file>
+            <folder>web_jdevlearn</folder>
+            <folder>web_start</folder>
+<!--             <folder></folder> -->
+        </backup>
+
+        <backup base="~/.jenkins" title="home-jenkins">
+            <file>jobs/Joomla CMS/config.xml</file>
+            <file>jobs/Joomla Platform/config.xml</file>
+            <folder>jobs/php-template</folder>
+
+            <folder>plugins/analysis-core</folder>
+            <folder>plugins/ansicolor</folder>
+<!--             <folder>plugins/ant</folder> -->
+            <folder>plugins/checkstyle</folder>
+            <folder>plugins/cloverphp</folder>
+<!--             <folder>plugins/cvs</folder> -->
+            <folder>plugins/dry</folder>
+            <folder>plugins/external-monitor-job</folder>
+            <folder>plugins/git</folder>
+            <folder>plugins/github</folder>
+            <folder>plugins/github-api</folder>
+            <folder>plugins/htmlpublisher</folder>
+<!--             <folder>plugins/javadoc</folder> -->
+            <folder>plugins/jdepend</folder>
+            <folder>plugins/ldap</folder>
+<!--             <folder>plugins/maven-plugin</folder> -->
+            <folder>plugins/pam-auth</folder>
+            <folder>plugins/plot</folder>
+            <folder>plugins/pmd</folder>
+<!--             <folder>plugins/ssh-slaves</folder> -->
+<!--             <folder>plugins/subversion</folder> -->
+<!--             <folder>plugins/translation</folder> -->
+            <folder>plugins/violations</folder>
+            <folder>plugins/xunit</folder>
+
+        </backup>
+    </backups>
+
+    <downloads>
+
+    </downloads>
+
+    <install>
+        <application>
+            <name>netbeans</name>
+            <title>Netbeans</title>
+            <version>7.1.2</version>
+            <downloadUri>http://download.netbeans.org/netbeans/%1$s/final/bundles/netbeans-%1$s-ml-php-linux.sh
+            </downloadUri>
+        </application>
+        <application>
+            <name>phpstorm</name>
+            <title>Php Storm</title>
+            <version>4.0.2</version>
+            <downloadUri>http://download.jetbrains.com/webide/PhpStorm-%s.tar.gz</downloadUri>
+        </application>
+    </install>
+
+    <updates>
+        <statusExcludes>
+            <!--
+               <exclude>joomla-cms</exclude>
+               <exclude>joomla-platform</exclude>
+               <exclude>square-one-cms</exclude>
+           -->
+        </statusExcludes>
+        <updateExcludes>
+
+        </updateExcludes>
+
+    </updates>
+
+</config>

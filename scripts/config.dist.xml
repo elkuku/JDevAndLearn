@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <install>
+        <application>
+            <name>netbeans</name>
+            <title>Netbeans</title>
+            <version>7.1.2</version>
+            <downloadUri>http://download.netbeans.org/netbeans/%1$s/final/bundles/netbeans-%1$s-ml-php-linux.sh
+            </downloadUri>
+        </application>
+        <application>
+            <name>phpstorm</name>
+            <title>Php Storm</title>
+            <version>4.0.2</version>
+            <downloadUri>http://download.jetbrains.com/webide/PhpStorm-%s.tar.gz</downloadUri>
+        </application>
+    </install>
+
+    <backup>
+        <file>.bashrc</file>
+        <file>.gitignore</file>
+
+        <folder>Desktop/Scripts</folder>
+        <file>Desktop/Start here.desktop</file>
+    </backup>
+</config>
