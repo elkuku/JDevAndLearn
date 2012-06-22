@@ -35,6 +35,8 @@ class DevAndLearnViewDevAndLearn extends JView
 
     protected $httpList = array();
 
+    protected $services = array();
+
     /**
      * DevAndLearn view display method.
      *
@@ -70,10 +72,24 @@ class DevAndLearnViewDevAndLearn extends JView
 
         $this->httpUrl = $this->configXml->global->httpDir->attributes()->url;
 
-        $htdocsHelper = new DalHtdocsHelper($this->httpDir);
+        $htdocsHelper = new DalHtdocsHelper($this->httpDir, $this->httpUrl);
 
         $this->httpList = $htdocsHelper->getDirectories();
 
+        $this->services[] = new DalService('Jenkins', 'http://localhost:8080'
+            , array('Jenkins Dashboard' => 'http://localhost:8080'));
+        $this->services[] = new DalService('Mysql', 'service://mysql'
+            , array('PHPMy Admin' => 'http://dev.local/phpmyadmin/'));
+        $this->services[] = new DalService('ProFTP', 'service://proftpd');
+
+        $js = array();
+
+        foreach($this->services as $service)
+        {
+           // $js[] = "DalService.check('{$service->url}')";
+        }
+
+        JFactory::getDocument()->addScriptDeclaration(implode("\n", $js));
         DalToolbarHelper::setup();
 
         parent::display($tpl);

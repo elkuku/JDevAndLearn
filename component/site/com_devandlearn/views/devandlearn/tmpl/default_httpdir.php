@@ -7,6 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+/* @var DalHtdocsDirectory $dir */
+
 ?>
 <h2 xmlns="http://www.w3.org/1999/html">Web Space</h2>
 <p>
@@ -21,26 +23,34 @@
     </code>
 </p>
 
-<hr />
+<hr/>
 
-<ul class="unstyled">
-    <? foreach($this->httpList as $dir) : ?>
-    <li>
-        <? if($dir->isJoomla) : ?>
-        <i class="iconJoomla"></i>
-        <? endif; ?>
-
-        <a class="httpLink" href="<?= $this->httpUrl.'/'.$dir->base ?>"><?= $dir->base ?></a>
-
-        <? if($dir->isJoomla) : ?>
-        &nbsp;
-        <a href="<?= $this->httpUrl.'/'.$dir->base.'/administrator' ?>">
-            Administrator
+<? foreach($this->httpList as $dir) : //var_dump($dir);?>
+<div class="row">
+    <div class="span2">
+        <a class="httpLink <?= $dir->icon ?>" href="<?= $this->httpUrl.'/'.$dir->base ?>">
+            <?= $dir->base ?>
         </a>
-        <? endif; ?>
-    </li>
-    <? endforeach; ?>
-</ul>
+    </div>
+
+    <div class="span2">
+        <div class="btn-group pull-right">
+            <? if($dir->symLinkerLink) : ?>
+            <a class="btn btn-mini" href="<?= $dir->symLinkerLink ?>"
+               title="Symlinks">
+                <i class="icon-asterisk"></i>
+            </a>
+            <? endif; ?>
+
+            <? if('joomlacms' == $dir->type) : ?>
+            <a class="btn btn-mini" href="<?= $this->httpUrl.'/'.$dir->base.'/administrator' ?>"
+               title="Administrator">
+                Admin
+            </a>
+            <? endif; ?>
+        </div>
+    </div>
+</div>
+<? endforeach; ?>
 
 <?php
-//var_dump($this->httpList);

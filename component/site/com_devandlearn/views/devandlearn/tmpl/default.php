@@ -11,7 +11,9 @@
 defined('_JEXEC') || die('=;)');
 
 JHtml::stylesheet('media/com_devandlearn/site/css/devandlearn.css');
+
 JHtml::script('media/com_devandlearn/site/js/gitrepo.js');
+JHtml::script('media/com_devandlearn/site/js/service.js');
 
 JHtml::_('behavior.mootools');
 
@@ -19,10 +21,10 @@ JHtml::_('behavior.mootools');
 echo DalToolbarHelper::display();
 ?>
 
-<h1 class="DalHeader">Dashboard</h1>
+<h1 class="DalHeader">Dashboard<div class="pull-right"><?= $_SERVER['SERVER_ADDR'] ?></div> </h1>
 
     <div class="row">
-        <div class="span4">
+        <div class="span4 httpDir">
             <?= $this->loadTemplate('httpdir'); ?>
         </div>
         <div class="span4">

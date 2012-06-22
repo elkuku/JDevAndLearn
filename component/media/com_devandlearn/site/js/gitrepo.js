@@ -2,9 +2,9 @@ var DalGitRepo =
 {
     ajaxUri:'index.php?option=com_devandlearn&tmpl=component&format=raw',
 
-    getInfo : function(type, dir, el)
+    getInfo : function(type, dir)
     {
-        var resultDiv = el.parentNode.nextSibling.nextSibling;
+        var resultDiv = document.id('repo_'+dir);
 
         new Request.JSON(
         {

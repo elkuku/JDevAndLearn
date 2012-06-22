@@ -6,7 +6,7 @@ h1.DalHeader {
     margin-bottom: 0.5em;
 }
 
-i.iconJoomla {
+.iconJoomla {
     background-image: url("../img/favicon_t.ico");
     background-repeat: no-repeat;
     height: 18px;
@@ -16,6 +16,15 @@ i.iconJoomla {
 }
 
 a.httpLink {
-    min-width: 100px;
     display: inline-block;
+    min-width: 150px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+div.httpDir div.row {
+line-height: 25px;
+    /*
+    outline: 1px solid grey;
+    */
 }

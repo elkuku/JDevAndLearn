@@ -16,40 +16,34 @@
 
 <? foreach($this->repoList as $repo) : ?>
 
-<h3><?= $repo->dir ?></h3>
-
 <div class="btn-group pull-right">
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-check',
-        'onclick' => "DalGitRepo.getInfo('status', '{$repo->dir}', this);",
+        'onclick' => "DalGitRepo.getInfo('status', '{$repo->dir}');",
         'title' => 'Status',
         'class' => 'btn-mini'
         ))->render(); ?>
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-globe',
-        'onclick' => "DalGitRepo.getInfo('remotes', '{$repo->dir}', this);",
+        'onclick' => "DalGitRepo.getInfo('remotes', '{$repo->dir}');",
         'title' => 'Remotes',
         'class' => 'btn-mini'
         ))->render(); ?>
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-random',
-        'onclick' => "DalGitRepo.getInfo('branches', '{$repo->dir}', this);",
+        'onclick' => "DalGitRepo.getInfo('branches', '{$repo->dir}');",
         'title' => 'Branches',
         'class' => 'btn-mini'
         ))->render(); ?>
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-retweet',
-        'onclick' => "DalGitRepo.getInfo('allbranches', '{$repo->dir}', this);",
+        'onclick' => "DalGitRepo.getInfo('allbranches', '{$repo->dir}');",
         'title' => 'All Branches',
         'class' => 'btn-mini'
         ))->render(); ?>
 </div>
+<h3><?= $repo->dir ?></h3>
 
-    <div></div>
+<div id="repo_<?= $repo->dir ?>"></div>
 <div class="clearfix"></div>
-<? endforeach; ?>
-
-<?
-//var_dump($this->repoList);
-
-?>
+<? endforeach;

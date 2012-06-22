@@ -10,6 +10,9 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
+//-- @debug flag
+define('DAL_DEBUG', 1);
+
 JLoader::registerPrefix('Dal', JPATH_COMPONENT_SITE.'/classes');
 
 //-- Import the class JController

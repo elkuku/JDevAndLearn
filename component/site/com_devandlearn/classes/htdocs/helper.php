@@ -11,7 +11,9 @@ class DalHtdocsHelper
 {
     private $rootDir = '';
 
-    public function __construct($rootDir)
+    private $rootUri = '';
+
+    public function __construct($rootDir, $rootUri)
     {
         $path = realpath($rootDir);
 
@@ -19,6 +21,8 @@ class DalHtdocsHelper
             throw new DomainException('Http root path not found: '.$path);
 
         $this->rootDir = $path;
+
+        $this->rootUri = $rootUri;
     }
 
     public function getDirectories()
@@ -31,15 +35,7 @@ class DalHtdocsHelper
             if(false == $fInfo->isDir() || $fInfo->isDot())
                 continue;
 
-            $d = new stdClass;
-            $d->path = $fInfo->getPath();
-            $d->base =$fInfo->getBasename();
-            $d->path = $fInfo->getPathname();
-
-            $d->isJoomla = JFolder::exists($fInfo->getPathname().'/administrator')
-                && JFile::exists($fInfo->getPathname().'/configuration.php');
-
-            $directories[$d->base] = $d;
+            $directories[$fInfo->getBasename()] = new DalHtdocsDirectory($fInfo, $this->rootUri);
         }
 
         ksort($directories);
