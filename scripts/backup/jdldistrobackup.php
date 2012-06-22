@@ -42,6 +42,13 @@ class JdlDistrobackup extends KukuApplicationCli
 {
     private $backupDir;
 
+    private $backupName = '';
+
+    /**
+     * @var SimpleXMLElement
+     */
+    private $backups = null;
+
     private $tmpDir = '';
 
     /**
@@ -80,11 +87,10 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $HOME = exec('echo $HOME');
 
-        $backups = $this->xmlConfig->backups;
 
-        $backupName = (string)$backups->backupName.date((string)($backups->backupTimestamp));
 
-        foreach($backups->backup as $backup)
+        /* @var SimpleXMLElement $backup */
+        foreach($this->backups->backup as $backup)
         {
             $destFolder = trim((string)$backup->attributes()->title);
 
@@ -111,7 +117,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
             foreach($backup->folder as $folder)
             {
-                $this->backupFolder($baseFolder, $destFolder, $folder);
+                $this->backupFolder($baseFolder, $destFolder, (string)$folder);
             }
 
             foreach($backup->file as $file)
@@ -119,11 +125,18 @@ class JdlDistrobackup extends KukuApplicationCli
                 $this->backupFile($baseFolder, $destFolder, $file);
             }
 
-            $this->output('Creating archive: '.$backupName.'-'.$destFolder.'.tar.gz...', false);
+            $fileName = $this->backupName.'-'.$destFolder.'.tar.gz';
+
+
+            $this->output('Creating archive: '.$fileName.'...', false);
 
             exec('cd "'.$this->tmpDir.'/'.$destFolder.'"'
-            .' && tar czf "'.$this->backupDir.'/tmp/'.$backupName.'-'.$destFolder.'.tar.gz"'
+            .' && tar czf "'.$this->tmpDir.'/'.$fileName.'"'
             .' .');
+
+            $md5 = md5_file($this->tmpDir.'/'.$fileName);
+
+            JFile::write($this->tmpDir.'/md5/'.$this->backupName.'-'.$destFolder.'.md5', $md5);
 
             $this->output('ok', true, 'green');
 
@@ -132,14 +145,16 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $this->output()->output('Creating main archive...', false, 'yellow');
 
-        exec('cd "'.$this->backupDir.'/tmp"'
-            .' && tar czf "'.$this->backupDir.'/'.$backupName.'.tar.gz"'
-            .' .');
+        exec('cd "'.$this->backupDir.'"'
+            .' && tar czf "'.$this->backupDir.'/'.$this->backupName.'.tar.gz"'
+            .' "'.$this->backupName.'"');
 
         $this->output('ok', true, 'green');
 
+        JFolder::delete($this->tmpDir);
+
         $this->output()->output('Backup file has been written to: ', false)
-            ->output($this->backupDir.'/'.$backupName.'.tar.gz', true, 'yellow', '', 'bold');
+            ->output($this->backupDir.'/'.$this->backupName.'.tar.gz', true, 'yellow', '', 'bold');
 
         $this->output()->output('Finished =;)', true, 'green')->output();
     }
@@ -218,13 +233,19 @@ class JdlDistrobackup extends KukuApplicationCli
         if(false == is_dir($this->backupDir))
             throw new UnexpectedValueException('The backup directory specified in configuration.php does not exist');
 
-        $this->tmpDir = $this->backupDir.'/tmp';
+        $this->backups = $this->xmlConfig->backups;
+
+        $this->backupName = time().'---'.date((string)($this->backups->backupTimestamp));
+
+        $this->tmpDir = $this->backupDir.'/'.$this->backupName;
 
         if(JFolder::exists($this->tmpDir) && false === JFolder::delete($this->tmpDir))
             throw new DomainException('Can not clean the tmp dir');
 
         if(false === JFolder::create($this->tmpDir))
             throw new DomainException('Can not create the tmp dir');
+
+        JFolder::create($this->tmpDir.'/md5');
 
         return $this;
     }

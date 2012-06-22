@@ -14,16 +14,28 @@
         <backup base="~" title="home-base">
             <file>.bashrc</file>
             <file>.gitignore</file>
+            <file>.kde4/share/config/plasma-desktop-appletsrc</file>
         </backup>
 
         <backup base="~" title="home-joomla">
             <folder>joomla</folder>
         </backup>
 
-        <backup base="~/.mozilla/firefox/y281g4zi.default" title="home-firefox">
-            <folder>extensions</folder>
-	    <folder>OxygenKDE</folder>
-<!-- 	    <folder></folder> -->
+        <backup base="~/.mozilla/firefox" title="home-firefox">
+
+            <!--
+            <file></file>
+             -->
+            <file>profiles.ini</file>
+            <file>y281g4zi.default/prefs.js</file>
+            <file>y281g4zi.default/extensions.ini</file>
+
+            <!--
+                        <folder></folder>
+                        -->
+            <folder>y281g4zi.default/extensions</folder>
+            <folder>y281g4zi.default/OxygenKDE</folder>
+
         </backup>
 
         <backup base="~/Desktop" title="home-desktop">
@@ -36,6 +48,7 @@
             <folder>scripts</folder>
         </backup>
 
+        <!--
 	<backup base="~/repos" title="home-repos-EasyCreator">
             <folder>EasyCreator</folder>
         </backup>
@@ -64,11 +77,13 @@
             <folder>square-one-cms</folder>
         </backup>
 
-	<backup base="~/srv" title="home-srv">
+	-->
+
+        <backup base="~/srv" title="home-srv">
             <file>00local.conf</file>
             <folder>web_jdevlearn</folder>
             <folder>web_start</folder>
-<!--             <folder></folder> -->
+            <!--             <folder></folder> -->
         </backup>
 
         <backup base="~/.jenkins" title="home-jenkins">
@@ -76,30 +91,30 @@
             <file>jobs/Joomla Platform/config.xml</file>
             <folder>jobs/php-template</folder>
 
-            <folder>plugins/analysis-core</folder>
-            <folder>plugins/ansicolor</folder>
-<!--             <folder>plugins/ant</folder> -->
-            <folder>plugins/checkstyle</folder>
-            <folder>plugins/cloverphp</folder>
-<!--             <folder>plugins/cvs</folder> -->
-            <folder>plugins/dry</folder>
-            <folder>plugins/external-monitor-job</folder>
-            <folder>plugins/git</folder>
-            <folder>plugins/github</folder>
-            <folder>plugins/github-api</folder>
-            <folder>plugins/htmlpublisher</folder>
-<!--             <folder>plugins/javadoc</folder> -->
-            <folder>plugins/jdepend</folder>
-            <folder>plugins/ldap</folder>
-<!--             <folder>plugins/maven-plugin</folder> -->
-            <folder>plugins/pam-auth</folder>
-            <folder>plugins/plot</folder>
-            <folder>plugins/pmd</folder>
-<!--             <folder>plugins/ssh-slaves</folder> -->
-<!--             <folder>plugins/subversion</folder> -->
-<!--             <folder>plugins/translation</folder> -->
-            <folder>plugins/violations</folder>
-            <folder>plugins/xunit</folder>
+            <file>plugins/analysis-core.jpi</file>
+            <file>plugins/ansicolor.jpi</file>
+            <!--             <file>plugins/ant</file> -->
+            <file>plugins/checkstyle.jpi</file>
+            <file>plugins/cloverphp.jpi</file>
+            <!--             <file>plugins/cvs</file> -->
+            <file>plugins/dry.jpi</file>
+            <file>plugins/external-monitor-job.jpi</file>
+            <file>plugins/git.jpi</file>
+            <file>plugins/github.jpi</file>
+            <file>plugins/github-api.jpi</file>
+            <file>plugins/htmlpublisher.jpi</file>
+            <!--             <file>plugins/javadoc</file> -->
+            <file>plugins/jdepend.jpi</file>
+            <file>plugins/ldap.jpi</file>
+            <!--             <file>plugins/maven-plugin</file> -->
+            <file>plugins/pam-auth.jpi</file>
+            <file>plugins/plot.jpi</file>
+            <file>plugins/pmd.jpi</file>
+            <!--             <file>plugins/ssh-slaves</file> -->
+            <!--             <file>plugins/subversion</file> -->
+            <!--             <file>plugins/translation</file> -->
+            <file>plugins/violations.jpi</file>
+            <file>plugins/xunit.jpi</file>
 
         </backup>
     </backups>
