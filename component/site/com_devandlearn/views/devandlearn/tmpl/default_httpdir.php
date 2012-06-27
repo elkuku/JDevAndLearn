@@ -10,7 +10,7 @@
 /* @var DalHtdocsDirectory $dir */
 
 ?>
-<h2 xmlns="http://www.w3.org/1999/html">Web Space</h2>
+<h2><i class="icon-globe"></i> Web Space</h2>
 <p>
     <code>
         <i class="icon-folder-open"></i> <?= $this->httpDir ?>

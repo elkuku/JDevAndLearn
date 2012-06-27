@@ -8,7 +8,7 @@
  */
 
 ?>
-<h2>Status</h2>
+<h2><i class="icon-wrench"></i> Status</h2>
 
 <?php foreach($this->services as $service) : ?>
 <div class="row">

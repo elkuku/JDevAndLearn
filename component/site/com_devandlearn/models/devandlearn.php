@@ -30,10 +30,10 @@ class DevAndLearnModelDevandlearn extends JModel
         $foo = 'Bar';
 
         parent::__construct();
-    }//function
+    }
 
     public function getHttplist()
     {
         return array('fooooooo');
     }
-}//class
+}

@@ -8,7 +8,7 @@
  */
 
 ?>
-<h2>Repositories</h2>
+<h2><i class="icon-github"></i> Repositories</h2>
 
 <code><i class="icon-folder-open"></i> <?= $this->repoDir ?></code>
 
@@ -30,7 +30,7 @@
         'class' => 'btn-mini'
         ))->render(); ?>
         <?= DalToolbarButton::getInstance(array(
-        'icon' => 'icon-random',
+        'icon' => 'icon-sitemap',
         'onclick' => "DalGitRepo.getInfo('branches', '{$repo->dir}');",
         'title' => 'Branches',
         'class' => 'btn-mini'

@@ -21,4 +21,4 @@ jimport('joomla.application.component.controller');
  */
 class DevAndLearnController extends JController
 {
-}//class
+}

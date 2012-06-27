@@ -10,29 +10,29 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-JHtml::stylesheet('media/com_devandlearn/site/css/devandlearn.css');
-
 JHtml::script('media/com_devandlearn/site/js/gitrepo.js');
 JHtml::script('media/com_devandlearn/site/js/service.js');
 
 JHtml::_('behavior.mootools');
 
-
 echo DalToolbarHelper::display();
 ?>
 
-<h1 class="DalHeader">Dashboard<div class="pull-right"><?= $_SERVER['SERVER_ADDR'] ?></div> </h1>
+<h1 class="DalHeader">
+    <i class="icon-dashboard"></i> Dashboard
+    <div class="pull-left">&nbsp;<?= $_SERVER['SERVER_ADDR'] ?></div>
+</h1>
 
-    <div class="row">
-        <div class="span4 httpDir">
-            <?= $this->loadTemplate('httpdir'); ?>
-        </div>
-        <div class="span4">
-            <div class="well">
-                <?= $this->loadTemplate('repodir'); ?>
-            </div>
-        </div>
-        <div class="span4">
-            <?= $this->loadTemplate('status'); ?>
+<div class="row">
+    <div class="span4">
+        <?= $this->loadTemplate('httpdir'); ?>
+    </div>
+    <div class="span4">
+        <div class="well repoDir">
+            <?= $this->loadTemplate('repodir'); ?>
         </div>
     </div>
+    <div class="span4">
+        <?= $this->loadTemplate('status'); ?>
+    </div>
+</div>

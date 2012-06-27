@@ -31,7 +31,7 @@ class DevAndLearnControllerRepo extends JController
         $this->response->text = '';
 
         parent::__construct($config);
-    }//function
+    }
 
     public function getInfo()
     {
@@ -43,8 +43,6 @@ class DevAndLearnControllerRepo extends JController
         $type = $input->get('type');
 
         $repoDir = realpath($cfg->global->repoDir.'/'.$dir);
-
-        //putenv(“LD_LIBRARY_PATH=/usr/local/lib”);
 
         switch($type)
         {
@@ -69,17 +67,15 @@ class DevAndLearnControllerRepo extends JController
                 $ret = 1;
         }
 
-
         $this->response->text = '<pre>'.implode("\n", $output).'</pre>';
 
         if(0 !== $ret)
         {
             $this->response->status = $ret;
-
         }
 
         echo json_encode($this->response);
 
         jexit();
     }
-}//class
+}
