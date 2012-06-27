@@ -1749,6 +1749,7 @@ table .span24 {
   margin-left: 0;
 }
 
+/*
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -2330,6 +2331,7 @@ table .span24 {
 .icon-fullscreen {
   background-position: -456px -144px;
 }
+*/
 
 .dropup,
 .dropdown {
