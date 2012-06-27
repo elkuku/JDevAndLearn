@@ -16,8 +16,8 @@ The required previous knowledge level ranges from "rookie" to "lead developer".
 
 ## Joomla! Core
 
-* [[Joomla! CMS]](JoomlaCMS)
-* [[Joomla! Platform]](JoomlaPlatform)
+* [[Joomla! CMS]](Distros/JoomlaCMS)
+* [[Joomla! Platform]](Distros/JoomlaPlatform)
 
 ## Custom Distributions (Forks, Spin offs, etc...)
 
