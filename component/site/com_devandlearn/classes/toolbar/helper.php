@@ -59,28 +59,28 @@ class DalToolbarHelper
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=phpinfo&task='),
             'icon' => 'icon-info-sign',
-            'text' => 'PHP Info',//jgettext..
+            'text' => 'PHP',//jgettext..
             'class' => $input->get('view') == 'phpinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=gitinfo&task='),
             'icon' => 'icon-info-sign',
-            'text' => 'Git Info',//jgettext..
+            'text' => 'Git',//jgettext..
             'class' => $input->get('view') == 'gitinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=infolocalconf&task='),
             'icon' => 'icon-info-sign',
-            'text' => 'Local config Info',//jgettext..
+            'text' => 'Local config',//jgettext..
             'class' => $input->get('view') == 'infolocalconf' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=hostsinfo&task='),
             'icon' => 'icon-info-sign',
-            'text' => 'Hosts Info',//jgettext..
+            'text' => 'Hosts',//jgettext..
             'class' => $input->get('view') == 'hostsinfo' ? 'active' : ''
         )), 'actions');
 
@@ -94,7 +94,7 @@ class DalToolbarHelper
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=ifconfig&task='),
             'icon' => 'icon-info-sign',
-            'text' => 'Ifconfig Info',//jgettext..
+            'text' => 'Ifconfig',//jgettext..
             'class' => $input->get('view') == 'ifconfig' ? 'active' : ''
         )), 'actions');
     }

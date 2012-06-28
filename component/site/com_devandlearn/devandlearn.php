@@ -20,6 +20,13 @@ JHtml::stylesheet('media/com_devandlearn/site/css/devandlearn.css');
 //-- Import the class JController
 jimport('joomla.application.component.controller');
 
+/* @TEST
+JFactory::getApplication()->enqueueMessage('success', 'success');
+JFactory::getApplication()->enqueueMessage('ANYTHING', 'ANYTHING');
+JFactory::getApplication()->enqueueMessage('message or empty');
+JFactory::getApplication()->enqueueMessage('error', 'error');
+*/
+
 try
 {
     //-- Get an instance of the controller with the prefix 'DevAndLearn'

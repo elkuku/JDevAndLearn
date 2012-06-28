@@ -61,8 +61,17 @@ class DalService
                             $this->isUp = (0 == $retcode);
                             break;
 
+                        case 'pgsql' :
+                            exec('ps cax | grep "pgsqld$"', $output, $retcode);
+
+                            $this->isUp = (0 == $retcode);
+                            break;
+
                         default :
-                            echo __METHOD__.' - Unknown command: '.$matches[2];
+                            JFactory::getApplication()->enqueueMessage(sprintf(
+                                '%s - Unknown command: %s'
+                                , __METHOD__, $matches[2])
+                                , 'warning');
                     }
                 }
 

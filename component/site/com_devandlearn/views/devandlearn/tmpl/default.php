@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') || die('=;)');
 /**
  * @package    DevAndLearn
  * @subpackage Views
@@ -6,9 +6,6 @@
  * @author     Created on 16-Jun-2012
  * @license    GNU/GPL
  */
-
-//-- No direct access
-defined('_JEXEC') || die('=;)');
 
 JHtml::script('media/com_devandlearn/site/js/gitrepo.js');
 JHtml::script('media/com_devandlearn/site/js/service.js');

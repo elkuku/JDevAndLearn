@@ -80,6 +80,7 @@ class DevAndLearnViewDevAndLearn extends JView
             , array('Jenkins Dashboard' => 'http://localhost:8080'));
         $this->services[] = new DalService('Mysql', 'service://mysql'
             , array('PHPMy Admin' => 'http://dev.local/phpmyadmin/'));
+        $this->services[] = new DalService('PostgreSql', 'service://pgsql');
         $this->services[] = new DalService('ProFTP', 'service://proftpd');
 
         $js = array();

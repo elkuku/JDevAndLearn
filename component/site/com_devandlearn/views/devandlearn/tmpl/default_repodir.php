@@ -10,7 +10,7 @@
 ?>
 <h2><i class="icon-github"></i> Repositories</h2>
 
-<code><i class="icon-folder-open"></i> <?= $this->repoDir ?></code>
+<i class="icon-folder-open"></i> <code><?= $this->repoDir ?></code>
 
 <hr />
 
@@ -23,18 +23,21 @@
         'title' => 'Status',
         'class' => 'btn-mini'
         ))->render(); ?>
+
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-globe',
         'onclick' => "DalGitRepo.getInfo('remotes', '{$repo->dir}');",
         'title' => 'Remotes',
         'class' => 'btn-mini'
         ))->render(); ?>
+
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-sitemap',
         'onclick' => "DalGitRepo.getInfo('branches', '{$repo->dir}');",
         'title' => 'Branches',
         'class' => 'btn-mini'
         ))->render(); ?>
+
         <?= DalToolbarButton::getInstance(array(
         'icon' => 'icon-retweet',
         'onclick' => "DalGitRepo.getInfo('allbranches', '{$repo->dir}');",
@@ -46,4 +49,5 @@
 
 <div id="repo_<?= $repo->dir ?>"></div>
 <div class="clearfix"></div>
+
 <? endforeach;

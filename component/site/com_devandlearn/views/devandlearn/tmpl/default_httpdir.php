@@ -12,15 +12,11 @@
 ?>
 <h2><i class="icon-globe"></i> Web Space</h2>
 <p>
-    <code>
-        <i class="icon-folder-open"></i> <?= $this->httpDir ?>
-    </code>
+    <i class="icon-folder-open"></i> <code><?= $this->httpDir ?></code>
 </p>
 
 <p>
-    <code>
-        <i class="icon-globe"></i> <a href="<?= $this->httpUrl ?>"><?= $this->httpUrl ?></a>
-    </code>
+    <i class="icon-globe"></i> <code><a href="<?= $this->httpUrl ?>"><?= $this->httpUrl ?></a></code>
 </p>
 
 <hr/>
