@@ -11,22 +11,23 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
 
 $credentials = $this->form->getFieldset('credentials');
-//var_dump($credentials['username']);
 
 ?>
-<div class="login<?php echo $this->pageclass_sfx?>">
+<div class="login<?= $this->pageclass_sfx?>">
+
     <h1>Login</h1>
 
     <div class="row">
 
         <div class="span6">
+            <p>
 
             <form class="form-horizontal"
-                  action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post">
+                  action="<?= JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post">
                 <fieldset>
                     <div class="control-group">
                         <div class="input-prepend">
-                            <span class="add-on" title="<?php echo $credentials['username']->title; ?>"><i
+                            <span class="add-on" title="<?= $credentials['username']->title ?>"><i
                                 class="icon-user"></i></span>
                             <?= $credentials['username']->input ?>
                         </div>
@@ -34,7 +35,7 @@ $credentials = $this->form->getFieldset('credentials');
                     <div class="control-group">
 
                         <div class="input-prepend">
-                            <span class="add-on" title="$credentials['password']->title"><i
+                            <span class="add-on" title="<?= $credentials['password']->title ?>"><i
                                 class="icon-lock"></i></span>
                             <?= $credentials['password']->input ?>
                         </div>
@@ -47,50 +48,50 @@ $credentials = $this->form->getFieldset('credentials');
                         </span>
                             <!--
                     <label id="remember-lbl" class="control-label"
-                           for="remember"><?php echo JText::_('JGLOBAL_REMEMBER_ME') ?></label>
+                           for="remember"><?= JText::_('JGLOBAL_REMEMBER_ME') ?></label>
                            -->
                             <input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"
-                                   alt="<?php echo JText::_('JGLOBAL_REMEMBER_ME') ?>"
-                                   title="<?php echo JText::_('JGLOBAL_REMEMBER_ME') ?>"/>
+                                   alt="<?= JText::_('JGLOBAL_REMEMBER_ME') ?>"
+                                   title="<?= JText::_('JGLOBAL_REMEMBER_ME') ?>"/>
                         </div>
                     </div>
                     <?php endif; ?>
                     <p>
                         <button type="submit"
                                 class="btn btn-success btn-large">
-                            <i class="icon-lock"></i> <?php echo JText::_('JLOGIN'); ?>
+                            <i class="icon-lock"></i> <?= JText::_('JLOGIN'); ?>
                         </button>
                     </p>
                     <input type="hidden" name="return"
-                           value="<?php echo base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))); ?>"/>
-                    <?php echo JHtml::_('form.token'); ?>
+                           value="<?= base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))) ?>"/>
+                    <?= JHtml::_('form.token') ?>
                 </fieldset>
             </form>
+            </p>
         </div>
 
         <div class="span6">
             <ul class="unstyled">
                 <li>
-                    <a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+                    <a href="<?= JRoute::_('index.php?option=com_users&view=reset'); ?>">
                         <i class="icon-lock"></i>
-                        <?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
+                        <?= JText::_('COM_USERS_LOGIN_RESET'); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
+                    <a href="<?= JRoute::_('index.php?option=com_users&view=remind'); ?>">
                         <i class="icon-user"></i>
-                        <?php echo JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
+                        <?= JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
                 </li>
                 <?php
                 $usersConfig = JComponentHelper::getParams('com_users');
                 if($usersConfig->get('allowUserRegistration')) : ?>
                     <li>
-                        <a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
+                        <a href="<?= JRoute::_('index.php?option=com_users&view=registration'); ?>">
                             <i class="icon-edit"></i>
-                            <?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
+                            <?= JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
                     </li>
-                    <?php endif; ?>
+                <?php endif; ?>
             </ul>
         </div>
-
     </div>
 </div>

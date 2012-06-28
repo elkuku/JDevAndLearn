@@ -10,6 +10,8 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
+//-- "Override the system message renderer
+include 'classes/renderer/message.php';
 
 $application = JFactory::getApplication();
 $templateParams = $application->getTemplate(true)->params;
@@ -23,12 +25,12 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
 <html lang="<?= $this->language ?>" dir="<?= $this->direction ?>">
     <head>
         <jdoc:include type="head" />
-        <link rel="stylesheet" href="<?php echo $baseLink.'/css/bootstrap'.$min.'.css'; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?= $baseLink.'/css/bootstrap'.$min.'.css'; ?>" type="text/css" />
         <!--
-        <link rel="stylesheet" href="<?php echo $baseLink.'/css/bootstrap-responsive'.$min.'.css'; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?= $baseLink.'/css/bootstrap-responsive'.$min.'.css'; ?>" type="text/css" />
         -->
-        <link rel="stylesheet" href="<?php echo $baseLink.'/css/font-awesome.css'; ?>" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $baseLink.'/css/template'.$min.'.css'; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?= $baseLink.'/css/font-awesome.css'; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?= $baseLink.'/css/template'.$min.'.css'; ?>" type="text/css" />
     </head>
     <body>
 
@@ -70,9 +72,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
         </div>
     </div>
 
-    <?php if (count($application->getMessageQueue())) : ?>
-        <jdoc:include type="message" />
-    <?php endif; ?>
+    <jdoc:include type="message" />
 
     <div class="container">
 
