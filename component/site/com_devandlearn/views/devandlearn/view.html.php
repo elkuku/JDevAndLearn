@@ -47,19 +47,6 @@ class DevAndLearnViewDevAndLearn extends JView
      */
     public function display($tpl = null)
     {
-        /*
-        $params = JComponentHelper::getParams('com_devandlearn');
-
-        $path = $params->get('configPath').'/config.xml';
-
-        if(false == file_exists($path))
-            throw new DomainException('ERROR: Config file not found at:'.$path);
-
-        $this->configXml = simplexml_load_file($path);
-
-        if(false == $this->configXml)
-            throw new DomainException('ERROR: Invalid config at:'.$path);
-*/
         $this->configXml = DalConfig::getConfig();
 
         $this->repoDir = $this->configXml->global->repoDir;
@@ -77,20 +64,25 @@ class DevAndLearnViewDevAndLearn extends JView
         $this->httpList = $htdocsHelper->getDirectories();
 
         $this->services[] = new DalService('Jenkins', 'http://localhost:8080'
-            , array('Jenkins Dashboard' => 'http://localhost:8080'));
+            , array(
+                'Jenkins Dashboard' => 'http://localhost:8080',
+                'Shutdown' => 'http://localhost:8080/exit'));
+
         $this->services[] = new DalService('Mysql', 'service://mysql'
             , array('PHPMy Admin' => 'http://dev.local/phpmyadmin/'));
+
         $this->services[] = new DalService('PostgreSql', 'service://pgsql');
         $this->services[] = new DalService('ProFTP', 'service://proftpd');
 
-        $js = array();
-
-        foreach($this->services as $service)
-        {
-           // $js[] = "DalService.check('{$service->url}')";
-        }
-
+        /*
+                $js = array();
+                foreach($this->services as $service)
+                {
+                   // $js[] = "DalService.check('{$service->url}')";
+                }
         JFactory::getDocument()->addScriptDeclaration(implode("\n", $js));
+        */
+
         DalToolbarHelper::setup();
 
         parent::display($tpl);

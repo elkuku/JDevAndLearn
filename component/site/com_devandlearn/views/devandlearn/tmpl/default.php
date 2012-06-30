@@ -15,11 +15,6 @@ JHtml::_('behavior.mootools');
 echo DalToolbarHelper::display();
 ?>
 
-<h1 class="DalHeader">
-    <i class="icon-dashboard"></i> Dashboard
-    <div class="pull-left">&nbsp;<?= $_SERVER['SERVER_ADDR'] ?></div>
-</h1>
-
 <div class="row">
     <div class="span4">
         <?= $this->loadTemplate('httpdir'); ?>

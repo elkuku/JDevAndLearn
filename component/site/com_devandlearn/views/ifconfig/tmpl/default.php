@@ -13,8 +13,6 @@ defined('_JEXEC') || die('=;)');
 echo DalToolbarHelper::display();
 
 ?>
-<h1 class="DalHeader"><i class="icon-info-sign"></i> Ifconfig Info</h1>
-
 <p><i class="icon-file"></i> <code> /sbin/ifconfig</code></p>
 
 <pre><?= $this->ifconfigInfo->raw ?></pre>

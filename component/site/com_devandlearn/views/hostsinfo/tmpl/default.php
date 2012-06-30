@@ -10,10 +10,9 @@
 echo DalToolbarHelper::display();
 
 ?>
-<h1 class="DalHeader"><i class="icon-info-sign"></i> Hosts Info</h1>
-
 <p><i class="icon-file"></i> <code> /etc/hosts</code></p>
 
 <pre><?= $this->hostsInfo->raw ?></pre>
 
 <br /><code>@todo: parse this ?</code>
+<br /><code>@todo: Add/Edit/Remove ?</code>

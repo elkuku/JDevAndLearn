@@ -24,7 +24,7 @@
 <? foreach($this->httpList as $dir) : //var_dump($dir);?>
 <div class="row">
     <div class="span2">
-        <a class="httpLink <?= $dir->icon ?>" href="<?= $this->httpUrl.'/'.$dir->base ?>">
+        <a target="_blank" class="httpLink <?= $dir->icon ?>" href="<?= $this->httpUrl.'/'.$dir->base ?>">
             <?= $dir->base ?>
         </a>
     </div>
@@ -32,14 +32,14 @@
     <div class="span2">
         <div class="btn-group pull-right">
             <? if($dir->symLinkerLink) : ?>
-            <a class="btn btn-mini" href="<?= $dir->symLinkerLink ?>"
+            <a target="_blank" class="btn btn-mini" href="<?= $dir->symLinkerLink ?>"
                title="Symlinks">
                 <i class="icon-asterisk"></i>
             </a>
             <? endif; ?>
 
             <? if('joomlacms' == $dir->type) : ?>
-            <a class="btn btn-mini" href="<?= $this->httpUrl.'/'.$dir->base.'/administrator' ?>"
+            <a target="_blank" class="btn btn-mini" href="<?= $this->httpUrl.'/'.$dir->base.'/administrator' ?>"
                title="Administrator">
                 Admin
             </a>

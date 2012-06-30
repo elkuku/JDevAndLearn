@@ -30,3 +30,10 @@ line-height: 25px;
     outline: 1px solid grey;
     */
 }
+
+.ajaxload5 {
+    padding-left: 20px;
+    background-image: url("../img/ajax-loader5.gif");
+    background-repeat: no-repeat;
+
+}

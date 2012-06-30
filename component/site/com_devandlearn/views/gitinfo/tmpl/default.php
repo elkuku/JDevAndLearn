@@ -10,8 +10,6 @@
 echo DalToolbarHelper::display();
 ?>
 
-<h1 class="DalHeader"><i class="icon-info-sign"></i> Git Info</h1>
-
 <h2>Global</h2>
 
 <i class="icon-file"></i> <code>/home/<?= getenv('JDL_USER') ?>/.gitconfig</code>
@@ -21,4 +19,6 @@ echo DalToolbarHelper::display();
     <?php foreach($values as $k => $v) : ?>
         <strong><?= $k ?></strong>: <?= $v ?><br/>
     <?php endforeach; ?>
-<?php endforeach;
+<?php endforeach; ?>
+
+<br /><code>@todo: Add/Edit/Remove ?</code>

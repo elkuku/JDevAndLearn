@@ -13,10 +13,9 @@ defined('_JEXEC') || die('=;)');
 echo DalToolbarHelper::display();
 
 ?>
-<h1 class="DalHeader"><i class="icon-info-sign"></i> Local config Info</h1>
-
 <p><i class="icon-file"></i> <code> <?= $this->path ?></code></p>
 
 <pre><?= htmlentities($this->infoLocalconf->raw) ?></pre>
 
 <br /><code>@todo: parse this ?</code>
+<br /><code>@todo: Add/Edit/Remove ?</code>

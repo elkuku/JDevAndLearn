@@ -8,8 +8,8 @@
  */
 
 echo DalToolbarHelper::display();
+
+echo DalConfigPhp::getInfo();
+
 ?>
-
-<h1 class="DalHeader"><i class="icon-info-sign"></i> PHP Info</h1>
-
-<?= DalConfigPhp::getInfo();
+<br /><code>@todo: Add/Edit/Remove ?</code>

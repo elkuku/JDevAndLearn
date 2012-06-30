@@ -13,10 +13,9 @@ defined('_JEXEC') || die('=;)');
 echo DalToolbarHelper::display();
 
 ?>
-<h1 class="DalHeader"><i class="icon-info-sign"></i> Global Environment Variables</h1>
-
 <p><i class="icon-file"></i> <code> <?= $this->path ?></code></p>
 
 <pre><?= htmlentities($this->infoEnvvars->raw) ?></pre>
 
 <br /><code>@todo: parse this ?</code>
+<br /><code>@todo: Add/Edit/Remove ?</code>

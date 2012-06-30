@@ -31,12 +31,13 @@ class DalToolbarButton
         $class = 'btn '.$this->attribs->get('class');
         $href = $this->attribs->get('href') ?: 'javascript:void(0);';
         $onclick = $this->attribs->get('onclick') ? ' onclick="'.$this->attribs->get('onclick').'"': '';
+        $onmousedown = $this->attribs->get('onmousedown') ? ' onmousedown="'.$this->attribs->get('onmousedown').'"': '';
         $icon = $this->attribs->get('icon') ?: '';
         $text = $this->attribs->get('text') ?: '';
 
         $title = $this->attribs->get('title') ? ' title="'.$this->attribs->get('title').'"': '';
 
-        $html[] = '<a class="'.$class.'" href="'.$href.'"'.$title.$onclick.'>';
+        $html[] = '<a class="'.$class.'" href="'.$href.'"'.$title.$onclick.$onmousedown.'>';
 
         if($icon) $html[] = '    <i class="'.$icon.'"></i>';
         if($text) $html[] = '   '.$text;
