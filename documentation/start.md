@@ -27,12 +27,12 @@ The required previous knowledge level ranges from "rookie" to "lead developer".
 
 ## Various little helpers
 
-* [[jacli]](Helpers/jacli)
+* There are various little [[Helpers]] that will do the "hard work" for you.
 
 ## Other
 
 Other great software (like [Dokuwiki](http://dokuwiki.org), [Drupal](http://drupal.org), [Wordpress](http://wordpress.org) and others)
- can be easyli installed with the [[jacli]](Helpers/jacli) script.
+ can be easyli installed using the [[jacli]](Helpers/jacli) script.
 
 ## MarkdownGitWiki
 
