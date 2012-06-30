@@ -11,30 +11,12 @@
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
 // We are a valid Joomla entry point.
-// This is required to load the Joomla Platform import.php file.
 define('_JEXEC', 1);
 
-define('NL', "\n");
-
-// Setup the base path related constant.
-// This is one of the few, mandatory constants needed for the Joomla Platform.
-define('JPATH_BASE', dirname(__FILE__));
-define('JPATH_SITE', JPATH_BASE);
-
-// Increase error reporting to that any errors are displayed.
-// Note, you would not use these settings in production.
-error_reporting(- 1);
-ini_set('display_errors', true);
-
-// Bootstrap the application.
-require getenv('JOOMLA_PLATFORM_PATH').'/libraries/import.php';
-
-require getenv('KUKU_JLIB_PATH').'/loader.php';
+require dirname(__DIR__).'/bootstrap.php';
 
 /**
- * A "hello world" command line application class.
- *
- * Simple command line applications extend the JApplicationCli class.
+ * JDL Distro backup class.
  *
  * @package JdlInstall
  */
@@ -113,7 +95,8 @@ class JdlDistrobackup extends KukuApplicationCli
 
             $fileName = $destFolder.'-'.$this->backupName.'.tar.gz';
 
-            $this->output('Creating archive: '.$fileName.'...', false);
+            $this->output('Creating archive: ', false)
+	            ->output($fileName.'...', false, 'yellow');
 
             exec('cd "'.$this->tmpDir.'/'.$destFolder.'"'
             .' && tar czf "'.$this->tmpDir.'/'.$fileName.'"'
@@ -128,7 +111,7 @@ class JdlDistrobackup extends KukuApplicationCli
             JFolder::delete($this->tmpDir.'/'.$destFolder);
         }
 
-        $this->output()->output('Creating main archive...', false, 'yellow');
+        $this->output()->output('Creating main archive...', false, 'yellow', '', 'bold');
 
         exec('cd "'.$this->backupDir.'"'
             .' && tar czf "'.$this->backupDir.'/'.$this->backupName.'.tar.gz"'
@@ -141,7 +124,7 @@ class JdlDistrobackup extends KukuApplicationCli
         $this->output()->output('Backup file has been written to: ', false)
             ->output($this->backupDir.'/'.$this->backupName.'.tar.gz', true, 'yellow', '', 'bold');
 
-        $this->output()->output('Finished =;)', true, 'green')->output();
+        $this->output()->outputTitle('Finished =;)', 'green')->output();
     }
 
     private function backupFolder($base, $dest, $folder)
@@ -173,7 +156,7 @@ class JdlDistrobackup extends KukuApplicationCli
     {
         $path = $base.'/'.$file;
 
-        $this->output('File: ', false);
+        $this->output('File  : ', false);
 
         if(false == file_exists($path))
         {

@@ -18,8 +18,6 @@ require dirname(__DIR__).'/bootstrap.php';
 /**
  * JDL IDE downloader class.
  *
- * Simple command line applications extend the JApplicationCli class.
- *
  * @package JdlInstall
  */
 class JdlInstall extends JdlApplicationCli
@@ -137,7 +135,6 @@ class JdlInstall extends JdlApplicationCli
         $this->output()
             ->output('Your may execute the application now from your beakermenu.', 'true', 'yellow', '', 'bold')
             ->output()
-            ->output('Finished =;)', true, 'green', '', 'bold')
             ->outputTitle('Finished =;)', 'green');
 
 	    }

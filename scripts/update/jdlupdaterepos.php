@@ -9,7 +9,6 @@
  */
 
 // We are a valid Joomla entry point.
-// This is required to load the Joomla Platform import.php file.
 define('_JEXEC', 1);
 
 require dirname(__DIR__).'/bootstrap.php';
@@ -21,9 +20,7 @@ const ERR_REQ = 2;
 const ERR_DOMAIN = 10;
 
 /**
- * An example command line application class.
- *
- * This application shows how to access configuration file values.
+ * JDL Update repositories class.
  *
  * @package  JdlUpdateRepos
  */
@@ -74,11 +71,10 @@ class JdlUpdateRepos extends JdlApplicationCli
         $this->output()
             ->output(str_repeat('=', 30))
             ->output(sprintf('Execution time: %s secs.'
-            , time() - $this->get('execution.timestamp')))
-            ->output(str_repeat('=', 30));
-
-        $this->output()
-            ->output('Finished =;)', true, 'green');
+                , time() - $this->get('execution.timestamp')))
+            ->output(str_repeat('=', 30))
+	        ->output()
+            ->outputTitle('Finished =;)', 'green');
 
         if(1)
         {

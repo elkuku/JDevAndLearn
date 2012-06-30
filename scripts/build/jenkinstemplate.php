@@ -11,15 +11,12 @@
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
 // We are a valid Joomla entry point.
-// This is required to load the Joomla Platform import.php file.
 define('_JEXEC', 1);
 
 require dirname(__DIR__).'/bootstrap.php';
 
 /**
- * A "hello world" command line application class.
- *
- * Simple command line applications extend the JApplicationCli class.
+ * JDL Jenkins template class.
  *
  * @package JdlInstall
  */
@@ -39,9 +36,12 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
         $this->setup()
             ->setupRepo()
-            ->setupJenkins();
-
-        $this->output()->output('Finished =;)', true, 'green', '', 'bold');
+            ->setupJenkins()
+	        ->output()
+            ->output('Your repository is located at: ', false)
+	        ->output(JdlPath::join($this->repoDir, $this->projectName), true, 'yellow', '', 'bold')
+	        ->output()
+	        ->outputTitle('Finished =;)', 'green');
     }
 
     private function setup()
@@ -97,7 +97,7 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
 	    $this->copyProjectFiles();
 
-        $this->output('Initial commit', true, 'yellow');
+        $this->output('Performing initial commit', true, 'yellow');
 
         $cmd = $CD.' && git add . && git commit -m "initial import"';
 
