@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require getenv('KUKU_JLIB_PATH').'/loader.php';
+//require getenv('KUKU_JLIB_PATH').'/loader.php';
 
 class JdlApplicationCli extends KukuApplicationCli
 {
@@ -36,7 +36,7 @@ class JdlApplicationCli extends KukuApplicationCli
      */
     public function __construct(JInputCli $input = null, JRegistry $config = null, JEventDispatcher $dispatcher = null)
     {
-        $path = JDLPATH_SCRIPTS.'/config.xml';
+        $path = JDLPATH_CONFIG.'/config.xml';
 
         if(false == file_exists($path))
             throw new DomainException('ERROR: Config file not found at:'.$path);

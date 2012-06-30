@@ -36,9 +36,11 @@
             <folder>Scripts</folder>
         </backup>
 
+        <!--
         <backup base="~" title="home-scripts">
             <folder>scripts</folder>
         </backup>
+	-->
 
         <!--
 	<backup base="~/repos" title="home-repos-EasyCreator">

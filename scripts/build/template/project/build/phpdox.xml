@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpdox xmlns="http://phpdox.de/config" silent="false">
+    <bootstrap />
+    <project name="Demo" source="component" workdir="./docs">
+        <collector publiconly="false">
+            <include mask="*.php" />
+            <exclude mask="" />
+
+        </collector>
+
+        <generator output="${basedir}">
+            <build engine="html" enabled="true" output="api">
+                <!--
+                <template dir="${phpDox.home}/templates/html" />
+                -->
+            </build>
+
+            <build engine="todo" enabled="true" output="todo">
+                <file name="todo.txt" encoding="utf-8" />
+            </build>
+
+            <!--
+            <build engine="graph" enabled="true" output="graph">
+                <dot executable="/usr/bin/dot" render="true" format="svg" />
+            </build>
+
+            <build engine="xslrunner" enabled="true" output="html2">
+                <template dir="${phpDox.home}/templates/xslrunner" />
+            </build>
+            -->
+
+        </generator>
+    </project>
+
+</phpdox>

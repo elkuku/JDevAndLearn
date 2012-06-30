@@ -68,26 +68,12 @@ class JdlDistrobackup extends KukuApplicationCli
      */
     public function doExecute()
     {
-        /*
-        jimport('joomla.filesystem.folder');
-
-        $folders = JFolder::folders('/home/jtester/.jenkins/plugins');
-
-        foreach($folders as $folder)
-        {
-            $this->out('      <folder>plugins/'.$folder.'</folder>');
-        }
-
-        return;
-*/
         $this->outputTitle('JDL Distro backup')
             ->setup()
             ->output('Backup to: ', false)
             ->output($this->backupDir, true, 'yellow', '', 'bold');
 
         $HOME = exec('echo $HOME');
-
-
 
         /* @var SimpleXMLElement $backup */
         foreach($this->backups->backup as $backup)

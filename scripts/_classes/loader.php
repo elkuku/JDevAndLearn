@@ -24,4 +24,13 @@ function jdlLibLoader($name)
 
         return;
     }
+
+    $path = __DIR__.'/'.strtolower(implode('/', $parts).'/'.$parts[count($parts) - 1]).'.php';
+
+    if(file_exists($path))
+    {
+        include $path;
+
+        return;
+    }
 }

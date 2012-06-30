@@ -12,30 +12,13 @@
 // This is required to load the Joomla Platform import.php file.
 define('_JEXEC', 1);
 
-// Setup the base path related constant.
-define('JPATH_BASE', dirname(__FILE__));
-
-define('JPATH_SITE', JPATH_BASE);
-
-define('JDLPATH_SCRIPTS', dirname(__DIR__));
-
-define('NL', "\n");
+require dirname(__DIR__).'/bootstrap.php';
 
 const ERR_TEST = 66;
 
 const ERR_REQ = 2;
 
 const ERR_DOMAIN = 10;
-
-// Increase error reporting to that any errors are displayed.
-// Note, you would not use these settings in production.
-error_reporting(- 1);
-ini_set('display_errors', true);
-
-// Bootstrap the application.
-require getenv('JOOMLA_PLATFORM_PATH').'/libraries/import.php';
-
-require JDLPATH_SCRIPTS.'/_classes/loader.php';
 
 /**
  * An example command line application class.
@@ -56,6 +39,7 @@ class JdlRepoStatus extends JdlApplicationCli
      * @throws Exception
      * @throws UnexpectedValueException
      * @throws DomainException
+     *
      * @return void
      */
     public function doExecute()
