@@ -52,3 +52,13 @@ Jenkins has been set up to build PHP projects. A script is provided that automat
 * [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
 
 Which provides the template for Jenkins PHP jobs, and also a ```build.xml``` file ([download](http://jenkins-php.org/download/build.xml)) for Apache Ant.
+
+## Other programs
+
+### Mozilla Firefox
+
+Some usefull Firefox addons that may help you while developing are included for your convenience.
+
+On the first launch you will be asked for each Addon if you like to install it. Some of them require a restart.
+
+You may choose to install all of them or none.
