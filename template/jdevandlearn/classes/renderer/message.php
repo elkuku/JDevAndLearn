@@ -51,43 +51,30 @@ class JDocumentRendererMessage extends JDocumentRenderer
 
         foreach ($messages as $msg)
         {
-            if (isset($msg['type']) && isset($msg['message']))
-            {
-                $lists[$msg['type']][] = $msg['message'];
-            }
+            $lists[$msg['type']][] = $msg['message'];
         }
 
-        if (is_array($lists))
+        foreach ($lists as $type => $msgs)
         {
-            foreach ($lists as $type => $msgs)
+            if (0 ==count($msgs))
+                continue;
+
+            //-- compatibility..
+            if('message' == $type) $type = 'info';
+            $icon = (isset($icons[$type])) ? $icons[$type] : 'question-sign';
+
+            $buffer[] = '<div class="systemMessage alert alert-'.$type.'">';
+            $buffer[] = '<i class="messageIcon icon-'.$icon.'"></i>';
+            $buffer[] = '   <ul class="unstyled">';
+
+            foreach ($msgs as $msg)
             {
-                if (0 ==count($msgs))
-                    continue;
-
-                //-- compatibility..
-                if('message' == $type) $type = 'info';
-
-                $buffer[] = '<div class="systemMessage alert alert-'.$type.'">';
-
-                $icon = (isset($icons[$type])) ? $icons[$type] : 'question-sign';
-
-                {
-                    $buffer[] = '<i class="messageIcon icon-'.$icon.'"></i>';
-                }
-
-                $buffer[] = '   <ul class="unstyled">';
-
-                foreach ($msgs as $msg)
-                {
-                    $buffer[] = '      <li>'. $msg . '</li>';
-                }
-
-                $buffer[] = '   </ul>';
-                $buffer[] = '</div>';
+                $buffer[] = '      <li>'. $msg . '</li>';
             }
-        }
 
-        $buffer[] = '</div>';
+            $buffer[] = '   </ul>';
+            $buffer[] = '</div>';
+        }
 
         return implode("\n", $buffer);
     }
