@@ -1,13 +1,14 @@
 # This file contains the paths to your projects and their symbolic links
+# Every symlink goes on it's own line
+# path/from/basePath [alias/path]
 
 ### JDevAndLearn
 
 # Component
 basePath=
 component/admin/com_devandlearn administrator/components/com_devandlearn
-
-# Every symlink goes on it's own line
-# path/from/basePath [alias/path]
+component/site/com_devandlearn components/com_devandlearn
+component/media/com_devandlearn media/com_devandlearn
 
 # Template
 basePath=
