@@ -11,17 +11,24 @@
         <backupName>JDLBackup_</backupName>
         <backupTimestamp>Y-m-d_Hi</backupTimestamp>
 
-        <backup base="~" title="home-base">
+        <backup title="home-base" base="~">
             <file>.bashrc</file>
             <file>.gitignore</file>
+	        <file>.alias</file>
             <file>.kde4/share/config/plasma-desktop-appletsrc</file>
+            <file>.kde4/share/config/dolphinrc</file>
+            <file>.kde4/share/config/kdeglobals</file>
         </backup>
 
-        <backup base="~" title="home-joomla">
+        <backup title="home-joomla" base="~">
             <folder>joomla</folder>
         </backup>
 
-        <backup base="~/.mozilla/firefox" title="home-firefox">
+        <backup title="home-images" base="~">
+            <folder>images</folder>
+        </backup>
+
+        <backup title="home-firefox" base="~/.mozilla/firefox">
             <file>profiles.ini</file>
             <file>y281g4zi.default/prefs.js</file>
             <file>y281g4zi.default/extensions.ini</file>
@@ -30,11 +37,21 @@
             <folder>y281g4zi.default/OxygenKDE</folder>
         </backup>
 
-        <backup base="~/Desktop" title="home-desktop">
+        <backup title="home-desktop" base="~/Desktop">
             <file>Start.desktop</file>
             <file>Passwords</file>
             <folder>Scripts</folder>
         </backup>
+
+        <backup title="home-bin" base="~/bin">
+            <file>ide/readme.md</file>
+        </backup>
+
+        <!--
+        <backup title="root-home" base="/root">
+            <file>.kde4/share/apps/kate/sessions/ServerFiles.katesession</file>
+        </backup>
+        -->
 
         <!--
         <backup base="~" title="home-scripts">
@@ -73,13 +90,13 @@
 
 	-->
 
-        <backup base="~/srv" title="home-srv">
+        <backup title="home-srv" base="~/srv">
             <folder>conf</folder>
             <folder>www/web_jdevlearn</folder>
             <folder>www/web_start</folder>
         </backup>
 
-        <backup base="~/.jenkins" title="home-jenkins">
+        <backup title="home-jenkins" base="~/.jenkins">
             <file>jobs/Joomla CMS/config.xml</file>
             <file>jobs/Joomla Platform/config.xml</file>
             <folder>jobs/php-template</folder>
@@ -115,12 +132,32 @@
             <version>7.1.2</version>
             <downloadUri>http://download.netbeans.org/netbeans/%1$s/final/bundles/netbeans-%1$s-ml-php-linux.sh
             </downloadUri>
+            <destPath></destPath>
         </application>
         <application>
             <name>phpstorm</name>
             <title>Php Storm</title>
             <version>4.0.2</version>
             <downloadUri>http://download.jetbrains.com/webide/PhpStorm-%s.tar.gz</downloadUri>
+            <destPath>~/bin/ide</destPath>
+        </application>
+        <application>
+            <name>eclipse</name>
+            <title>Eclipse SDK Classic</title>
+            <version>3.0.2</version>
+            <downloadUri>http://mirrors.xmission.com/eclipse/eclipse/downloads/drops4/R-4.2-201206081400/eclipse-SDK-4.2-linux-gtk.tar.gz
+            </downloadUri>
+            <fileNamex>eclipse.tar.gz</fileNamex>
+            <destPath>~/bin/ide</destPath>
+        </application>
+
+        <application>
+            <name>eclipsezend</name>
+            <title>Eclipse Zend PDT</title>
+            <version>3.0.2 (w/ Indigo)</version>
+            <downloadUri>http://www.zend.com/download/571?start=true</downloadUri>
+            <fileName>eclipse-zend.tar.gz</fileName>
+            <destPath>~/bin/ide</destPath>
         </application>
     </install>
 

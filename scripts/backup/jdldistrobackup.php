@@ -111,8 +111,7 @@ class JdlDistrobackup extends KukuApplicationCli
                 $this->backupFile($baseFolder, $destFolder, $file);
             }
 
-            $fileName = $this->backupName.'-'.$destFolder.'.tar.gz';
-
+            $fileName = $destFolder.'-'.$this->backupName.'.tar.gz';
 
             $this->output('Creating archive: '.$fileName.'...', false);
 

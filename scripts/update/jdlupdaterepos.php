@@ -67,7 +67,8 @@ class JdlUpdateRepos extends JdlApplicationCli
             passthru($cmd, $ret);
 
             if(0 !== $ret)
-                throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
+	            $this->output('ERROR', true, 'red', '', 'bold');
+                //throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
         }
 
         $this->output()

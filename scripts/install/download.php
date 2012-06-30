@@ -10,144 +10,195 @@
 
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
-// We are a valid Joomla entry point.
-// This is required to load the Joomla Platform import.php file.
+// We are a valid Joomla! entry point.
 define('_JEXEC', 1);
 
-define('NL', "\n");
-
-// Setup the base path related constant.
-// This is one of the few, mandatory constants needed for the Joomla Platform.
-define('JPATH_BASE', dirname(__FILE__));
-
-// Increase error reporting to that any errors are displayed.
-// Note, you would not use these settings in production.
-error_reporting(- 1);
-ini_set('display_errors', true);
-
-// Bootstrap the application.
-require getenv('JOOMLA_PLATFORM_PATH').'/libraries/import.php';
-
-require getenv('KUKU_JLIB_PATH').'/loader.php';
+require dirname(__DIR__).'/bootstrap.php';
 
 /**
- * A "hello world" command line application class.
+ * JDL IDE downloader class.
  *
  * Simple command line applications extend the JApplicationCli class.
  *
  * @package JdlInstall
  */
-class JdlInstall extends KukuApplicationCli
+class JdlInstall extends JdlApplicationCli
 {
-    /**
-     * Execute the application.
-     *
-     * The 'execute' method is the entry point for a command line application.
-     *
-     * @throws Exception
-     * @return void
-     */
+	/**
+	 * Execute the application.
+	 *
+	 * @throws UnexpectedValueException
+	 * @throws JdlExceptionIncomplete
+	 * @throws Exception
+	 *
+	 * @return void
+	 */
     public function doExecute()
     {
-        $this->outputTitle('Install/Download');
-
-        $cfgPath = realpath(__DIR__.'/..').'/config.xml';
-
-        file_exists($cfgPath) || die ('ERROR: Config file not found at:'.$cfgPath);
-
-        $config = simplexml_load_file($cfgPath);
-
-        if(false == $config) die('ERROR: Invalid config at:'.$cfgPath);
+	    try
+	    {
+        $this->outputTitle('IDE Download and Install');
 
         $home = exec('echo $HOME');
 
         $downloadDir = $home.'/downloads1';
 
         if(false == is_dir($downloadDir))
-            throw new Exception('Please create the download directory at: '.$downloadDir, 1);
+            throw new JdlExceptionIncomplete('Please create the download directory at: '.$downloadDir, 1);
 
-        $appName = 'netbeans';
-        $appName = 'phpstorm';
+	    if ($this->input->get('list'))
+	    {
+	        $this->listApps();
 
-        $uri = false;
+		    return;
+	    }
 
-        foreach($config->install->application as $app)
+	    if ($this->input->get('h', $this->input->get('help')))
+		    throw new JdlExceptionIncomplete;
+
+	    $appName = $this->input->get('app');
+
+	    if('' == $appName)
+		    throw new JdlExceptionIncomplete('Please specify an application using the option --app');
+
+	    $apps = $this->fetchApps();
+
+	    if(false == array_key_exists($appName, $apps))
+		    throw new UnexpectedValueException('The application you requested could not be found', 1);
+
+		$app = $apps[$appName];
+
+        $uri = trim(sprintf($app->downloadUri, $app->version));
+
+        if(false == $uri)
+            throw new UnexpectedValueException('Invalid application - no uri given', 1);
+
+        $fileName = $app->fileName ?: substr($uri, strrpos($uri, '/') + 1);
+
+        $CD = 'cd "'.$downloadDir.'"';
+
+        if(file_exists($downloadDir.'/'.$fileName))
         {
-            if($appName != (string)$app->name)
-                continue;
+            $this->output('The file already exists.', true, 'green');
+        }
+        else
+        {
+            $this
+                ->output('Download   : '.$uri)
+                ->output('Download to:'.$downloadDir.'/'.$fileName)
+                ->output()
+                ->output('Downloading...', false)
+                ->output('Please wait !', true, 'green', '', 'bold');
 
-            $uri = trim(sprintf($app->downloadUri, $app->version));
+	        $forceFileName = $app->fileName ? ' -O '.$app->fileName : '';
 
-            if(false == $uri) throw new Exception('Invalid application', 1);
+	        passthru($CD.' && wget "'.$uri.'"'.$forceFileName, $retVar);
 
-            $fileName = substr($uri, strrpos($uri, '/') + 1);
-
-            //$this->output('Filename:' . $fileName);
-
-            $cd = 'cd "'.$downloadDir.'" &&';
-
-            if(file_exists($downloadDir.'/'.$fileName))
-            {
-                $this->output('The file already exists.', true, 'green');
-            }
-            else
-            {
-                $this
-                    ->output('Download   : '.$uri)
-                    ->output('Download to:'.$downloadDir.'/'.$fileName)
-                    ->output()
-                    ->output('Downloading...', false)
-                    ->output('Please wait !', true, 'green', '', 'bold');
-
-                passthru($cd.' wget "'.$uri.'"', $retVar);
-
-                if($retVar)
-                    throw new Exception('wget finished with exit code: '.$retVar, $retVar);
-            }
-
-            $ext = substr($fileName, strrpos($fileName, '.') + 1);
-
-            switch($ext)
-            {
-                case 'sh':
-                    $this->output('Executing the installer...', false);
-
-                    exec($cd.' chmod +x "'.$fileName.'" && ./"'.$fileName.'"');
-
-                    $this->output('ok', true, 'green');
-
-                    break;
-
-                case 'gz' :
-                    $test = substr($fileName, 0, strrpos($fileName, '.'));
-                    $testE = substr($test, strrpos($test, '.') + 1);
-
-                    if('tar' != $testE)
-                        throw new Exception('Unknown extension in file: '.$fileName);
-
-                    $this->output('Unzipping to '.$downloadDir.'...', false);
-
-                    exec($cd.' tar -xzvf '.$fileName, $output, $retval);
-
-                    $this->output('ok', true, 'green');
-
-                    if($retval)
-                        throw new Exception('tar: '.print_r($output, 1), $retval);
-                    break;
-
-                default :
-                    throw new Exception('Unknown extension: '.$ext, 1);
-            }
-
-            $this->output()
-                ->output('Finished =;)', true, 'green', '', 'bold');
+            if(0 != $retVar)
+                throw new Exception('wget finished with exit code: '.$retVar, $retVar);
         }
 
-        if(false == $uri) throw new Exception('Invalid application', 1);
+        $ext = substr($fileName, strrpos($fileName, '.') + 1);
+
+        switch($ext)
+        {
+            case 'sh':
+                $this->output('Executing the installer...', false);
+
+                exec($CD.' && chmod +x "'.$fileName.'" && ./"'.$fileName.'"');
+
+                $this->output('ok', true, 'green');
+
+                break;
+
+            case 'gz' :
+                $test = substr($fileName, 0, strrpos($fileName, '.'));
+                $testE = substr($test, strrpos($test, '.') + 1);
+
+                if('tar' != $testE)
+                    throw new Exception('Unknown extension in file: '.$fileName);
+
+                $destPath =($app->destPath) ? ' -C '.$app->destPath : '';
+
+                $this->output('Unzipping to '.($destPath ?: $downloadDir).'...', false);
+
+                exec($CD.' && tar -xzvf '.$fileName.$destPath.' 2>&1', $output, $retval);
+
+                $this->output('ok', true, 'green');
+
+                if($retval)
+                    throw new Exception(print_r($output, 1), $retval);
+                break;
+
+            default :
+                throw new Exception('Unknown extension: '.$ext, 1);
+        }
+
+        $this->output()
+            ->output('Your may execute the application now from your beakermenu.', 'true', 'yellow', '', 'bold')
+            ->output()
+            ->output('Finished =;)', true, 'green', '', 'bold')
+            ->outputTitle('Finished =;)', 'green');
+
+	    }
+	    catch(JdlExceptionIncomplete $e)
+	    {
+		    $msg = $e->getMessage();
+
+		    if($msg) $this->outputTitle($e->getMessage(), 'yellow');
+
+		    $this->output()
+		        ->help();
+	    }
     }
 
+	private function fetchApps()
+	{
+		$apps = array();
+
+        foreach($this->configXml->install->application as $app)
+        {
+	        $apps[(string)$app->name] = $app;
+        }
+
+		return $apps;
+	}
+
+	private function listApps()
+	{
+		$this->output('Application List', true, 'yellow', '', 'bold')
+		->out();
+
+		foreach($this->fetchApps() as $app)
+		{
+			$this->output('== '.$app->title.' ==', true, '', '', 'bold')
+				->output('Alias:         '.$app->name)
+				->output('Version:       '.$app->version)
+				->output('Download from: '.trim(sprintf($app->downloadUri, $app->version)))
+				->output('Install to:    '.$app->destPath)
+				->out();
+		}
+	}
+
+	private function help()
+	{
+		$exe = substr($this->input->executable, strrpos($this->input->executable, '/') + 1);
+
+		$this->output('Usage', true, 'yellow', '', 'bold')
+			->out()
+			->output($exe.' --app <application name>')
+			->out()
+			->output($exe.' <option>')
+			->out()
+			->output('Options', true, '', '', 'bold')
+			->out('--help   -h  This help.')
+			->out('--list       Show available applications.');
+	}
 }
 
+/*
+ * Main routine
+ */
 try
 {
     JApplicationCli::getInstance('JdlInstall')->execute();
