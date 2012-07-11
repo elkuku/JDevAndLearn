@@ -63,27 +63,24 @@ class DevAndLearnViewDevAndLearn extends JView
 
         $this->httpList = $htdocsHelper->getDirectories();
 
-        $this->services[] = new DalService('Jenkins', 'http://localhost:8080'
+	    $this->services[] = new DalService('Apache', 'service://apache');
+
+	    $this->services[] = new DalService('Mysql', 'service://mysql'
+		    , array('phpMyAdmin' => 'http://dev.local/phpmyadmin/'));
+
+	    $this->services[] = new DalService('PostgreSql', 'service://pgsql'
+		    , array('phpPgAdmin' => 'http://pgadmin.local/'));
+
+	    $this->services[] = new DalService('ProFTP', 'service://proftpd');
+
+	    $this->services[] = new DalService('Jenkins', 'http://localhost:8080'
             , array(
                 'Jenkins Dashboard' => 'http://localhost:8080',
                 'Shutdown' => 'http://localhost:8080/exit'));
 
-        $this->services[] = new DalService('Mysql', 'service://mysql'
-            , array('PHPMy Admin' => 'http://dev.local/phpmyadmin/'));
+	    $this->services[] = new DalService('Selenium', 'http://localhost:4444', array(), 403);
 
-        $this->services[] = new DalService('PostgreSql', 'service://pgsql');
-        $this->services[] = new DalService('ProFTP', 'service://proftpd');
-
-        /*
-                $js = array();
-                foreach($this->services as $service)
-                {
-                   // $js[] = "DalService.check('{$service->url}')";
-                }
-        JFactory::getDocument()->addScriptDeclaration(implode("\n", $js));
-        */
-
-        DalToolbarHelper::setup();
+	    DalToolbarHelper::setup();
 
         parent::display($tpl);
     }

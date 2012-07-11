@@ -23,6 +23,8 @@ class DevAndLearnViewGitInfo extends JView
 {
     protected $gitInfo = array();
 
+	protected $user = '';
+
     /**
      * DevAndLearnList view display method.
      *
@@ -34,7 +36,9 @@ class DevAndLearnViewGitInfo extends JView
     {
         DalToolbarHelper::setup();
 
-        $this->gitInfo = DalConfigGit::getInfo('/home/'.getenv('JDL_USER'));
+	    $this->user = exec('whoami');
+
+        $this->gitInfo = DalConfigGit::getInfo('/home/'.$this->user);
 
         parent::display($tpl);
     }

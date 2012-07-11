@@ -12,7 +12,7 @@ echo DalToolbarHelper::display();
 
 <h2>Global</h2>
 
-<i class="icon-file"></i> <code>/home/<?= getenv('JDL_USER') ?>/.gitconfig</code>
+<i class="icon-file"></i> <code>/home/<?= $this->user ?>/.gitconfig</code>
 
 <?php foreach($this->gitInfo as $section => $values) : ?>
     <h3><?= $section ?></h3>

@@ -77,7 +77,14 @@ class DalToolbarHelper
             'class' => $input->get('view') == 'infolocalconf' ? 'active' : ''
         )), 'actions');
 
-        self::addButton(new DalToolbarButton(array(
+	    self::addButton(new DalToolbarButton(array(
+		    'href' => JRoute::_('&view=pear&task='),
+		    'icon' => 'icon-info-sign',
+		    'text' => 'Pear packages',//jgettext..
+		    'class' => $input->get('view') == 'pear' ? 'active' : ''
+	    )), 'actions');
+
+	    self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=hostsinfo&task='),
             'icon' => 'icon-info-sign',
             'text' => 'Hosts',//jgettext..
@@ -97,5 +104,6 @@ class DalToolbarHelper
             'text' => 'Ifconfig',//jgettext..
             'class' => $input->get('view') == 'ifconfig' ? 'active' : ''
         )), 'actions');
+
     }
 }

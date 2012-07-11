@@ -36,9 +36,9 @@ class DevAndLearnViewinfolocalconf extends JView
     {
         $this->infoLocalconf = new stdClass;
 
-        $user = exec('echo $JDL_USER');
+        $user = exec('whoami');
 
-        $this->path = '/home/'.$user.'/srv/conf/local.conf';
+	    $this->path = '/home/'.$user.'/srv/conf/local.conf';
 
         $this->infoLocalconf->raw = JFile::read($this->path);
 
