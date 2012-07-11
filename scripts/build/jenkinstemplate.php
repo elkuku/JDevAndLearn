@@ -10,7 +10,7 @@
 
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
-// We are a valid Joomla entry point.
+// We are a valid Joomla!entry point.
 define('_JEXEC', 1);
 
 require dirname(__DIR__).'/bootstrap.php';

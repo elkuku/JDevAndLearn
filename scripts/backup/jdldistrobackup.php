@@ -10,7 +10,7 @@
 
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
-// We are a valid Joomla entry point.
+// We are a valid Joomla!entry point.
 define('_JEXEC', 1);
 
 require dirname(__DIR__).'/bootstrap.php';
@@ -104,11 +104,11 @@ class JdlDistrobackup extends KukuApplicationCli
 
             $md5 = md5_file($this->tmpDir.'/'.$fileName);
 
-            JFile::write($this->tmpDir.'/md5/'.$this->backupName.'-'.$destFolder.'.md5', $md5);
+            JFile::write($this->tmpDir.'/md5/'.$destFolder.'.md5', $md5);
 
             $this->output('ok', true, 'green');
 
-            JFolder::delete($this->tmpDir.'/'.$destFolder);
+            //JFolder::delete($this->tmpDir.'/'.$destFolder);
         }
 
         $this->output()->output('Creating main archive...', false, 'yellow', '', 'bold');
@@ -119,7 +119,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $this->output('ok', true, 'green');
 
-        JFolder::delete($this->tmpDir);
+        //JFolder::delete($this->tmpDir);
 
         $this->output()->output('Backup file has been written to: ', false)
             ->output($this->backupDir.'/'.$this->backupName.'.tar.gz', true, 'yellow', '', 'bold');
@@ -146,8 +146,12 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $dst = $this->tmpDir.'/'.$dest.'/'.$f;
 
-        if(false == JFolder::copy($path, $dst))
-            throw new DomainException(sprintf('Can not copy the folder %s to %s', $path, $dst));
+	    passthru('mkdir -p "'.dirname($dst).'"');
+
+	    passthru('cp -r "'.$path.'" "'.$dst.'" 2>&1');
+
+      //  if(false == JFolder::copy($path, $dst))
+        //    throw new DomainException(sprintf('Can not copy the folder %s to %s', $path, $dst));
 
         return $this;
     }
@@ -182,6 +186,8 @@ class JdlDistrobackup extends KukuApplicationCli
     {
         jimport('joomla.filesystem.folder');
         jimport('joomla.filesystem.file');
+
+	    clearstatcache();
 
         $cfgPath = realpath(__DIR__.'/..').'/config.xml';
 

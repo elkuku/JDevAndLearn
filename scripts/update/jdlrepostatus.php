@@ -8,7 +8,7 @@
  * @license    GNU/GPL
  */
 
-// We are a valid Joomla entry point.
+// We are a valid Joomla!entry point.
 define('_JEXEC', 1);
 
 require dirname(__DIR__).'/bootstrap.php';
