@@ -43,9 +43,8 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
                     <span class="icon-bar">d</span>
                 </a>
                 <a class="brand" href="#">
-                    J!
-                    <i class="icon-beaker"></i> Dev &amp; <i class="icon-book"></i> Learn
-                    <?//= $templateParams->get('sitetitle') ?>
+                    PHP
+                    <i class="icon-beaker"></i> Dev
                 </a>
                 <div class="btn-group pull-right">
                     <!--
@@ -83,7 +82,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
 
         <footer>
             <jdoc:include type="modules" name="position-12"/>
-            <p>@ J! <i class="icon-beaker"></i> Dev &amp; <i class="icon-book"></i> Learn Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?></p>
+            <p>@ PHP <i class="icon-beaker"></i> Dev Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?></p>
 
         </footer>
 

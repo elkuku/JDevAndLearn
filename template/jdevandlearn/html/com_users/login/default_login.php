@@ -41,14 +41,14 @@ $credentials = $this->form->getFieldset('credentials');
                         </div>
                     </div>
 
-                    <?php if(JPluginHelper::isEnabled('system', 'remember')) : ?>
+                    <?php if(0)://JPluginHelper::isEnabled('system', 'remember')) : ?>
                     <div class="login-fields control-group">
                         <div class="input-prepend">
                     <span class="add-on">@
                         </span>
                             <!--
                     <label id="remember-lbl" class="control-label"
-                           for="remember"><?= JText::_('JGLOBAL_REMEMBER_ME') ?></label>
+                           for="remember"><?//= JText::_('JGLOBAL_REMEMBER_ME') ?></label>
                            -->
                             <input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"
                                    alt="<?= JText::_('JGLOBAL_REMEMBER_ME') ?>"
@@ -72,15 +72,15 @@ $credentials = $this->form->getFieldset('credentials');
 
         <div class="span6">
             <ul class="unstyled">
-                <li>
+	            <li>
+		            <a href="<?= JRoute::_('index.php?option=com_users&view=remind'); ?>">
+			            <i class="icon-user"></i>
+			            <?= JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
+	            </li>
+	            <li>
                     <a href="<?= JRoute::_('index.php?option=com_users&view=reset'); ?>">
                         <i class="icon-lock"></i>
                         <?= JText::_('COM_USERS_LOGIN_RESET'); ?></a>
-                </li>
-                <li>
-                    <a href="<?= JRoute::_('index.php?option=com_users&view=remind'); ?>">
-                        <i class="icon-user"></i>
-                        <?= JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
                 </li>
                 <?php
                 $usersConfig = JComponentHelper::getParams('com_users');
