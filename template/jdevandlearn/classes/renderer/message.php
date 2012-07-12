@@ -25,7 +25,7 @@ class JDocumentRendererMessage extends JDocumentRenderer
      * @param   array   $params   Associative array of values
      * @param   string  $content  Not used.
      *
-     * @return  string  The output of the script
+     * @return  string  The output of the script or an empty string id the message queue is empty.
      *
      * @since   11.1
      */
@@ -45,11 +45,12 @@ class JDocumentRendererMessage extends JDocumentRenderer
         // Get the message queue
         $messages = JFactory::getApplication()->getMessageQueue();
 
-        // Build the sorted message list
+	    // Return an empty string if the message queue is empty !
         if (false == is_array($messages) || empty($messages))
-            return '';
+	        return '';
 
-        foreach ($messages as $msg)
+	    // Build the sorted message list
+	    foreach ($messages as $msg)
         {
             $lists[$msg['type']][] = $msg['message'];
         }
@@ -61,6 +62,7 @@ class JDocumentRendererMessage extends JDocumentRenderer
 
             //-- compatibility..
             if('message' == $type) $type = 'info';
+
             $icon = (isset($icons[$type])) ? $icons[$type] : 'question-sign';
 
             $buffer[] = '<div class="systemMessage alert alert-'.$type.'">';

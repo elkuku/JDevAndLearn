@@ -44,7 +44,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
                 </a>
                 <a class="brand" href="#">
                     PHP
-                    <i class="icon-beaker"></i> Dev
+                    <i class="icon-beaker"></i> DevBox
                 </a>
                 <div class="btn-group pull-right">
                     <!--
@@ -82,7 +82,8 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
 
         <footer>
             <jdoc:include type="modules" name="position-12"/>
-            <p>@ PHP <i class="icon-beaker"></i> Dev Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?></p>
+	        <p class="pull-right">Powered by <a href="http://joomla.org">Joomla!</a></p>
+            <p>@ PHP <i class="icon-beaker"></i> DevBox Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?></p>
 
         </footer>
 
