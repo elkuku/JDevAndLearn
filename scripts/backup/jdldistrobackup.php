@@ -108,7 +108,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
             $this->output('ok', true, 'green');
 
-            //JFolder::delete($this->tmpDir.'/'.$destFolder);
+            JFolder::delete($this->tmpDir.'/'.$destFolder);
         }
 
         $this->output()->output('Creating main archive...', false, 'yellow', '', 'bold');
@@ -119,7 +119,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $this->output('ok', true, 'green');
 
-        //JFolder::delete($this->tmpDir);
+        JFolder::delete($this->tmpDir);
 
         $this->output()->output('Backup file has been written to: ', false)
             ->output($this->backupDir.'/'.$this->backupName.'.tar.gz', true, 'yellow', '', 'bold');
