@@ -14,6 +14,18 @@ The required previous knowledge level ranges from "rookie" to "lead developer".
 
 * [[Environment Specifications]](Environment)
 
+## The Main Menu
+
+* {{icon|beakermenu}} The "Beakermenu"
+* |_ {{icon|beakermenu}} [[AA - Start]](Beaker/AAStart) - Start here
+* |_ {{icon|backup}} [[Backup]](Beaker/Backup)
+* |_ {{icon|ides}} [[IDEs]](Beaker/IDEs)
+* |_ {{icon|install}} [[Install]](Beaker/Install)
+* |_ {{icon|}} [[Install Joomla!]](Beaker/Install_Joomla)
+* |_ {{icon|}} [[Server]](Beaker/Server)
+* |_ {{icon|update}} [[Update]](Beaker/Update)
+* |_ {{icon|}} [[Utilities]](Beaker/Utilities)
+
 ## Joomla! Core
 
 * [[Joomla! CMS]](Distros/JoomlaCMS)
@@ -32,7 +44,7 @@ The required previous knowledge level ranges from "rookie" to "lead developer".
 ## Other
 
 Other great software (like [Dokuwiki](http://dokuwiki.org), [Drupal](http://drupal.org), [Wordpress](http://wordpress.org) and others)
- can be easyli installed using the [[jacli]](Helpers/jacli) script.
+ can be easily installed using the [[jacli]](Helpers/jacli) script.
 
 ## MarkdownGitWiki
 
