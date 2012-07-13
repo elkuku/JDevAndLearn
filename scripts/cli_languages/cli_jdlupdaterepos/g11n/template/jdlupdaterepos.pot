@@ -1,0 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Nikolai Plath - elkuku
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: com_easycreator 0.0.18\n"
+        "Report-Msgid-Bugs-To: der.el.kuku@gmail.com\n"
+        "POT-Creation-Date: 2012-07-13 05:52+0000\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=CHARSET\n"
+        "Content-Transfer-Encoding: 8bit\n"
+
+#: jdlupdaterepos.php:47
+msgid   "Update Repositories"
+msgstr  ""
+
+#: jdlupdaterepos.php:49
+#, php-format
+msgid   "Repository Path: %s"
+msgstr  ""
+
+#: jdlupdaterepos.php:60
+#, php-format
+msgid   "Updating: %s..."
+msgstr  ""
+
+#: jdlupdaterepos.php:67
+msgid   "ERROR"
+msgstr  ""
+
+#: jdlupdaterepos.php:73
+#, php-format
+msgid   "Execution time: %s secs."
+msgstr  ""
+
+#: jdlupdaterepos.php:77
+msgid   "Finished =;)"
+msgstr  ""
+
+#: jdlupdaterepos.php:82
+msgid   "You may close this window now."
+msgstr  ""
+
+#: jdlupdaterepos.php:91
+msgid   "Invalid repository base"
+msgstr  ""
+
+#: jdlupdaterepos.php:98
+msgid   "Git must be installed to run this script"
+msgstr  ""
