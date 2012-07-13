@@ -44,9 +44,9 @@ class JdlUpdateRepos extends JdlApplicationCli
 
         $this->setup();
 
-        $this->outputTitle('Update Repositories');
+        $this->outputTitle(jgettext('Update Repositories'));
 
-        $this->output('Repository Path: '.$this->repoBase);
+        $this->output(sprintf(jgettext('Repository Path: %s'), $this->repoBase));
 
         $folders = JFolder::folders($this->repoBase);
 
@@ -57,29 +57,29 @@ class JdlUpdateRepos extends JdlApplicationCli
                 continue;
 
             $this->output()
-                ->output('Updating: '.$folder.'...', false, '', '', 'bold');
+                ->output(sprintf(jgettext('Updating: %s...'), $folder), false, '', '', 'bold');
 
             $cmd = 'cd "'.$this->repoBase.'/'.$folder.'" && git pull 2>&1';
 
             passthru($cmd, $ret);
 
             if(0 !== $ret)
-	            $this->output('ERROR', true, 'red', '', 'bold');
+	            $this->output(jgettext('ERROR'), true, 'red', '', 'bold');
                 //throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
         }
 
         $this->output()
             ->output(str_repeat('=', 30))
-            ->output(sprintf('Execution time: %s secs.'
+            ->output(sprintf(jgettext('Execution time: %s secs.')
                 , time() - $this->get('execution.timestamp')))
             ->output(str_repeat('=', 30))
 	        ->output()
-            ->outputTitle('Finished =;)', 'green');
+            ->outputTitle(jgettext('Finished =;)'), 'green');
 
         if(1)
         {
             $this->output()
-                ->output('You may close this window now.', true, 'red', '', 'bold');
+                ->output(jgettext('You may close this window now.'), true, 'red', '', 'bold');
         }
     }
 
@@ -88,14 +88,14 @@ class JdlUpdateRepos extends JdlApplicationCli
         $this->repoBase = $this->configXml->global->repoDir;
 
         if(! $this->repoBase || ! JFolder::exists($this->repoBase))
-            throw new DomainException('Invalid repository base', ERR_DOMAIN);
+            throw new DomainException(jgettext('Invalid repository base'), ERR_DOMAIN);
 
         if('' == $this->gitPath)
         {
             exec('which git 2>/dev/null', $output, $ret);
 
             if(0 !== $ret)
-                throw new UnexpectedValueException('Git must be installed to run this script', ERR_REQ);
+                throw new UnexpectedValueException(jgettext('Git must be installed to run this script'), ERR_REQ);
 
             $this->gitPath = 'git';
         }

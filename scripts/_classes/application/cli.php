@@ -48,4 +48,21 @@ class JdlApplicationCli extends KukuApplicationCli
 
         parent::__construct($input, $config, $dispatcher);
     }
+
+	public function isAdmin()
+	{
+		return false;
+	}
+
+	public function getUserState($var)
+	{
+		return $this->input->get($var);
+	}
+
+	public function setUserState($var, $value)
+	{
+		$this->input->set($var, $value);
+
+		return $this;
+	}
 }

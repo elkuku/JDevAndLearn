@@ -45,8 +45,8 @@ class JdlRepoStatus extends JdlApplicationCli
 
         $this->setup();
 
-        $this->outputTitle('Repository Status')
-            ->output('Repository Path: '.$this->repoBase);
+        $this->outputTitle(jgettext('Repository Status'))
+	        ->output(sprintf(jgettext('Repository Path: %s'), $this->repoBase));
 
         $folders = JFolder::folders($this->repoBase);
 
@@ -74,19 +74,20 @@ class JdlRepoStatus extends JdlApplicationCli
             passthru($cmd, $ret);
 
             if(0 !== $ret)
-                throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
+                throw new DomainException(jgettext('Something went wrong pulling the repo'), ERR_DOMAIN);
         }
 
-        $this->output(sprintf('Execution time: %s secs.'
+        $this->output()
+	        ->output(sprintf(jgettext('Execution time: %s secs.')
             , time() - $this->get('execution.timestamp')));
 
         $this->output()
-            ->outputTitle('Finished =;)', 'green');
+            ->outputTitle(jgettext('Finished =;)'), 'green');
 
         if(1)
         {
             $this->output()
-                ->output('You may close this window now.', true, 'red', '', 'bold');
+                ->output(jgettext('You may close this window now.'), true, 'red', '', 'bold');
         }
     }
 
@@ -95,17 +96,21 @@ class JdlRepoStatus extends JdlApplicationCli
         $this->repoBase = $this->configXml->global->repoDir;
 
         if(! $this->repoBase || ! JFolder::exists($this->repoBase))
-            throw new DomainException('Invalid repository base', ERR_DOMAIN);
+            throw new DomainException(jgettext('Invalid repository base'), ERR_DOMAIN);
 
         if('' == $this->gitPath)
         {
             exec('which git 2>/dev/null', $output, $ret);
 
             if(0 !== $ret)
-                throw new UnexpectedValueException('Git must be installed to run this script', ERR_REQ);
+                throw new UnexpectedValueException(jgettext('Git must be installed to run this script'), ERR_REQ);
 
             $this->gitPath = 'git';//$output
         }
+
+	    g11n::cleanStorage('cli_jdlrepostatus');
+
+	    g11n::loadLanguage('cli_jdlrepostatus');
 
         return $this;
     }
@@ -115,7 +120,9 @@ class JdlRepoStatus extends JdlApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlRepoStatus')->execute();
+	$application = JApplicationCli::getInstance('JdlRepoStatus');
+	JFactory::$application = $application;
+    $application->execute();
 }
 catch(Exception $e)
 {

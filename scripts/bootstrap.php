@@ -28,3 +28,16 @@ require getenv('KUKU_JLIB_PATH').'/loader.php';
 
 // Base autoloader.
 require JPATH_BASE.'/_classes/loader.php';
+
+require 'elkuku/g11n/language.php';
+
+if(false == class_exists('JUri'))
+{
+	class JUri
+	{
+		public static function root()
+		{
+			return '';
+		}
+	}
+}
