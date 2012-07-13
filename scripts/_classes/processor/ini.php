@@ -72,7 +72,7 @@ class JdlProcessorIni
 
 				foreach($val as $skey => $sval)
 				{
-					$res[] = $skey.'='.(($quote) ? "\"$val\"" : $val);
+					$res[] = $skey.'='.(($quote) ? "\"$sval\"" : $sval);
 				}
 			}
 			else

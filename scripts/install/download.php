@@ -160,6 +160,11 @@ class JdlInstall extends JdlApplicationCli
 			$ini->set('Name[en_US]', $app->title, '[Desktop Entry]');
 			$ini->set('Name', $app->title, '[Desktop Entry]');
 
+			//$ini->set('Terminal', 'true', '[Desktop Entry]');
+			$ini->set('Terminal', '', '[Desktop Entry]');
+			//$ini->set('TerminalOptions', '\s--noclose', '[Desktop Entry]');
+			$ini->set('TerminalOptions', '', '[Desktop Entry]');
+
 			$ini->write($path);
 
 			$this->output()
