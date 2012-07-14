@@ -10,53 +10,39 @@ An overview of the adde syntax feature.
 ## Links
 
 
-* [[page title]]
-* [[My new Page]]
-* [[Hüben kño]]
-* [[ag bag]]
-* [[bubu]]
-* [[bubu/baba]]
-* [[bXbX]]
-* [[gigi]](bubu)
-* [gaga]
-* [gaga](http://gaga)
-* http://gaga
-* [http://gaga]
-* [[http://gaga]]
+Internal
 
-oho <http://joomla.org> aha
+* [[My new Page]]
+* [[Page]](Title)
+
+External
+
+* [test](http://link)
+* http://link
+* [http://link]
+* [[http://link]]
+* <http://link>
 
 ## Labels
 
-Code | Output
------|-------
-| { {label|huhu|info}} | du
+| Code | Output |
+| -----|------- |
+| ```{ {label|Message|info} }``` | {{label|Message|info}} |
+| ```{ {label|Message|success} }``` | {{label|Message|success}} |
+| ```{ {label|Message|inverse} }``` | {{label|Message|inverse}} |
 
-heute {{label|huhu|info}} morgen
+## Icons
+
+|Code | Output|
+|-----|-------|
+| ```{ {icon|beakermenu} }``` | {{icon|beakermenu}}|
 
 ## Code
 
 ### Inline
 
+hallo ```echo``` hier
+
 ### Fenced
 
-* [[/Fenced Code]]
-
-<button data-trigger="BS.showPopup" data-bs-showpopup-target="!body #demoPopup"
-class="btn btn-danger">Launch Modal</button>
-
-<div data-behavior="BS.Popup" class="modal fade" id="demoPopup">
-<div class="modal-header">
-<a href="#" class="close">×</a>
-<h3>Modal Heading</h3>
-</div>
-<div class="modal-body">
-<p>One fine body...</p>
-</div>
-<div class="modal-footer">
-<a href="#" class="btn primary dismiss stopEvent">Primary</a>
-<a href="#" class="btn secondary dismiss stopEvent">Secondary</a>
-</div>
-</div>
-
-![Alt text](../___images/011.gif)
+* [[/Fenced Code Example]]
