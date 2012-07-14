@@ -211,6 +211,7 @@
             </downloadUri>
             <fileNamex>eclipse.tar.gz</fileNamex>
             <destPath>~/bin/ide</destPath>
+            <folderName>eclipse</folderName>
         </application>
         <application>
             <name>eclipsezend</name>
@@ -220,6 +221,7 @@
             <downloadUri>http://www.zend.com/download/571?start=true</downloadUri>
             <fileName>eclipse-zend.tar.gz</fileName>
             <destPath>~/bin/ide</destPath>
+            <folderName>eclipsezend</folderName>
         </application>
     </install>
 
