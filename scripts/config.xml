@@ -77,6 +77,9 @@
         <backup base="~/repos" title="home-repos-lilhelpers">
             <folder>elkuku-lilhelpers</folder>
         </backup>
+        <backup base="~/repos" title="home-repos-g11n">
+	    <folder>g11n</folder>
+        </backup>
         <backup base="~/repos" title="home-repos-jacli">
             <folder>jacli</folder>
         </backup>

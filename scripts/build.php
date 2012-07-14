@@ -4,22 +4,26 @@
  * @package    JDevAndLearn
  * @subpackage Base
  * @author     Nikolai Plath {@link https://github.com/elkuku}
- * @author     Created on 16-Jun-2012
+ * @author     Created on 14-Jul-2012
  * @license    GNU/GPL
  */
 
 // We are a valid Joomla!entry point.
 define('_JEXEC', 1);
 
-require dirname(__DIR__) . '/bootstrap.php';
+require 'bootstrap.php';
 
 /**
  * JDL start IDE class.
  *
  * @package  JdlUpdateRepos
  */
-class JdlStartIDE extends JdlApplicationCli
+class PdbBuild extends JdlApplicationCli
 {
+	private $targets = array(
+		'language',
+	);
+
 	/**
 	 * Execute the application.
 	 *
@@ -30,46 +34,32 @@ class JdlStartIDE extends JdlApplicationCli
 	 */
 	public function doExecute()
 	{
+		jimport('joomla.filesystem.path');
+
 		//g11n::cleanStorage('cli_startide');
 
 		g11n::loadLanguage('cli_startide');
 
-		$this->outputTitle(jgettext('Start IDE'));
+		$this->outputTitle(jgettext('PDB Builder'));
 
 		try
 		{
-			if (false == isset($this->input->args[0]))
-				throw new JdlExceptionIncomplete;
+			$target = isset($this->input->args[0]) ? $this->input->args[0] : '';
 
-			$ideR = $this->input->args[0];
-			$ides = $this->fetchIDEs();
-
-			if (false == array_key_exists($ideR, $ides))
-				throw new UnexpectedValueException(sprintf(jgettext('Unknown IDE: %s'), $ideR));
-
-			$ide = $ides[$ideR];
-
-			$user = exec('whoami');
-
-			$idePath = $ide->destPath . '/' . $ide->folderName;
-			$idePath = str_replace('~', '/home/' . $user, $idePath);
-
-			$this->output(sprintf(jgettext('IDE: %s in path "%s"'), $ide->title, $idePath));
-
-			if (false == is_dir($idePath))
+			if ('' == $target)
 			{
-				passthru(JPATH_BASE . '/install/download.php --app ' . $ide->name, $retVal);
-
-				if (0 !== $retVal)
-					return;
+				foreach ($this->targets as $target)
+				{
+					$this->{'build' . $target}();
+				}
 			}
+			else
+			{
+				if (false == in_array($target, $this->targets))
+					throw new UnexpectedValueException('Invalid target');
 
-			$scriptPath = '/home/' . $user . '/bin/' . $ide->name;
-
-			if (false == file_exists($scriptPath))
-				throw new UnexpectedValueException(sprintf(jgettext('Start script not found: %s'), $scriptPath));
-
-			exec($scriptPath . '&');
+				$this->{'build' . $target}();
+			}
 		}
 		catch (JdlExceptionIncomplete $e)
 		{
@@ -88,19 +78,12 @@ class JdlStartIDE extends JdlApplicationCli
 
 		$this->output(jgettext('Usage'), true, 'yellow', '', 'bold')
 			->output()
-			->output($exe . ' <idename>');
+			->output($exe . ' [target]');
 	}
 
-	private function fetchIDEs()
+	private function buildLanguage()
 	{
-		$ides = array();
-
-		foreach ($this->configXml->install->application as $ide)
-		{
-			$ides[(string) $ide->name] = $ide;
-		}
-
-		return $ides;
+		echo 'buildLanguage';
 	}
 }
 
@@ -108,9 +91,10 @@ class JdlStartIDE extends JdlApplicationCli
 
 try
 {
+	$application = JApplicationCli::getInstance('PdbBuild');
 
-	$application = JApplicationCli::getInstance('JdlStartIDE');
 	JFactory::$application = $application;
+
 	$application->execute();
 }
 catch (Exception $e)

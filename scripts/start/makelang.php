@@ -48,6 +48,7 @@ class MakeLang extends JdlApplicationCli
 	/**
 	 * Execute the application.
 	 *
+	 * @throws IncompleteException
 	 * @throws UnexpectedValueException
 	 * @throws Exception
 	 *
@@ -58,9 +59,12 @@ class MakeLang extends JdlApplicationCli
 		jimport('joomla.filesystem.folder');
 		jimport('joomla.filesystem.file');
 
+		$this->outputTitle('MakeLang - A language maker');
+
 		try
 		{
-//		echo $this->get('cwd');
+			if ($this->input->get('help', $this->input->get('h')))
+				throw new IncompleteException;
 
 			$langPath = $this->get('cwd');
 
@@ -69,24 +73,24 @@ class MakeLang extends JdlApplicationCli
 			$l = realpath($langPath);
 
 			if (!$l)
-				throw new UnexpectedValueException(jgettext('Please create the directory %s for your lnguage files.')
-					, $langPath);
+				throw new UnexpectedValueException(sprintf(
+						jgettext('Please create the directory "%s" for your language files.')
+						, $langPath)
+					, 1);
 
 			$langPath = $l;
-
-			var_dump($this->input->args);
 
 			$command = (isset($this->input->args[0])) ? $this->input->args[0] : '';
 			$inputFile = (isset($this->input->args[1])) ? $this->input->args[1] : '';
 
 			$projectName = JFile::stripExt($inputFile);
 
-
 			if ('' == $command || '' == $inputFile)
 				throw new IncompleteException;
 
 			$keywords = ' -k --keyword=jgettext --keyword=jngettext:1,2';
 
+			// @todo: Maybe some other credits =;P
 			$forcePo = ' --force-po';
 			$noWrap = ' --no-wrap';
 			$comments = ' --add-comments=TRANSLATORS:';
@@ -95,23 +99,10 @@ class MakeLang extends JdlApplicationCli
 			$packageVersion = ' --package-version="0.0.18"';
 			$msgidBugs = ' --msgid-bugs-address="der.el.kuku@gmail.com"';
 
-			//	$output = $this->input->get('o', $this->input->get('output'));
-
-			//	if ('' == $output)
-			//		throw new UnexpectedValueException('Please specify the output file with -o (--output)');
-
-			//	$input = $this->input->get('i', $this->input->get('input'));
-
-			//	if ('' == $input)
-			//		throw new UnexpectedValueException('Please specify the input file with -i (--input)');
-
-
-			var_dump($command, $inputFile);
 			switch ($command)
 			{
 				case 'template' :
-					$outputFile = sprintf($langPath . '/cli_%1$s/g11n/template/%1$s.pot', $projectName);
-//					var_dump($outputFile);
+					$outputFile = sprintf($langPath . '/cli_%1$s/g11n/template/cli_%1$s.pot', $projectName);
 
 					JFolder::create(dirname($outputFile));
 
@@ -125,9 +116,9 @@ class MakeLang extends JdlApplicationCli
 					if ('' == $lang)
 						throw new IncompleteException;
 
-					$inputFile = sprintf($langPath . '/cli_%1$s/g11n/template/%1$s.pot', $projectName);
+					$inputFile = sprintf($langPath . '/cli_%1$s/g11n/template/cli_%1$s.pot', $projectName);
 
-					$outputFile = sprintf($langPath . '/cli_%1$s/g11n/%2$s/%2$s.%1$s.po', $projectName, $lang);
+					$outputFile = sprintf($langPath . '/cli_%1$s/g11n/%2$s/%2$s.cli_%1$s.po', $projectName, $lang);
 
 					if (JFile::exists($outputFile))
 					{
@@ -164,14 +155,20 @@ class MakeLang extends JdlApplicationCli
 
 	private function help()
 	{
-		$this->output('Usage:')
-			->output('makelang <command> <inputfile> [lang-tag]');
-
-		/*
-		 * makelang template foo.php
-		 * makelang language foo.php xx-XX
-		 *
-		 */
+		$this->output('Usage:', true, 'green')
+			->output('makelang <command> <inputfile> [lang-tag]')
+			->output()
+			->output('Commands:', true, 'green')
+			->output('template', false, 'yellow')->output(' - Create a language template')
+			->output('language', false, 'yellow')->output(' - Create a language file from a template')
+			->output()
+			->output('Examples:', true, 'green')
+			->output()
+			->output('makelang template foo.php', true, '', '', 'bold')
+			->output('Create the template "foo.pot" containing the language strings from "foo.php"')
+			->output()
+			->output('makelang language foo.pot xx-XX', true, '', '', 'bold')
+			->output('Create or update the language file "xx-XX.foo.po" with the strings from "foo.pot"');
 
 		return $this;
 	}

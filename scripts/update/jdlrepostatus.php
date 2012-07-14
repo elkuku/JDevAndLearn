@@ -108,7 +108,7 @@ class JdlRepoStatus extends JdlApplicationCli
             $this->gitPath = 'git';//$output
         }
 
-	    g11n::cleanStorage('cli_jdlrepostatus');
+	//    g11n::cleanStorage('cli_jdlrepostatus');
 
 	    g11n::loadLanguage('cli_jdlrepostatus');
 

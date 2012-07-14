@@ -13,6 +13,9 @@ define('NL', "\n");
 define('JPATH_BASE', __DIR__);
 define('JPATH_SITE', __DIR__);
 
+// Joomla BS....
+$_SERVER['HTTP_HOST'] = '';
+
 define('JDLPATH_CONFIG', __DIR__);
 
 // Increase error reporting to that any errors are displayed.
