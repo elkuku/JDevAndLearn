@@ -1,0 +1,74 @@
+# English translations for com_easycreator package.
+# Copyright (C) 2012 Nikolai Plath - elkuku
+# This file is distributed under the same license as the com_easycreator package.
+#  <der.el.kuku@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com_easycreator 0.0.18\n"
+"Report-Msgid-Bugs-To: der.el.kuku@gmail.com\n"
+"POT-Creation-Date: 2012-07-15 07:02+0000\n"
+"PO-Revision-Date: 2012-07-15 07:02+0000\n"
+"Last-Translator:  <der.el.kuku@gmail.com>\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: jenkinstemplate.php:35
+msgid "Jenkins Template"
+msgstr "Jenkins Vorlage"
+
+#: jenkinstemplate.php:41
+msgid "Your repository is located at: "
+msgstr "Ihr Repository befindet sich unter: "
+
+#: jenkinstemplate.php:44
+msgid "Finished =;)"
+msgstr "Fertig =;)"
+
+#: jenkinstemplate.php:59
+msgid "Project: "
+msgstr "Projekt: "
+
+#: jenkinstemplate.php:61
+msgid "Repo: "
+msgstr "Repo: "
+
+#: jenkinstemplate.php:63
+msgid "Templates: "
+msgstr "Templates: "
+
+#: jenkinstemplate.php:74
+msgid "Setting up repository in "
+msgstr "Einrichten des Repositories in "
+
+#: jenkinstemplate.php:78
+#, php-format
+msgid "%s - Can not create the repo dir in %s"
+msgstr "%s - Das Repoverzeichnis konnte nicht in \"%s\" erstellt werden."
+
+#: jenkinstemplate.php:88
+#, php-format
+msgid "%s - Can not create the git repository in %s: %s"
+msgstr "%s - Das Gitrepository konnte nicht in \"%s\" erstellt werden: %s"
+
+#: jenkinstemplate.php:97
+msgid "Performing initial commit"
+msgstr "Ausführen des ersten Commits"
+
+#: jenkinstemplate.php:105
+#, php-format
+msgid "%s - Can not initialize the git repository in %s: %s"
+msgstr "%s - Das Git Repository konnte nicht in \"%s\" erstellt werden: %s"
+
+#: jenkinstemplate.php:144
+msgid "Setting up Jenkins project in "
+msgstr "Einrichten des Jenkins Projekts in "
+
+#: jenkinstemplate.php:149
+#, php-format
+msgid "%s - Can not create the Jenkins dir in %s"
+msgstr "%s - Das Jenkins Projekt konnte nicht in \"%s\" eingerichtet werden."
