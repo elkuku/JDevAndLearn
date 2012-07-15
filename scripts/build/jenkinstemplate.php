@@ -32,23 +32,20 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
     public function doExecute()
     {
-        $this->outputTitle('Jenkins Template');
+        $this->outputTitle(jgettext('Jenkins Template'));
 
         $this->setup()
             ->setupRepo()
             ->setupJenkins()
 	        ->output()
-            ->output('Your repository is located at: ', false)
+            ->output(jgettext('Your repository is located at: '), false)
 	        ->output(JdlPath::join($this->repoDir, $this->projectName), true, 'yellow', '', 'bold')
 	        ->output()
-	        ->outputTitle('Finished =;)', 'green');
+	        ->outputTitle(jgettext('Finished =;)'), 'green');
     }
 
     private function setup()
     {
-        jimport('joomla.filesystem.folder');
-        jimport('joomla.filesystem.file');
-
         $projectName = 'JenkinsDemo';
 
         $this->jenkinsPath = '/home/'.exec('echo $JDL_USER').'/.jenkins';
@@ -59,11 +56,11 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
         $this->templatePath = __DIR__.'/template';
 
-        $this->output('Project: ', false, '', '', 'bold')
+        $this->output(jgettext('Project: '), false, '', '', 'bold')
             ->output($this->projectName)
-            ->output('Repo: ', false, '', '', 'bold')
+            ->output(jgettext('Repo: '), false, '', '', 'bold')
             ->output($this->repoDir)
-            ->output('Templates: ', false, '', '', 'bold')
+            ->output(jgettext('Templates: '), false, '', '', 'bold')
             ->output($this->templatePath)
             ->output();
 
@@ -74,11 +71,11 @@ class JdlJenkinstemplate extends JdlApplicationCli
     {
         $path = $this->repoDir.'/'.$this->projectName;
 
-        $this->output('Setting up repository in ', false, 'yellow')->output($path);
+        $this->output(jgettext('Setting up repository in '), false, 'yellow')->output($path);
 
         if(false == JFolder::create($path))
             throw new DomainException(sprintf(
-                '%s - Can not create the repo dir in %s'
+                jgettext('%s - Can not create the repo dir in %s')
                 , __METHOD__, $path
             ));
 
@@ -88,7 +85,7 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
         if(0 !== $retVal)
             throw new DomainException(sprintf(
-                '%s - Can not create the git repository in %s: %s'
+                jgettext('%s - Can not create the git repository in %s: %s')
                 , __METHOD__, $path, implode("\n", $output)));
 
         $this->output(implode(NL, $output));
@@ -97,7 +94,7 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
 	    $this->copyProjectFiles();
 
-        $this->output('Performing initial commit', true, 'yellow');
+        $this->output(jgettext('Performing initial commit'), true, 'yellow');
 
         $cmd = $CD.' && git add . && git commit -m "initial import"';
 
@@ -105,7 +102,7 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
         if(0 !== $retVal)
             throw new DomainException(sprintf(
-                '%s - Can not initialize the git repository in %s: %s'
+                jgettext('%s - Can not initialize the git repository in %s: %s')
                 , __METHOD__, $path, implode("\n", $output)));
 
         $this->output(implode(NL, $output));
@@ -144,11 +141,12 @@ class JdlJenkinstemplate extends JdlApplicationCli
     {
         $path = $this->jenkinsPath.'/jobs/'.$this->projectName;
 
-        $this->output('Setting up Jenkins project in ', false, 'yellow')->output($path);
+        $this->output(jgettext('Setting up Jenkins project in '), false, 'yellow')
+	        ->output($path);
 
         if(false == JFolder::create($path))
             throw new DomainException(sprintf(
-                '%s - Can not create the Jenkins dir in %s'
+                jgettext('%s - Can not create the Jenkins dir in %s')
                 , __METHOD__, $path
             ));
 
@@ -205,7 +203,11 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlJenkinstemplate')->execute();
+    $application = JApplicationCli::getInstance('JdlJenkinstemplate');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 }
 catch(Exception $e)
 {

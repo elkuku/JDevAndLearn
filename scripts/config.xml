@@ -5,6 +5,8 @@
         <downloadDir>/home/jtester/downloads</downloadDir>
         <repoDir>/home/jtester/repos</repoDir>
         <httpDir url="http://dev.local">/home/jtester/srv/www/htdocs</httpDir>
+
+        <debug>1</debug>
     </global>
 
     <backups>
@@ -13,6 +15,7 @@
 
         <backup title="home-base" base="~">
             <file>.bashrc</file>
+            <file>.conkyrc</file>
             <file>.gitignore</file>
             <file>.alias</file>
 
@@ -88,6 +91,9 @@
         </backup>
         <backup base="~/repos" title="home-repos-JeJoo">
             <folder>JeJoo</folder>
+        </backup>
+        <backup base="~/repos" title="home-repos-l0gvi3w">
+            <folder>L0gVi3w</folder>
         </backup>
         <backup base="~/repos" title="home-repos-MarkdownGitWiki">
             <folder>MarkdownGitWiki</folder>

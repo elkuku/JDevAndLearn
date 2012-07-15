@@ -41,11 +41,9 @@ class JdlDistrobackup extends KukuApplicationCli
     /**
      * Execute the application.
      *
-     * The 'execute' method is the entry point for a command line application.
-     *
-     *
      * @throws UnexpectedValueException
      * @throws DomainException
+     *
      * @return void
      */
     public function doExecute()
@@ -184,9 +182,6 @@ class JdlDistrobackup extends KukuApplicationCli
 
     private function setup()
     {
-        jimport('joomla.filesystem.folder');
-        jimport('joomla.filesystem.file');
-
 	    clearstatcache();
 
         $cfgPath = realpath(__DIR__.'/..').'/config.xml';

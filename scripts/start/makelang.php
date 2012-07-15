@@ -56,9 +56,6 @@ class MakeLang extends JdlApplicationCli
 	 */
 	public function doExecute()
 	{
-		jimport('joomla.filesystem.folder');
-		jimport('joomla.filesystem.file');
-
 		$this->outputTitle('MakeLang - A language maker');
 
 		try

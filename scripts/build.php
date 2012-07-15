@@ -34,12 +34,6 @@ class PdbBuild extends JdlApplicationCli
 	 */
 	public function doExecute()
 	{
-		jimport('joomla.filesystem.path');
-
-		//g11n::cleanStorage('cli_startide');
-
-		g11n::loadLanguage('cli_startide');
-
 		$this->outputTitle(jgettext('PDB Builder'));
 
 		try

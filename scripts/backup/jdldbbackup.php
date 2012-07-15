@@ -36,9 +36,6 @@ class JdlDbBackup extends JdlApplicationCli
     /**
      * Execute the application.
      *
-     * The 'execute' method is the entry point for a command line application.
-     *
-     *
      * @throws UnexpectedValueException
      * @throws DomainException
      * @return void
@@ -47,41 +44,21 @@ class JdlDbBackup extends JdlApplicationCli
     {
 	    $HOME = exec('echo $HOME');
 
-
 	    $this->outputTitle('JDL Db Backup')
             ->setup()
             ->output('Backup to: ', false)
             ->output($this->backupDir, true, 'yellow', '', 'bold');
-
-//	    $ff = JFolder::folders($HOME.'/srv/www/web_jdevlearn');
-
-//	    exec('cp -r "'.$HOME . '/srv/www/web_jdevlearn" "'. $HOME . '/srv/www/web_jdevlearn2"');
-
-//	    var_dump($ff);
-	//    var_dump($this->configXml);
 
 	    $this->out('TEMP: ' . $this->tmpDir);
 
 	    foreach ($this->configXml->backups->database as $database)
 	    {
 		    $this->out($database);
-	   //}
-
-
-//	    return;
-
-
-        /* @var SimpleXMLElement $backup */
-       // foreach($this->backups->backup as $backup)
-        //{
-     //       $destFolder = trim((string)$backup->attributes()->title);
-
 
             $fileName = $database.'.sql';
 
 		    $compact = ' --compact';
 		    $compact = '';
-
 
 		    $command = 'mysqldump -u root --add-drop-database'.$compact.' --databases '.$database.' > '.$this->tmpDir.'/'.$fileName.' 2>&1';
 
@@ -91,12 +68,6 @@ class JdlDbBackup extends JdlApplicationCli
 			    ->output($database.'...', false, 'yellow');
 
 		    exec($command);
-
-		    /*
-            exec('cd "'.$this->tmpDir.'/'.$destFolder.'"'
-            .' && tar czf "'.$this->tmpDir.'/'.$fileName.'"'
-            .' .');
-		    */
 
             $md5 = md5_file($this->tmpDir.'/'.$fileName);
 
@@ -127,9 +98,6 @@ class JdlDbBackup extends JdlApplicationCli
 
     private function setup()
     {
-	    jimport('joomla.filesystem.folder');
-	    jimport('joomla.filesystem.file');
-
 	    $this->backupDir = (string)$this->configXml->global->backupDir;
 
 	    if('' == trim($this->backupDir))

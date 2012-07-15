@@ -32,6 +32,11 @@ require getenv('KUKU_JLIB_PATH').'/loader.php';
 // Base autoloader.
 require JPATH_BASE.'/_classes/loader.php';
 
+// Joomla! b/c BS
+jimport('joomla.filesystem.path');
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
+
 require 'elkuku/g11n/language.php';
 
 if(false == class_exists('JUri'))

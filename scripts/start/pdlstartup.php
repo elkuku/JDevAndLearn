@@ -31,9 +31,6 @@ class JdlStartup extends JdlApplicationCli
      */
     public function doExecute()
     {
-	    jimport('joomla.filesystem.folder');
-	    jimport('joomla.filesystem.file');
-
 	    $HOME = exec('echo $HOME');
 
 	    if(JFile::exists($HOME.'/.pdlfirstrun'))

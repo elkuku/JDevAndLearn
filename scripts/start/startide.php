@@ -30,10 +30,6 @@ class JdlStartIDE extends JdlApplicationCli
 	 */
 	public function doExecute()
 	{
-		//g11n::cleanStorage('cli_startide');
-
-		g11n::loadLanguage('cli_startide');
-
 		$this->outputTitle(jgettext('Start IDE'));
 
 		try
@@ -108,7 +104,6 @@ class JdlStartIDE extends JdlApplicationCli
 
 try
 {
-
 	$application = JApplicationCli::getInstance('JdlStartIDE');
 	JFactory::$application = $application;
 	$application->execute();
