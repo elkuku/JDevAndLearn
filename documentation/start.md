@@ -8,7 +8,11 @@ The required previous knowledge level ranges from "rookie" to "senior developer"
 
 ## System
 
-* [[Environment Specifications]](Environment)
+What's inside: [[Environment Specifications]](Environment)
+
+## Preparation
+
+PHP <i class="icon-beaker"></i> DevBox should work out of the box for a variety of tasks. Some special tasks require some [[preparation]](Preparation).
 
 ## The Main Menu
 
@@ -42,12 +46,15 @@ Other great software (like [Dokuwiki](http://dokuwiki.org), [Drupal](http://drup
 
 ## Various little helpers
 
-* There are various little [[Helpers]] that will do the "hard work" for you.
+There are various little [[Helpers]] that will do the "hard work" for you.
 
 ## MarkdownGitWiki
 
 This is the script that generates these awesome pages you are reading right now.
 
-If you would like to use it, or even contribute to this documentation, please read the following pages:
+If you would like to use it, or even contribute to this documentation, please read the [[Syntax pages]](MarkdownGitWiki/Syntax).
 
-* [[Syntax]](MarkdownGitWiki/Syntax)
+<hr />
+
+have Fun,<br />
+The PHP <i class="icon-beaker"></i> DevBox Team.

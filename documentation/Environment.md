@@ -47,6 +47,12 @@ Jenkins has been set up to build PHP projects. A script is provided that automat
 *    Violations (for processing various logfiles)
 *    xUnit (for processing PHPUnit logfiles in JUnit format)
 
+## Selenium
+
+Selenium Server and Selenium IDE (for Firefox) and installed to create and run system tests.
+
+* <http://seleniumhq.org>
+
 ## Utilities
 
 * [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
@@ -58,7 +64,3 @@ Which provides the template for Jenkins PHP jobs, and also a ```build.xml``` fil
 ### Mozilla Firefox
 
 Some usefull Firefox addons that may help you while developing are included for your convenience.
-
-On the first launch you will be asked for each Addon if you like to install it. Some of them require a restart.
-
-You may choose to install all of them or none.
