@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PHP DevBox 0.0.1\n"
         "Report-Msgid-Bugs-To: der.el.kuku@gmail.com\n"
-        "POT-Creation-Date: 2012-07-13 05:52+0000\n"
+        "POT-Creation-Date: 2012-07-16 03:37+0000\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,41 +16,30 @@ msgstr  "Project-Id-Version: PHP DevBox 0.0.1\n"
         "Content-Type: text/plain; charset=CHARSET\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: jdlupdaterepos.php:47
-msgid   "Update Repositories"
+#: makelang.php:58
+msgid   "MakeLang - A language maker"
 msgstr  ""
 
-#: jdlupdaterepos.php:49
+#: makelang.php:73
 #, php-format
-msgid   "Repository Path: %s"
+msgid   "Please create the directory \"%s\" for your language files."
 msgstr  ""
 
-#: jdlupdaterepos.php:60
+#: makelang.php:105
 #, php-format
-msgid   "Updating: %s..."
+msgid   "Creating the template: \"%s\""
 msgstr  ""
 
-#: jdlupdaterepos.php:67
-msgid   "ERROR"
-msgstr  ""
-
-#: jdlupdaterepos.php:73
+#: makelang.php:123
 #, php-format
-msgid   "Execution time: %s secs."
+msgid   "Updating the language file: \"%s\""
 msgstr  ""
 
-#: jdlupdaterepos.php:77
+#: makelang.php:129
+#, php-format
+msgid   "Creating the language file: \"%s\""
+msgstr  ""
+
+#: makelang.php:150
 msgid   "Finished =;)"
-msgstr  ""
-
-#: jdlupdaterepos.php:82
-msgid   "You may close this window now."
-msgstr  ""
-
-#: jdlupdaterepos.php:91
-msgid   "Invalid repository base"
-msgstr  ""
-
-#: jdlupdaterepos.php:98
-msgid   "Git must be installed to run this script"
 msgstr  ""

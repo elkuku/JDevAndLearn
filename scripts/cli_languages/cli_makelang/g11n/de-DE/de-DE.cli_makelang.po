@@ -1,0 +1,46 @@
+# English translations for com_easycreator package.
+# Copyright (C) 2012 Nikolai Plath - elkuku
+# This file is distributed under the same license as the com_easycreator package.
+#  <der.el.kuku@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:PHP DevBox 0.0.1\n"
+"Report-Msgid-Bugs-To: der.el.kuku@gmail.com\n"
+"POT-Creation-Date: 2012-07-16 03:32+0000\n"
+"PO-Revision-Date: 2012-07-16 03:25+0000\n"
+"Last-Translator:  <der.el.kuku@gmail.com>\n"
+"Language-Team: English\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: makelang.php:58
+msgid "MakeLang - A language maker"
+msgstr "MakeLang - Ein SrachenMacher"
+
+#: makelang.php:73
+#, php-format
+msgid "Please create the directory \"%s\" for your language files."
+msgstr "Bitte erstellen Sie das Verzeichnis \"%s\" für Ihre Sprachdateien."
+
+#: makelang.php:105
+#, php-format
+msgid "Creating the template: \"%s\""
+msgstr "Erstelle das Template: \"%s\""
+
+#: makelang.php:123
+#, php-format
+msgid "Updating the language file: \"%s\""
+msgstr "Aktualisiere die Sprachdatei: \"%s\""
+
+#: makelang.php:129
+#, php-format
+msgid "Creating the language file: \"%s\""
+msgstr "Erstelle die Sprachdatei: \"%s\""
+
+#: makelang.php:150
+msgid "Finished =;)"
+msgstr "Fertig =;)"

@@ -30,7 +30,6 @@ FILELIST
 
 	*/
 
-
 'cli' == PHP_SAPI || die('This script must be run from the command line.');
 
 // We are a valid Joomla! entry point.
@@ -48,20 +47,20 @@ class MakeLang extends JdlApplicationCli
 	/**
 	 * Execute the application.
 	 *
-	 * @throws IncompleteException
 	 * @throws UnexpectedValueException
+	 * @throws JdlExceptionIncomplete
 	 * @throws Exception
 	 *
 	 * @return void
 	 */
 	public function doExecute()
 	{
-		$this->outputTitle('MakeLang - A language maker');
+		$this->outputTitle(jgettext('MakeLang - A language maker'));
 
 		try
 		{
 			if ($this->input->get('help', $this->input->get('h')))
-				throw new IncompleteException;
+				throw new JdlExceptionIncomplete;
 
 			$langPath = $this->get('cwd');
 
@@ -83,7 +82,7 @@ class MakeLang extends JdlApplicationCli
 			$projectName = JFile::stripExt($inputFile);
 
 			if ('' == $command || '' == $inputFile)
-				throw new IncompleteException;
+				throw new JdlExceptionIncomplete;
 
 			$keywords = ' -k --keyword=jgettext --keyword=jngettext:1,2';
 
@@ -92,8 +91,8 @@ class MakeLang extends JdlApplicationCli
 			$noWrap = ' --no-wrap';
 			$comments = ' --add-comments=TRANSLATORS:';
 			$copyright = " --copyright-holder=\"Nikolai Plath - elkuku\"";
-			$packageName = " --package-name=\"com_easycreator\"";
-			$packageVersion = ' --package-version="0.0.18"';
+			$packageName = " --package-name=\"PHP DevBox\"";
+			$packageVersion = ' --package-version="0.0.1"';
 			$msgidBugs = ' --msgid-bugs-address="der.el.kuku@gmail.com"';
 
 			switch ($command)
@@ -103,6 +102,8 @@ class MakeLang extends JdlApplicationCli
 
 					JFolder::create(dirname($outputFile));
 
+					$this->output(sprintf(jgettext('Creating the template: "%s"'), $outputFile));
+
 					$cmd = "xgettext$keywords$forcePo$noWrap$comments$copyright$packageName$packageVersion$msgidBugs"
 						. " -o \"$outputFile\" -i \"$inputFile\"";
 					break;
@@ -111,7 +112,7 @@ class MakeLang extends JdlApplicationCli
 					$lang = (isset($this->input->args[2])) ? $this->input->args[2] : '';
 
 					if ('' == $lang)
-						throw new IncompleteException;
+						throw new JdlExceptionIncomplete;
 
 					$inputFile = sprintf($langPath . '/cli_%1$s/g11n/template/cli_%1$s.pot', $projectName);
 
@@ -119,10 +120,14 @@ class MakeLang extends JdlApplicationCli
 
 					if (JFile::exists($outputFile))
 					{
+						$this->output(sprintf(jgettext('Updating the language file: "%s"'), $outputFile));
+
 						$cmd = "msgmerge -U $outputFile $inputFile";
 					}
 					else
 					{
+						$this->output(sprintf(jgettext('Creating the language file: "%s"'), $outputFile));
+
 						JFolder::create(dirname($outputFile));
 
 						$cmd = "msginit -i $inputFile -o $outputFile";
@@ -131,7 +136,7 @@ class MakeLang extends JdlApplicationCli
 					break;
 
 				default :
-					throw new IncompleteException;
+					throw new JdlExceptionIncomplete;
 					break;
 			}
 
@@ -144,7 +149,7 @@ class MakeLang extends JdlApplicationCli
 
 			$this->output(jgettext('Finished =;)'), true, 'green');
 		}
-		catch (IncompleteException $e)
+		catch (JdlExceptionIncomplete $e)
 		{
 			$this->help();
 		}
@@ -174,10 +179,6 @@ class MakeLang extends JdlApplicationCli
 	{
 		return $this;
 	}
-}
-
-class IncompleteException extends Exception
-{
 }
 
 /*
