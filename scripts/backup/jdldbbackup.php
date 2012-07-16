@@ -128,7 +128,11 @@ class JdlDbBackup extends JdlApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlDbBackup')->execute();
+	$application = JApplicationCli::getInstance('JdlDbBackup');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 }
 catch(Exception $e)
 {

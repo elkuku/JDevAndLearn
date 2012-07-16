@@ -105,7 +105,9 @@ class JdlStartIDE extends JdlApplicationCli
 try
 {
 	$application = JApplicationCli::getInstance('JdlStartIDE');
+
 	JFactory::$application = $application;
+
 	$application->execute();
 }
 catch (Exception $e)

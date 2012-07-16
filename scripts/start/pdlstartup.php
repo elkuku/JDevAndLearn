@@ -78,7 +78,11 @@ class JdlStartup extends JdlApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlStartup')->execute();
+    $application = JApplicationCli::getInstance('JdlStartup');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 }
 catch(Exception $e)
 {

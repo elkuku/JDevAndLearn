@@ -235,8 +235,11 @@ class JdlInstall extends JdlApplicationCli
  */
 try
 {
-	JApplicationCli::getInstance('JdlInstall')->execute();
-}
+	$application = JApplicationCli::getInstance('JdlInstall');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 catch (Exception $e)
 {
 	if (COLORS)

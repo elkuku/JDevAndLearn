@@ -117,7 +117,9 @@ class JdlRepoStatus extends JdlApplicationCli
 try
 {
 	$application = JApplicationCli::getInstance('JdlRepoStatus');
+
 	JFactory::$application = $application;
+
     $application->execute();
 }
 catch(Exception $e)

@@ -108,7 +108,11 @@ class JdlUpdateRepos extends JdlApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlUpdateRepos')->execute();
+	$application = JApplicationCli::getInstance('JdlUpdateRepos');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 }
 catch(Exception $e)
 {

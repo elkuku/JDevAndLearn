@@ -226,7 +226,11 @@ class JdlDistrobackup extends KukuApplicationCli
 
 try
 {
-    JApplicationCli::getInstance('JdlDistrobackup')->execute();
+	$application = JApplicationCli::getInstance('JdlDistrobackup');
+
+	JFactory::$application = $application;
+
+	$application->execute();
 }
 catch(Exception $e)
 {
