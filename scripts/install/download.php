@@ -240,6 +240,7 @@ try
 	JFactory::$application = $application;
 
 	$application->execute();
+}
 catch (Exception $e)
 {
 	if (COLORS)

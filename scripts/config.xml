@@ -127,6 +127,9 @@
         <backup base="~/repos" title="home-repos-joomla-cms-testing">
             <folder>joomla-cms-testing</folder>
         </backup>
+        <backup base="~/repos" title="home-repos-joomla-cms-joomla3-admintemplate">
+            <folder>joomla3-admin-template</folder>
+        </backup>
         <!--
         <backup base="~/repos" title="home-repos-square-one-cms">
         <folder>square-one-cms</folder>
@@ -180,6 +183,7 @@
         </backup>
 
         <database>jdevlearn</database>
+        <database>joomla3admintemplate</database>
 
     </backups>
 
