@@ -204,7 +204,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $this->backups = $this->xmlConfig->backups;
 
-        $this->backupName = time().'---'.date((string)($this->backups->backupTimestamp));
+        $this->backupName = date((string)($this->backups->backupTimestamp));
 
         $this->tmpDir = $this->backupDir.'/'.$this->backupName;
 

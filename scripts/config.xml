@@ -13,7 +13,7 @@
         <backupName>JDLBackup_</backupName>
         <backupTimestamp>Y-m-d_Hi</backupTimestamp>
 
-        <backup title="home-base" base="~">
+        <backup title="base" base="~">
             <file>.bashrc</file>
             <file>.conkyrc</file>
             <file>.gitignore</file>
@@ -24,15 +24,15 @@
             <file>.kde4/share/config/kdeglobals</file>
         </backup>
 
-        <backup title="home-joomla" base="~">
+        <backup title="joomla" base="~">
             <folder>joomla</folder>
         </backup>
 
-        <backup title="home-images" base="~">
+        <backup title="images" base="~">
             <folder>images</folder>
         </backup>
 
-        <backup title="home-firefox" base="~/.mozilla/firefox">
+        <backup title="firefox" base="~/.mozilla/firefox">
             <file>profiles.ini</file>
             <file>y281g4zi.default/prefs.js</file>
             <file>y281g4zi.default/extensions.ini</file>
@@ -42,23 +42,14 @@
             <folder>y281g4zi.default/OxygenKDE</folder>
         </backup>
 
-        <backup title="home-desktop" base="~/Desktop">
+        <backup title="desktop" base="~/Desktop">
             <file>Start.desktop</file>
             <file>Passwords</file>
             <folder>Scripts</folder>
         </backup>
 
-        <backup title="home-bin" base="~/bin">
+        <backup title="bin" base="~/bin">
             <file>ide/readme.md</file>
-            <!--
-            <file>eclipse</file>
-            <file>eclipsezend</file>
-            <file>jacli</file>
-            <file>jdldistrobackup</file>
-            <file>jenkinskickstart</file>
-            <file>netbeans</file>
-            <file>phpstorm</file>
-            -->
         </backup>
 
         <!--
@@ -67,102 +58,87 @@
         </backup>
         -->
 
-        <!--
-        <backup base="~" title="home-scripts">
-            <folder>scripts</folder>
-        </backup>
-	-->
-
-        <!-- -->
-        <backup base="~/repos" title="home-repos-EasyCreator">
+        <backup base="~/repos" title="repos-EasyCreator">
             <folder>EasyCreator</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-lilhelpers">
+        <backup base="~/repos" title="repos-lilhelpers">
             <folder>elkuku-lilhelpers</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-g11n">
-	    <folder>g11n</folder>
+        <backup base="~/repos" title="repos-g11n">
+            <folder>g11n</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-jacli">
+        <backup base="~/repos" title="repos-jacli">
             <folder>jacli</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-JDevLearn">
+        <backup base="~/repos" title="repos-JDevLearn">
             <folder>JDevLearn</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-JeJoo">
+        <backup base="~/repos" title="repos-JeJoo">
             <folder>JeJoo</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-l0gvi3w">
+        <backup base="~/repos" title="repos-l0gvi3w">
             <folder>L0gVi3w</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-MarkdownGitWiki">
+        <backup base="~/repos" title="repos-MarkdownGitWiki">
             <folder>MarkdownGitWiki</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-patchtester">
+        <backup base="~/repos" title="repos-patchtester">
             <folder>patchtester</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-phpdox">
+        <backup base="~/repos" title="repos-phpdox">
             <folder>phpdox</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-xml2sql">
+        <backup base="~/repos" title="repos-xml2sql">
             <folder>xml2sql</folder>
         </backup>
-        <!--
-                <backup base="~/repos" title="home-repos-joomla-cms">
-                <folder>joomla-cms</folder>
-            </backup>
-            </backup>
-                <backup base="~/repos" title="home-repos-joomla-platform">
-                <folder>joomla-platform</folder>
-            </backup>
-            -->
-        <!--
-            -->
-        <backup base="~/repos" title="home-repos-joomla-cms-sqlite">
+        <backup base="~/repos" title="repos-joomla-extension-tests">
+            <folder>joomla-extension-tests</folder>
+        </backup>
+        <backup base="~/repos" title="repos-joomla-cms">
+            <folder>joomla-cms</folder>
+        </backup>
+        <backup base="~/repos" title="repos-joomla-platform">
+            <folder>joomla-platform</folder>
+        </backup>
+        <backup base="~/repos" title="repos-joomla-cms-sqlite">
             <folder>joomla-cms-sqlite</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-joomla-cms-postgre">
+        <backup base="~/repos" title="repos-joomla-cms-postgre">
             <folder>joomla-cms-postgre</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-joomla-cms-testing">
+        <backup base="~/repos" title="repos-joomla-cms-testing">
             <folder>joomla-cms-testing</folder>
         </backup>
-        <backup base="~/repos" title="home-repos-joomla-cms-joomla3-admintemplate">
+        <backup base="~/repos" title="repos-joomla-cms-joomla3-admintemplate">
             <folder>joomla3-admin-template</folder>
         </backup>
-        <!--
-        <backup base="~/repos" title="home-repos-square-one-cms">
-        <folder>square-one-cms</folder>
-    </backup>
-        -->
+        <backup base="~/repos" title="repos-square-one-cms">
+            <folder>square-one-cms</folder>
+        </backup>
 
-        <!-- -->
-
-        <backup title="home-srv" base="~/srv">
+        <backup title="srv" base="~/srv">
             <folder>conf</folder>
             <folder>www/web_jdevlearn</folder>
             <folder>www/web_start</folder>
             <folder>www/phppgadmin</folder>
         </backup>
 
-        <backup title="home-srv-data" base="~/srv">
-            <!--
-            <folder>data/mysql/jdevlearn</folder>
-            -->
+        <backup title="srv-data" base="~/srv">
             <folder>data/mysql/mysql</folder>
             <folder>data/mysql/phpmyadmin</folder>
         </backup>
 
-        <backup title="home-jenkins-jobs" base="~/.jenkins">
+        <backup title="jenkins-jobs" base="~/.jenkins">
             <file>jobs/Joomla CMS/config.xml</file>
             <file>jobs/Joomla CMS - Postgre TEST/config.xml</file>
             <file>jobs/Joomla CMS - SQLite TEST/config.xml</file>
             <file>jobs/Joomla CMS - System tests/config.xml</file>
+	    <file>jobs/Joomla CMS Extension Test/config.xml</file>
             <file>jobs/Joomla Platform/config.xml</file>
             <folder>jobs/php-template</folder>
-	</backup>
+        </backup>
 
-	<backup title="home-jenkins-plugins" base="~/.jenkins">
+        <backup title="jenkins-plugins" base="~/.jenkins">
             <file>plugins/analysis-core.jpi</file>
             <file>plugins/ansicolor.jpi</file>
             <file>plugins/checkstyle.jpi</file>
@@ -183,7 +159,10 @@
         </backup>
 
         <database>jdevlearn</database>
+	
+        <database>joomla-cms</database>
         <database>joomla3admintemplate</database>
+        <database>square-one-cms</database>
 
     </backups>
 
@@ -206,7 +185,7 @@
             <description>The will download and install an evaluation copy of the Jetbrains IDE for PHP development,
                 valid for 30 days.
             </description>
-            <version>4.0.2</version>
+            <version>4.0.3</version>
             <downloadUri>http://download.jetbrains.com/webide/PhpStorm-%s.tar.gz</downloadUri>
             <destPath>~/bin/ide</destPath>
             <folderName>PhpStorm</folderName>
@@ -215,7 +194,7 @@
             <name>eclipse</name>
             <title>Eclipse SDK Classic</title>
             <description>This will download and install Eclipse classic without plugins.</description>
-            <version>3.0.2</version>
+            <version>4.2</version>
             <downloadUri>
                 http://mirrors.xmission.com/eclipse/eclipse/downloads/drops4/R-4.2-201206081400/eclipse-SDK-4.2-linux-gtk.tar.gz
             </downloadUri>
