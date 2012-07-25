@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> Update
+# <i class="icon-lab"></i> Update
 
 Scripts to manage repositories
 

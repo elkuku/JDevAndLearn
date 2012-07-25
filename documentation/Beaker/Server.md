@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> Server
+# <i class="icon-lab"></i> Server
 
 Scripts to start and manage the installed servers
 

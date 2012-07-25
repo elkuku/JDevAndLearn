@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> IDEs
+# <i class="icon-lab"></i> IDEs
 
 ## Installed integrated development environments
 

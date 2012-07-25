@@ -19,7 +19,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewInfoenvvars extends JView
+class DevAndLearnViewInfoenvvars extends JViewLegacy
 {
     protected $infoEnvvars = null;
 

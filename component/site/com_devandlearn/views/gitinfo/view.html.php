@@ -19,7 +19,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewGitInfo extends JView
+class DevAndLearnViewGitInfo extends JViewLegacy
 {
     protected $gitInfo = array();
 

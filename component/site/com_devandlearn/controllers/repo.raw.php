@@ -18,7 +18,7 @@ jimport('joomla.application.component.controller');
  * @package    DevAndLearn
  * @subpackage Controllers
  */
-class DevAndLearnControllerRepo extends JController
+class DevAndLearnControllerRepo extends JControllerLegacy
 {
     private $response = null;
 

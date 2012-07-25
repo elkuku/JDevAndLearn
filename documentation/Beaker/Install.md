@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> Install
+# <i class="icon-lab"></i> Install
 
 Scripts to install applications.
 

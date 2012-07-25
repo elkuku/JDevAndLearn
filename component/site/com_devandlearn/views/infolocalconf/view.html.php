@@ -19,7 +19,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewinfolocalconf extends JView
+class DevAndLearnViewinfolocalconf extends JViewLegacy
 {
     protected $infoLocalconf = null;
 

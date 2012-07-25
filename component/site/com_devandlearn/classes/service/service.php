@@ -9,13 +9,14 @@
 
 /**
  * @property-read string $cssClass
+ * @property-read string $dataIcon
  * @property-read string $label
  */
 class DalService
 {
-	const DOWN = 0;
-	const UP = 1;
-	const UNKNOWN = 2;
+    const DOWN = 0;
+    const UP = 1;
+    const UNKNOWN = 2;
 
     protected $name = '';
 
@@ -25,11 +26,13 @@ class DalService
 
     protected $isUp = false;
 
-	protected $expected = false;
+    protected $expected = false;
 
-	protected $cssClass = '';
+    protected $cssClass = '';
 
-	protected $label = '';
+    protected $dataIcon = '';
+
+    protected $label = '';
 
     public function __construct($name, $url, array $links = array(), $expected = false)
     {
@@ -39,14 +42,14 @@ class DalService
 
         $this->links = $links;
 
-	    $this->expected = $expected;
+        $this->expected = $expected;
 
         $this->check();
     }
 
     public function __get($key)
     {
-        if(in_array($key, array('name', 'url', 'links', 'isUp', 'cssClass', 'label')))
+        if(in_array($key, array('name', 'url', 'links', 'isUp', 'cssClass', 'dataIcon', 'label')))
             return $this->$key;
 
         return (DAL_DEBUG) ? 'Undefined property: '.$key : '';
@@ -66,54 +69,59 @@ class DalService
                     switch($matches[2])
                     {
                         case 'proftpd' :
-	                        exec('/opt/lampp/bin/ftpwho 2>&1', $output, $retVar);
+                            exec('/opt/lampp/bin/ftpwho 2>&1', $output, $retVar);
 
 //                            exec('ps cax | grep -c "proftpd"', $output);
 
-  //                          $this->isUp = (isset($output[0]) && (int)$output[0] == 1);
-	                        $status = (0 == $retVar) ? self::UP : self::DOWN;
-	                        $this->setStatus($status);
-	                        break;
+                            //                          $this->isUp = (isset($output[0]) && (int)$output[0] == 1);
+                            $status = (0 == $retVar) ? self::UP : self::DOWN;
+                            $this->setStatus($status);
+                            $this->dataIcon = '&#x43;';
+                            break;
 
-	                    case 'apache' :
-		                    exec('ps cax | grep "httpd$"', $output, $retVar);
+                        case 'apache' :
+                            exec('ps cax | grep "httpd$"', $output, $retVar);
 
-		                    $status = (0 == $retVar) ? self::UP : self::DOWN;
-		                    $this->setStatus($status);
-		                    break;
+                            $status = (0 == $retVar) ? self::UP : self::DOWN;
+                            $this->setStatus($status);
+                            $this->dataIcon = '&#x43;';
+                            break;
 
-	                    case 'mysql' :
+                        case 'mysql' :
                             exec('ps cax | grep "mysqld$"', $output, $retVar);
 
                             $status = (0 == $retVar) ? self::UP : self::DOWN;
                             $this->setStatus($status);
+                            $this->dataIcon = '&#x25;';
                             break;
 
                         case 'pgsql' :
                             exec('rcpostgresql status', $output, $retVar);
-                       //     exec('ps cax | grep "pgsqld$"', $output, $retVar);
+                            //     exec('ps cax | grep "pgsqld$"', $output, $retVar);
 //var_dump($output, $retVar);
-  //                          $this->isUp = (0 == $retVar);
+                            //                          $this->isUp = (0 == $retVar);
                             switch($retVar)
                             {
-	                            case 0 :
-		                            $this->setStatus(self::UP);
-		                            break;
+                                case 0 :
+                                    $this->setStatus(self::UP);
+                                    break;
 
-		                        case 3 :
-		                            $this->setStatus(self::DOWN);
-		                            break;
+                                case 3 :
+                                    $this->setStatus(self::DOWN);
+                                    break;
 
-		                        default:
-		                            $this->setStatus(self::UNKNOWN);
-		                            break;
+                                default:
+                                    $this->setStatus(self::UNKNOWN);
+                                    break;
                             }
+
+                            $this->dataIcon = '&#x25;';
                             break;
 
                         default :
                             JFactory::getApplication()->enqueueMessage(sprintf(
-                                '%s - Unknown command: %s'
-                                , __METHOD__, $matches[2])
+                                    '%s - Unknown command: %s'
+                                    , __METHOD__, $matches[2])
                                 , 'warning');
                     }
                 }
@@ -130,36 +138,37 @@ class DalService
 
                 curl_close($ch);
 
-                $expected = $this->expected ?: 200;
+                $expected = $this->expected ? : 200;
 
                 $status = ($expected == $retcode) ? self::UP : self::DOWN;
                 $this->setStatus($status);
+                $this->dataIcon = '&#x43;';
                 break;
         }
     }
 
-	protected function setStatus($status)
-	{
-		switch($status)
-		{
-			case self::UP :
-				$this->isUp = self::UP;
-				$this->cssClass = 'success';
-				$this->label = 'Running';//@jgettext
-				break;
+    protected function setStatus($status)
+    {
+        switch($status)
+        {
+            case self::UP :
+                $this->isUp = self::UP;
+                $this->cssClass = 'success';
+                $this->label = 'Running'; //@jgettext
+                break;
 
-			case self::DOWN :
-				$this->isUp = self::DOWN;
-				$this->cssClass = 'info';
-				$this->label = 'Down';//@jgettext
-				break;
+            case self::DOWN :
+                $this->isUp = self::DOWN;
+                $this->cssClass = 'info';
+                $this->label = 'Down'; //@jgettext
+                break;
 
-			case self::UNKNOWN :
-			default :
-				$this->isUp = self::UNKNOWN;
-				$this->cssClass = 'inverse';
-				$this->label = 'N/A';//@jgettext
-				break;
-		}
-	}
+            case self::UNKNOWN :
+            default :
+                $this->isUp = self::UNKNOWN;
+                $this->cssClass = 'inverse';
+                $this->label = 'N/A'; //@jgettext
+                break;
+        }
+    }
 }

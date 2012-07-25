@@ -19,7 +19,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewHostsInfo extends JView
+class DevAndLearnViewHostsInfo extends JViewLegacy
 {
     protected $hostsInfo = null;
     /**

@@ -53,9 +53,17 @@ div.systemMessage {
     margin-left: 1em;
     margin-right: 1em;
 }
+
 i.messageIcon {
 
-font-size: 24px;
+    font-size: 24px;
     float: left;
     margin-right: 0.5em;
-    }
+}
+
+a.joomla-icon {
+    background-image: url("../img/j-favicon.ico");
+    background-repeat: no-repeat;
+    padding-left: 18px;
+    padding-bottom: 18px;
+}

@@ -133,7 +133,7 @@
             <file>jobs/Joomla CMS - Postgre TEST/config.xml</file>
             <file>jobs/Joomla CMS - SQLite TEST/config.xml</file>
             <file>jobs/Joomla CMS - System tests/config.xml</file>
-	    <file>jobs/Joomla CMS Extension Test/config.xml</file>
+            <file>jobs/Joomla CMS Extension Test/config.xml</file>
             <file>jobs/Joomla Platform/config.xml</file>
             <folder>jobs/php-template</folder>
         </backup>
@@ -159,9 +159,9 @@
         </backup>
 
         <database>jdevlearn</database>
-	
+
         <database>joomla-cms</database>
-        <database>joomla3admintemplate</database>
+        <database>joomla-3-admin-template</database>
         <database>square-one-cms</database>
 
     </backups>

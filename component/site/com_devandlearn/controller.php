@@ -19,6 +19,6 @@ jimport('joomla.application.component.controller');
  * @package    DevAndLearn
  * @subpackage Controllers
  */
-class DevAndLearnController extends JController
+class DevAndLearnController extends JControllerLegacy
 {
 }

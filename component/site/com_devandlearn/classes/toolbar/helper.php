@@ -58,49 +58,49 @@ class DalToolbarHelper
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=phpinfo&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'PHP',//jgettext..
             'class' => $input->get('view') == 'phpinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=gitinfo&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'Git',//jgettext..
             'class' => $input->get('view') == 'gitinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=infolocalconf&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'Local config',//jgettext..
             'class' => $input->get('view') == 'infolocalconf' ? 'active' : ''
         )), 'actions');
 
 	    self::addButton(new DalToolbarButton(array(
 		    'href' => JRoute::_('&view=pear&task='),
-		    'icon' => 'icon-info-sign',
+		    'icon' => 'icon-info',
 		    'text' => 'Pear packages',//jgettext..
 		    'class' => $input->get('view') == 'pear' ? 'active' : ''
 	    )), 'actions');
 
 	    self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=hostsinfo&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'Hosts',//jgettext..
             'class' => $input->get('view') == 'hostsinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=infoenvvars&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'Environment vars',//jgettext..
             'class' => $input->get('view') == 'infoenvvars' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=ifconfig&task='),
-            'icon' => 'icon-info-sign',
+            'icon' => 'icon-info',
             'text' => 'Ifconfig',//jgettext..
             'class' => $input->get('view') == 'ifconfig' ? 'active' : ''
         )), 'actions');

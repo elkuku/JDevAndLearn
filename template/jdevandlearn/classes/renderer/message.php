@@ -29,35 +29,35 @@ class JDocumentRendererMessage extends JDocumentRenderer
      *
      * @since   11.1
      */
-    public function render($name, $params = array (), $content = null)
+    public function render($name, $params = array(), $content = null)
     {
         // Initialise variables.
         $buffer = array();
         $lists = array();
 
         $icons = array(
-            'error' => 'exclamation-sign',
-            'warning' => 'question-sign',
-            'info' => 'info-sign',
-            'success' => 'ok',
+            'error' => 'cancel',
+            'warning' => 'help',
+            'info' => 'info',
+            'success' => 'checkmark',
         );
 
         // Get the message queue
         $messages = JFactory::getApplication()->getMessageQueue();
 
-	    // Return an empty string if the message queue is empty !
-        if (false == is_array($messages) || empty($messages))
-	        return '';
+        // Return an empty string if the message queue is empty !
+        if(false == is_array($messages) || empty($messages))
+            return '';
 
-	    // Build the sorted message list
-	    foreach ($messages as $msg)
+        // Build the sorted message list
+        foreach($messages as $msg)
         {
             $lists[$msg['type']][] = $msg['message'];
         }
 
-        foreach ($lists as $type => $msgs)
+        foreach($lists as $type => $msgs)
         {
-            if (0 ==count($msgs))
+            if(0 == count($msgs))
                 continue;
 
             //-- compatibility..
@@ -69,9 +69,9 @@ class JDocumentRendererMessage extends JDocumentRenderer
             $buffer[] = '<i class="messageIcon icon-'.$icon.'"></i>';
             $buffer[] = '   <ul class="unstyled">';
 
-            foreach ($msgs as $msg)
+            foreach($msgs as $msg)
             {
-                $buffer[] = '      <li>'. $msg . '</li>';
+                $buffer[] = '      <li>'.$msg.'</li>';
             }
 
             $buffer[] = '   </ul>';

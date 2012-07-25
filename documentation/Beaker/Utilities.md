@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> Utilities
+# <i class="icon-lab"></i> Utilities
 
 Utility scripts
 

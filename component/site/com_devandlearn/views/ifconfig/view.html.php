@@ -19,7 +19,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewIfconfig extends JView
+class DevAndLearnViewIfconfig extends JViewLegacy
 {
     protected $ifconfigInfo = null;
 

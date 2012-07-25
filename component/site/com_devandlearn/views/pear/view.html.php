@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
  * @package    DevAndLearn
  * @subpackage Views
  */
-class DevAndLearnViewPear extends JView
+class DevAndLearnViewPear extends JViewLegacy
 {
 	/**
 	 * DevAndLearnList view display method.

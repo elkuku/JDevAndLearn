@@ -1,6 +1,6 @@
-# PHP <i class="icon-beaker"></i> DevBox
+# PHP <i class="icon-lab"></i> DevBox
 
-PHP <i class="icon-beaker"></i> DevBox is a complete development and learning environment for PHP, specialized in Joomla! development. It is based on open source software, starting with the operating system.
+PHP <i class="icon-lab"></i> DevBox is a complete development and learning environment for PHP, specialized in Joomla! development. It is based on open source software, starting with the operating system.
 
 It can be installed as a virtual machine and act as a local development build server.
 
@@ -12,7 +12,7 @@ What's inside: [[Environment Specifications]](Environment)
 
 ## Preparation
 
-PHP <i class="icon-beaker"></i> DevBox should work out of the box for a variety of tasks. Some special tasks require some [[preparation]](Preparation).
+PHP <i class="icon-lab"></i> DevBox should work out of the box for a variety of tasks. Some special tasks require some [[preparation]](Preparation).
 
 ## The Main Menu
 
@@ -57,4 +57,4 @@ If you would like to use it, or even contribute to this documentation, please re
 <hr />
 
 have Fun,<br />
-The PHP <i class="icon-beaker"></i> DevBox Team.
+The PHP <i class="icon-lab"></i> DevBox Team.

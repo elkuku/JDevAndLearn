@@ -19,21 +19,6 @@ jimport('joomla.application.component.model');
  * @package    DevAndLearn
  * @subpackage Models
  */
-class DevAndLearnModelDevandlearn extends JModel
+class DevAndLearnModelDevandlearn extends JModelLegacy
 {
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        // Additional work
-        $foo = 'Bar';
-
-        parent::__construct();
-    }
-
-    public function getHttplist()
-    {
-        return array('fooooooo');
-    }
 }

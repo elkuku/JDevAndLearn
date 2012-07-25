@@ -15,16 +15,15 @@ $credentials = $this->form->getFieldset('credentials');
 ?>
 <div class="login<?= $this->pageclass_sfx?>">
 
-    <h1>Login</h1>
+    <h1 class="login"><i class="icon-key"></i> Login</h1>
 
     <div class="row">
 
         <div class="span6">
-            <p>
-
             <form class="form-horizontal"
                   action="<?= JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post">
                 <fieldset>
+
                     <div class="control-group">
                         <div class="input-prepend">
                             <span class="add-on" title="<?= $credentials['username']->title ?>"><i
@@ -32,16 +31,17 @@ $credentials = $this->form->getFieldset('credentials');
                             <?= $credentials['username']->input ?>
                         </div>
                     </div>
+
                     <div class="control-group">
 
                         <div class="input-prepend">
                             <span class="add-on" title="<?= $credentials['password']->title ?>"><i
-                                class="icon-lock"></i></span>
+                                class="icon-key"></i></span>
                             <?= $credentials['password']->input ?>
                         </div>
                     </div>
 
-                    <?php if(0)://JPluginHelper::isEnabled('system', 'remember')) : ?>
+                    <?php if(0): //JPluginHelper::isEnabled('system', 'remember')) : ?>
                     <div class="login-fields control-group">
                         <div class="input-prepend">
                     <span class="add-on">@
@@ -59,7 +59,7 @@ $credentials = $this->form->getFieldset('credentials');
                     <p>
                         <button type="submit"
                                 class="btn btn-success btn-large">
-                            <i class="icon-lock"></i> <?= JText::_('JLOGIN'); ?>
+                            <i class="icon-locked"></i> <?= JText::_('JLOGIN'); ?>
                         </button>
                     </p>
                     <input type="hidden" name="return"
@@ -67,19 +67,18 @@ $credentials = $this->form->getFieldset('credentials');
                     <?= JHtml::_('form.token') ?>
                 </fieldset>
             </form>
-            </p>
         </div>
 
         <div class="span6">
             <ul class="unstyled">
-	            <li>
-		            <a href="<?= JRoute::_('index.php?option=com_users&view=remind'); ?>">
-			            <i class="icon-user"></i>
-			            <?= JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
-	            </li>
-	            <li>
+                <li>
+                    <a href="<?= JRoute::_('index.php?option=com_users&view=remind'); ?>">
+                        <i class="icon-user"></i>
+                        <?= JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
+                </li>
+                <li>
                     <a href="<?= JRoute::_('index.php?option=com_users&view=reset'); ?>">
-                        <i class="icon-lock"></i>
+                        <i class="icon-key"></i>
                         <?= JText::_('COM_USERS_LOGIN_RESET'); ?></a>
                 </li>
                 <?php
@@ -87,10 +86,10 @@ $credentials = $this->form->getFieldset('credentials');
                 if($usersConfig->get('allowUserRegistration')) : ?>
                     <li>
                         <a href="<?= JRoute::_('index.php?option=com_users&view=registration'); ?>">
-                            <i class="icon-edit"></i>
+                            <i class="icon-pencil"></i>
                             <?= JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
                     </li>
-                <?php endif; ?>
+                    <?php endif; ?>
             </ul>
         </div>
     </div>

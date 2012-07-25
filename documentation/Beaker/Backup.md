@@ -1,4 +1,4 @@
-# <i class="icon-beaker"></i> Backup
+# <i class="icon-lab"></i> Backup
 
 Actually this is used only for "our" system backup.
 

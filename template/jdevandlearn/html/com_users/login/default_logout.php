@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
         <p>
             Really ? ...
             <button type="submit" class="btn btn-large btn-warning">
-                <i class="icon-lock"></i> <?= JText::_('JLOGOUT'); ?>
+                <i class="icon-locked"></i> <?= JText::_('JLOGOUT'); ?>
             </button>
             <input type="hidden" name="return" value="<?= base64_encode($this->params->get('logout_redirect_url', $this->form->getValue('return'))); ?>" />
             <?= JHtml::_('form.token'); ?>

@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'IcoMoon';
+    src: url('../font/IcoMoon.eot');
+    src: url('../font/IcoMoon.eot?#iefix') format('embedded-opentype'),
+    url('../font/IcoMoon.svg#IcoMoon') format('svg'),
+    url('../font/IcoMoon.woff') format('woff'),
+    url('../font/IcoMoon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+    font-family: 'IcoMoon';
+    content: attr(data-icon);
+    speak: none;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: 'IcoMoon';
+    font-style: normal;
+    speak: none;
+}
+.icon-plus:before {
+    content: "\21";
+}
+.icon-play:before {
+    content: "\22";
+}
+.icon-stop:before {
+    content: "\23";
+}
+.icon-pencil:before {
+    content: "\24";
+}
+.icon-database:before {
+    content: "\25";
+}
+.icon-support:before {
+    content: "\26";
+}
+.icon-drawer:before {
+    content: "\27";
+}
+.icon-mail:before {
+    content: "\28";
+}
+.icon-box-add:before {
+    content: "\29";
+}
+.icon-box-remove:before {
+    content: "\2a";
+}
+.icon-screen:before {
+    content: "\2b";
+}
+.icon-user:before {
+    content: "\2c";
+}
+.icon-locked:before {
+    content: "\2d";
+}
+.icon-key:before {
+    content: "\2e";
+}
+.icon-wrench:before {
+    content: "\2f";
+}
+.icon-loading:before {
+    content: "\30";
+}
+.icon-busy:before {
+    content: "\31";
+}
+.icon-cog:before {
+    content: "\32";
+}
+.icon-lab:before {
+    content: "\33";
+}
+.icon-remove:before {
+    content: "\34";
+}
+.icon-folder:before {
+    content: "\35";
+}
+.icon-dashboard:before {
+    content: "\36";
+}
+.icon-link:before {
+    content: "\37";
+}
+.icon-feed:before {
+    content: "\38";
+}
+.icon-github:before {
+    content: "\39";
+}
+.icon-info:before {
+    content: "\3a";
+}
+.icon-help:before {
+    content: "\3b";
+}
+.icon-cancel:before {
+    content: "\3c";
+}
+.icon-checkmark:before {
+    content: "\3d";
+}
+.icon-star:before {
+    content: "\3e";
+}
+.icon-loop:before {
+    content: "\3f";
+}
+.icon-key-stroke:before {
+    content: "\40";
+}
+.icon-bolt:before {
+    content: "\41";
+}
+.icon-share:before {
+    content: "\42";
+}
+.icon-globe:before {
+    content: "\43";
+}
+.icon-search:before {
+    content: "\44";
+}
+.icon-skills_icon_joomla2:before {
+    content: "\45";
+}
+.icon-creative-commons:before {
+    content: "\46";
+}
