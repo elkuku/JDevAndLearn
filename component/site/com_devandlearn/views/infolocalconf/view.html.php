@@ -10,7 +10,6 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-
 jimport('joomla.application.component.view');
 
 /**
@@ -38,12 +37,12 @@ class DevAndLearnViewinfolocalconf extends JViewLegacy
 
         $user = exec('whoami');
 
-	    $this->path = '/home/'.$user.'/srv/conf/local.conf';
+        $this->path = '/home/'.$user.'/srv/conf/local.conf';
 
         $this->infoLocalconf->raw = JFile::read($this->path);
 
         DalToolbarHelper::setup();
 
         parent::display($tpl);
-    }//function
-}//class
+    }
+}

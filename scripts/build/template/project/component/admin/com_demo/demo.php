@@ -14,99 +14,99 @@
  */
 class Demo
 {
-	/**
-	 * Foo function.
-	 *
-	 * @param   boolean  $unusedParameterTEST  Unused param test
-	 *
-	 * @todo: Write some code here..
-	 *
-	 * @return boolean
-	 */
-	public function foo($unusedParameterTEST)
-	{
-		echo 'bar';
+    /**
+     * Foo function.
+     *
+     * @param   boolean  $unusedParameterTEST  Unused param test
+     *
+     * @todo: Write some code here..
+     *
+     * @return boolean
+     */
+    public function foo($unusedParameterTEST)
+    {
+        echo 'bar';
 
-		//this is a teenitiny checkstyle error :P
+        //this is a teenitiny checkstyle error :P
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Test.
-	 *
-	 * @return stdClass
-	 */
-	public function copyAndPasteTest1()
-	{
-		$parser = new EcrSqlParser($this->query->processed, 'MySQL');
+    /**
+     * Test.
+     *
+     * @return stdClass
+     */
+    public function copyAndPasteTest1()
+    {
+        $parser = new EcrSqlParser($this->query->processed, 'MySQL');
 
-		$parsed = $parser->parseCreate();
+        $parsed = $parser->parseCreate();
 
-		$result = new stdClass;
+        $result = new stdClass;
 
-		$result->name = $parsed['table_names'][0];
+        $result->name = $parsed['table_names'][0];
 
-		$result->fields = array();
+        $result->fields = array();
 
-		foreach ($parsed['column_defs'] as $name => $defs)
-		{
-			$d = new stdClass;
-			$d->type = (isset($defs['type'])) ? $defs['type'] : '';
-			$d->length = (isset($defs['length'])) ? $defs['length'] : '';
-			$d->constraints = $defs['constraints'];
+        foreach($parsed['column_defs'] as $name => $defs)
+        {
+            $d = new stdClass;
+            $d->type = (isset($defs['type'])) ? $defs['type'] : '';
+            $d->length = (isset($defs['length'])) ? $defs['length'] : '';
+            $d->constraints = $defs['constraints'];
 
-			$result->fields[$name] = $d;
+            $result->fields[$name] = $d;
 
-			$d = new stdClass;
-			$d->type = (isset($defs['type'])) ? $defs['type'] : '';
-			$d->length = (isset($defs['length'])) ? $defs['length'] : '';
-			$d->constraints = $defs['constraints'];
+            $d = new stdClass;
+            $d->type = (isset($defs['type'])) ? $defs['type'] : '';
+            $d->length = (isset($defs['length'])) ? $defs['length'] : '';
+            $d->constraints = $defs['constraints'];
 
-			$result->fields[$name] = $d;
-		}
+            $result->fields[$name] = $d;
+        }
 
-		$result->raw = $this->query->raw;
+        $result->raw = $this->query->raw;
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
-	 * Test.
-	 *
-	 * @return stdClass
-	 */
-	public function copyAndPasteTest2()
-	{
-		$parser = new EcrSqlParser($this->query->processed, 'MySQL');
+    /**
+     * Test.
+     *
+     * @return stdClass
+     */
+    public function copyAndPasteTest2()
+    {
+        $parser = new EcrSqlParser($this->query->processed, 'MySQL');
 
-		$parsed = $parser->parseCreate();
+        $parsed = $parser->parseCreate();
 
-		$result = new stdClass;
+        $result = new stdClass;
 
-		$result->name = $parsed['table_names'][0];
+        $result->name = $parsed['table_names'][0];
 
-		$result->fields = array();
+        $result->fields = array();
 
-		foreach ($parsed['column_defs'] as $name => $defs)
-		{
-			$d = new stdClass;
-			$d->type = (isset($defs['type'])) ? $defs['type'] : '';
-			$d->length = (isset($defs['length'])) ? $defs['length'] : '';
-			$d->constraints = $defs['constraints'];
+        foreach($parsed['column_defs'] as $name => $defs)
+        {
+            $d = new stdClass;
+            $d->type = (isset($defs['type'])) ? $defs['type'] : '';
+            $d->length = (isset($defs['length'])) ? $defs['length'] : '';
+            $d->constraints = $defs['constraints'];
 
-			$result->fields[$name] = $d;
+            $result->fields[$name] = $d;
 
-			$d = new stdClass;
-			$d->type = (isset($defs['type'])) ? $defs['type'] : '';
-			$d->length = (isset($defs['length'])) ? $defs['length'] : '';
-			$d->constraints = $defs['constraints'];
+            $d = new stdClass;
+            $d->type = (isset($defs['type'])) ? $defs['type'] : '';
+            $d->length = (isset($defs['length'])) ? $defs['length'] : '';
+            $d->constraints = $defs['constraints'];
 
-			$result->fields[$name] = $d;
-		}
+            $result->fields[$name] = $d;
+        }
 
-		$result->raw = $this->query->raw;
+        $result->raw = $this->query->raw;
 
-		return $result;
-	}
+        return $result;
+    }
 }

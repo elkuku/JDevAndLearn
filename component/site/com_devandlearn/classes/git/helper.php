@@ -45,7 +45,7 @@ class DalGitHelper
                 $r->dir = $folder;
                 $r->path = $path;
 
-                    $repos[] = $r;
+                $repos[] = $r;
             }
         }
 

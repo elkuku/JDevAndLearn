@@ -13,9 +13,9 @@ defined('_JEXEC') || die('=;)');
 echo DalToolbarHelper::display();
 
 ?>
-<p><i class="icon-file"></i> <code> <?= $this->path ?></code></p>
+<p><i class="icon-folder"></i> <code><?= $this->path ?></code></p>
 
 <pre><?= htmlentities($this->infoEnvvars->raw) ?></pre>
 
-<br /><code>@todo: parse this ?</code>
-<br /><code>@todo: Add/Edit/Remove ?</code>
+<br/><code>@todo: parse this ?</code>
+<br/><code>@todo: Add/Edit/Remove ?</code>

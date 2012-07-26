@@ -10,7 +10,6 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-
 jimport('joomla.application.component.view');
 
 /**
@@ -23,7 +22,7 @@ class DevAndLearnViewGitInfo extends JViewLegacy
 {
     protected $gitInfo = array();
 
-	protected $user = '';
+    protected $user = '';
 
     /**
      * DevAndLearnList view display method.
@@ -36,7 +35,7 @@ class DevAndLearnViewGitInfo extends JViewLegacy
     {
         DalToolbarHelper::setup();
 
-	    $this->user = exec('whoami');
+        $this->user = exec('whoami');
 
         $this->gitInfo = DalConfigGit::getInfo('/home/'.$this->user);
 

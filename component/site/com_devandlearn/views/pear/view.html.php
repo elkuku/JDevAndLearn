@@ -17,21 +17,21 @@ jimport('joomla.application.component.view');
  */
 class DevAndLearnViewPear extends JViewLegacy
 {
-	/**
-	 * DevAndLearnList view display method.
-	 *
-	 * @param string $tpl The name of the template file to parse;
-	 *
-	 * @return void
-	 */
-	public function display($tpl = null)
-	{
-		DalToolbarHelper::setup();
+    /**
+     * DevAndLearnList view display method.
+     *
+     * @param string $tpl The name of the template file to parse;
+     *
+     * @return void
+     */
+    public function display($tpl = null)
+    {
+        DalToolbarHelper::setup();
 
-		exec('pear list -a 2>&1', $output);
+        exec('pear list -a 2>&1', $output);
 
-		$this->raw = $output;
+        $this->raw = $output;
 
-		parent::display($tpl);
-	}
+        parent::display($tpl);
+    }
 }

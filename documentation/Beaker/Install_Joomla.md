@@ -1,4 +1,4 @@
-# <i class="icon-lab"></i> Install Joomla!
+# <i class="icon-lab"></i> Install <i class="icon-joomla-bw"></i> Joomla!
 
 This will automagically install the Joomla! CMS for you - with a predefined setup. You may choose between the latest stable and the current development version.
 

@@ -46,7 +46,7 @@ class JdlRepoStatus extends JdlApplicationCli
         $this->setup();
 
         $this->outputTitle(jgettext('Repository Status'))
-	        ->output(sprintf(jgettext('Repository Path: %s'), $this->repoBase));
+            ->output(sprintf(jgettext('Repository Path: %s'), $this->repoBase));
 
         $folders = JFolder::folders($this->repoBase);
 
@@ -54,7 +54,7 @@ class JdlRepoStatus extends JdlApplicationCli
 
         foreach($this->configXml->updates->statusExcludes->exclude as $exclude)
         {
-            $excludes[] = (string) $exclude;
+            $excludes[] = (string)$exclude;
         }
 
         foreach($folders as $folder)
@@ -78,7 +78,7 @@ class JdlRepoStatus extends JdlApplicationCli
         }
 
         $this->output()
-	        ->output(sprintf(jgettext('Execution time: %s secs.')
+            ->output(sprintf(jgettext('Execution time: %s secs.')
             , time() - $this->get('execution.timestamp')));
 
         $this->output()
@@ -105,7 +105,7 @@ class JdlRepoStatus extends JdlApplicationCli
             if(0 !== $ret)
                 throw new UnexpectedValueException(jgettext('Git must be installed to run this script'), ERR_REQ);
 
-            $this->gitPath = 'git';//$output
+            $this->gitPath = 'git'; //$output
         }
 
         return $this;
@@ -116,9 +116,9 @@ class JdlRepoStatus extends JdlApplicationCli
 
 try
 {
-	$application = JApplicationCli::getInstance('JdlRepoStatus');
+    $application = JApplicationCli::getInstance('JdlRepoStatus');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
     $application->execute();
 }

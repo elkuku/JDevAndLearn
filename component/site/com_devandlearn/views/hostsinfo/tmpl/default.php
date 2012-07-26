@@ -14,5 +14,5 @@ echo DalToolbarHelper::display();
 
 <pre><?= $this->hostsInfo->raw ?></pre>
 
-<br /><code>@todo: parse this ?</code>
-<br /><code>@todo: Add/Edit/Remove ?</code>
+<br/><code>@todo: parse this ?</code>
+<br/><code>@todo: Add/Edit/Remove ?</code>

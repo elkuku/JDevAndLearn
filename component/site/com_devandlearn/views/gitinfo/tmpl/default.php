@@ -15,10 +15,10 @@ echo DalToolbarHelper::display();
 <i class="icon-file"></i> <code>/home/<?= $this->user ?>/.gitconfig</code>
 
 <?php foreach($this->gitInfo as $section => $values) : ?>
-    <h3><?= $section ?></h3>
-    <?php foreach($values as $k => $v) : ?>
-        <strong><?= $k ?></strong>: <?= $v ?><br/>
+<h3><?= $section ?></h3>
+<?php foreach($values as $k => $v) : ?>
+    <strong><?= $k ?></strong>: <?= $v ?><br/>
     <?php endforeach; ?>
 <?php endforeach; ?>
 
-<br /><code>@todo: Add/Edit/Remove ?</code>
+<br/><code>@todo: Add/Edit/Remove ?</code>

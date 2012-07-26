@@ -41,11 +41,11 @@ require 'elkuku/g11n/language.php';
 
 if(false == class_exists('JUri'))
 {
-	class JUri
-	{
-		public static function root()
-		{
-			return '';
-		}
-	}
+    class JUri
+    {
+        public static function root()
+        {
+            return '';
+        }
+    }
 }

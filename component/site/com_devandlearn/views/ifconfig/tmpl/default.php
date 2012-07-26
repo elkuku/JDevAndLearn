@@ -10,11 +10,15 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
+/* @var $this DevAndLearnViewIfconfig */
 echo DalToolbarHelper::display();
 
 ?>
-<p><i class="icon-file"></i> <code> /sbin/ifconfig</code></p>
+<p>
+    <i class="icon-folder"></i>
+    <code><?= $this->path ?></code>
+</p>
 
 <pre><?= $this->ifconfigInfo->raw ?></pre>
 
-<br /><code>@todo: parse this ?</code>
+<br/><code>@todo: parse this ?</code>

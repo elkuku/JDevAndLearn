@@ -94,11 +94,11 @@ class JdlDistrobackup extends KukuApplicationCli
             $fileName = $destFolder.'-'.$this->backupName.'.tar.gz';
 
             $this->output('Creating archive: ', false)
-	            ->output($fileName.'...', false, 'yellow');
+                ->output($fileName.'...', false, 'yellow');
 
             exec('cd "'.$this->tmpDir.'/'.$destFolder.'"'
-            .' && tar czf "'.$this->tmpDir.'/'.$fileName.'"'
-            .' .');
+                .' && tar czf "'.$this->tmpDir.'/'.$fileName.'"'
+                .' .');
 
             $md5 = md5_file($this->tmpDir.'/'.$fileName);
 
@@ -144,11 +144,11 @@ class JdlDistrobackup extends KukuApplicationCli
 
         $dst = $this->tmpDir.'/'.$dest.'/'.$f;
 
-	    passthru('mkdir -p "'.dirname($dst).'"');
+        passthru('mkdir -p "'.dirname($dst).'"');
 
-	    passthru('cp -r "'.$path.'" "'.$dst.'" 2>&1');
+        passthru('cp -r "'.$path.'" "'.$dst.'" 2>&1');
 
-      //  if(false == JFolder::copy($path, $dst))
+        //  if(false == JFolder::copy($path, $dst))
         //    throw new DomainException(sprintf('Can not copy the folder %s to %s', $path, $dst));
 
         return $this;
@@ -182,7 +182,7 @@ class JdlDistrobackup extends KukuApplicationCli
 
     private function setup()
     {
-	    clearstatcache();
+        clearstatcache();
 
         $cfgPath = realpath(__DIR__.'/..').'/config.xml';
 
@@ -194,7 +194,7 @@ class JdlDistrobackup extends KukuApplicationCli
         if(false == $this->xmlConfig)
             throw new DomainException('ERROR: Invalid config at:'.$cfgPath);
 
-        $this->backupDir = (string)$this->xmlConfig->global->backupDir;//trim($this->get('backupDir'));
+        $this->backupDir = (string)$this->xmlConfig->global->backupDir; //trim($this->get('backupDir'));
 
         if('' == trim($this->backupDir))
             throw new UnexpectedValueException('Please specify a backup directory in configuration.php');
@@ -226,11 +226,11 @@ class JdlDistrobackup extends KukuApplicationCli
 
 try
 {
-	$application = JApplicationCli::getInstance('JdlDistrobackup');
+    $application = JApplicationCli::getInstance('JdlDistrobackup');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
-	$application->execute();
+    $application->execute();
 }
 catch(Exception $e)
 {

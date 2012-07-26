@@ -12,4 +12,4 @@ echo DalToolbarHelper::display();
 echo DalConfigPhp::getInfo();
 
 ?>
-<br /><code>@todo: Add/Edit/Remove ?</code>
+<br/><code>@todo: Add/Edit/Remove ?</code>

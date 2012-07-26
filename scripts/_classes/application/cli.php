@@ -11,79 +11,79 @@
 
 class JdlApplicationCli extends KukuApplicationCli
 {
-	/**
-	 * @var SimpleXMLElement
-	 */
-	protected $configXml = null;
+    /**
+     * @var SimpleXMLElement
+     */
+    protected $configXml = null;
 
-	/**
-	 * Class constructor.
-	 *
-	 * @param   mixed  $input       An optional argument to provide dependency injection for the application's
-	 *                              input object.  If the argument is a JInputCli object that object will become
-	 *                              the application's input object, otherwise a default input object is created.
-	 * @param   mixed  $config      An optional argument to provide dependency injection for the application's
-	 *                              config object.  If the argument is a JRegistry object that object will become
-	 *                              the application's config object, otherwise a default config object is created.
-	 * @param   mixed  $dispatcher  An optional argument to provide dependency injection for the application's
-	 *                              event dispatcher.  If the argument is a JEventDispatcher object that object will become
-	 *                              the application's event dispatcher, if it is null then the default event dispatcher
-	 *                              will be created based on the application's loadDispatcher() method.
-	 *
-	 * @throws DomainException
-	 * @see     loadDispatcher()
-	 * @since   11.1
-	 */
-	public function __construct(JInputCli $input = null, JRegistry $config = null, JEventDispatcher $dispatcher = null)
-	{
-		$path = JDLPATH_CONFIG . '/config.xml';
+    /**
+     * Class constructor.
+     *
+     * @param   mixed  $input       An optional argument to provide dependency injection for the application's
+     *                              input object.  If the argument is a JInputCli object that object will become
+     *                              the application's input object, otherwise a default input object is created.
+     * @param   mixed  $config      An optional argument to provide dependency injection for the application's
+     *                              config object.  If the argument is a JRegistry object that object will become
+     *                              the application's config object, otherwise a default config object is created.
+     * @param   mixed  $dispatcher  An optional argument to provide dependency injection for the application's
+     *                              event dispatcher.  If the argument is a JEventDispatcher object that object will become
+     *                              the application's event dispatcher, if it is null then the default event dispatcher
+     *                              will be created based on the application's loadDispatcher() method.
+     *
+     * @throws DomainException
+     * @see     loadDispatcher()
+     * @since   11.1
+     */
+    public function __construct(JInputCli $input = null, JRegistry $config = null, JEventDispatcher $dispatcher = null)
+    {
+        $path = JDLPATH_CONFIG.'/config.xml';
 
-		if (false == file_exists($path))
-			throw new DomainException('ERROR: Config file not found at:' . $path);
+        if(false == file_exists($path))
+            throw new DomainException('ERROR: Config file not found at:'.$path);
 
-		$this->configXml = simplexml_load_file($path);
+        $this->configXml = simplexml_load_file($path);
 
-		if (false == $this->configXml)
-			throw new DomainException('ERROR: Invalid config at:' . $path);
+        if(false == $this->configXml)
+            throw new DomainException('ERROR: Invalid config at:'.$path);
 
-		parent::__construct($input, $config, $dispatcher);
-	}
+        parent::__construct($input, $config, $dispatcher);
+    }
 
-	/**
-	 * Execute the application.
-	 *
-	 * @return  void
-	 *
-	 * @since   11.1
-	 */
-	public function execute()
-	{
-		$exe = substr($this->input->executable, strrpos($this->input->executable, '/') + 1);
+    /**
+     * Execute the application.
+     *
+     * @return  void
+     *
+     * @since   11.1
+     */
+    public function execute()
+    {
+        $exe = substr($this->input->executable, strrpos($this->input->executable, '/') + 1);
 
-		$extName = 'cli_' . JFile::stripExt($exe);
+        $extName = 'cli_'.JFile::stripExt($exe);
 
-		if ($this->configXml->global->debug)
-			g11n::cleanStorage($extName);
+        if($this->configXml->global->debug)
+            g11n::cleanStorage($extName);
 
-		g11n::loadLanguage($extName);
+        g11n::loadLanguage($extName);
 
-		parent::execute();
-	}
+        parent::execute();
+    }
 
-	public function isAdmin()
-	{
-		return false;
-	}
+    public function isAdmin()
+    {
+        return false;
+    }
 
-	public function getUserState($var)
-	{
-		return $this->input->get($var);
-	}
+    public function getUserState($var)
+    {
+        return $this->input->get($var);
+    }
 
-	public function setUserState($var, $value)
-	{
-		$this->input->set($var, $value);
+    public function setUserState($var, $value)
+    {
+        $this->input->set($var, $value);
 
-		return $this;
-	}
+        return $this;
+    }
 }

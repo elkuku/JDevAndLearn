@@ -12,24 +12,24 @@ defined('_JEXEC') || die('=;)');
 
 function DevAndLearnBuildRoute(&$query)
 {
-	$segments = array();
+    $segments = array();
 
-	if (isset($query['page']))
-	{
-		$segments[] = $query['page'];
+    if(isset($query['page']))
+    {
+        $segments[] = $query['page'];
 
-		unset($query['page']);
-	}
+        unset($query['page']);
+    }
 
-	return $segments;
+    return $segments;
 }
 
 function DevAndLearnParseRoute($segments)
 {
-	$vars = array();
+    $vars = array();
 
-	if (count($segments))
-		$vars['page'] = implode('/', $segments);
+    if(count($segments))
+        $vars['page'] = implode('/', $segments);
 
-	return $vars;
+    return $vars;
 }

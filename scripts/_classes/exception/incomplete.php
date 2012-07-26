@@ -7,4 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class JdlExceptionIncomplete extends Exception{}
+class JdlExceptionIncomplete extends Exception
+{
+}

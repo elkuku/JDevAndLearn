@@ -11,9 +11,9 @@ echo DalToolbarHelper::display();
 
 ?>
 <pre>
-	<?php foreach ($this->raw as $line) : ?>
-	<?= $line . "\n" ?>
-	<?php endforeach; ?>
+	<?php foreach($this->raw as $line) : ?>
+    <?= $line."\n" ?>
+    <?php endforeach; ?>
 </pre>
 
 <br/><code>@todo: parse this ?</code>

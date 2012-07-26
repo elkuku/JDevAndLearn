@@ -16,8 +16,8 @@ class DemoTest extends PHPUnit_Framework_TestCase
     {
         $data = array(
             'forename' => 'Nikolai',
-	        'surname' => 'Plath',
-	        'nickname' => 'elkuku'
+            'surname' => 'Plath',
+            'nickname' => 'elkuku'
         );
 
         $this->assertArrayHasKey('nickname', $data);
@@ -29,19 +29,19 @@ class DemoTest extends PHPUnit_Framework_TestCase
     {
         $object = new stdClass;
 
-	    $object->forename = 'Nikolai';
-	    $object->surname = 'Plath';
-	    $object->nickname = 'elkuku';
+        $object->forename = 'Nikolai';
+        $object->surname = 'Plath';
+        $object->nickname = 'elkuku';
 
         $this->assertObjectHasAttribute('nickname', $object);
         $this->assertObjectHasAttribute('forename', $object);
         $this->assertObjectHasAttribute('surname', $object);
     }
 
-	public function testFail()
-	{
-		$author = 'Sebastian Bergmann';
+    public function testFail()
+    {
+        $author = 'Sebastian Bergmann';
 
-		$this->assertSame($author, 'Nikolai Plath =;)');
-	}
+        $this->assertSame($author, 'Nikolai Plath =;)');
+    }
 }

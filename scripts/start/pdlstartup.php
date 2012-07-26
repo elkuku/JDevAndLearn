@@ -31,44 +31,44 @@ class JdlStartup extends JdlApplicationCli
      */
     public function doExecute()
     {
-	    $HOME = exec('echo $HOME');
+        $HOME = exec('echo $HOME');
 
-	    if(JFile::exists($HOME.'/.pdlfirstrun'))
-		    return;
+        if(JFile::exists($HOME.'/.pdlfirstrun'))
+            return;
 
-	    $backupDir = $HOME.'/srv/data/backups';
+        $backupDir = $HOME.'/srv/data/backups';
 
-	    $this->outputTitle('JDL Startup')
-		    ->setup()
-		    ->output('Backup to: ', false)
-		    ->output($backupDir, true, 'yellow', '', 'bold');
+        $this->outputTitle('JDL Startup')
+            ->setup()
+            ->output('Backup to: ', false)
+            ->output($backupDir, true, 'yellow', '', 'bold');
 
-	    $files = JFolder::files($backupDir, '.', false, true);
+        $files = JFolder::files($backupDir, '.', false, true);
 
-	    foreach ($files as $file)
-	    {
-		    $command = 'mysql -u root < '.$file.' 2>&1';
+        foreach($files as $file)
+        {
+            $command = 'mysql -u root < '.$file.' 2>&1';
 
-		    $this->out($command);
+            $this->out($command);
 
-		    $this->output('Importing file: ', false)
-			    ->output($file.'...', false, 'yellow');
+            $this->output('Importing file: ', false)
+                ->output($file.'...', false, 'yellow');
 
-		    exec($command);
+            exec($command);
 
             $this->output('ok', true, 'green');
         }
 
-	    $contents = '=;)';
+        $contents = '=;)';
 
-	    JFile::write($HOME . '/.pdlfirstrun', $contents);
+        JFile::write($HOME.'/.pdlfirstrun', $contents);
 
         $this->output()->outputTitle('Finished =;)', 'green')->output();
     }
 
     private function setup()
     {
-	    return $this;
+        return $this;
     }
 }
 
@@ -80,9 +80,9 @@ try
 {
     $application = JApplicationCli::getInstance('JdlStartup');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
-	$application->execute();
+    $application->execute();
 }
 catch(Exception $e)
 {

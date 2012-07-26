@@ -13,7 +13,7 @@
 // We are a valid Joomla! entry point.
 define('_JEXEC', 1);
 
-require dirname(__DIR__) . '/bootstrap.php';
+require dirname(__DIR__).'/bootstrap.php';
 
 /**
  * JDL IDE downloader class.
@@ -22,212 +22,212 @@ require dirname(__DIR__) . '/bootstrap.php';
  */
 class JdlInstall extends JdlApplicationCli
 {
-	/**
-	 * Execute the application.
-	 *
-	 * @throws UnexpectedValueException
-	 * @throws JdlExceptionIncomplete
-	 * @throws Exception
-	 *
-	 * @return void
-	 */
-	public function doExecute()
-	{
-		try
-		{
-			$this->outputTitle('IDE Download and Install');
+    /**
+     * Execute the application.
+     *
+     * @throws UnexpectedValueException
+     * @throws JdlExceptionIncomplete
+     * @throws Exception
+     *
+     * @return void
+     */
+    public function doExecute()
+    {
+        try
+        {
+            $this->outputTitle('IDE Download and Install');
 
-			$home = exec('echo $HOME');
+            $home = exec('echo $HOME');
 
-			$downloadDir = $this->configXml->global->downloadDir;
+            $downloadDir = $this->configXml->global->downloadDir;
 
-			if (false == is_dir($downloadDir))
-				throw new JdlExceptionIncomplete('Please create the download directory at: ' . $downloadDir, 1);
+            if(false == is_dir($downloadDir))
+                throw new JdlExceptionIncomplete('Please create the download directory at: '.$downloadDir, 1);
 
-			if ($this->input->get('list'))
-			{
-				$this->listApps();
+            if($this->input->get('list'))
+            {
+                $this->listApps();
 
-				return;
-			}
+                return;
+            }
 
-			if ($this->input->get('h', $this->input->get('help')))
-				throw new JdlExceptionIncomplete;
+            if($this->input->get('h', $this->input->get('help')))
+                throw new JdlExceptionIncomplete;
 
-			$appName = $this->input->get('app');
+            $appName = $this->input->get('app');
 
-			if ('' == $appName)
-				throw new JdlExceptionIncomplete('Please specify an application using the option --app');
+            if('' == $appName)
+                throw new JdlExceptionIncomplete('Please specify an application using the option --app');
 
-			$apps = $this->fetchApps();
+            $apps = $this->fetchApps();
 
-			if (false == array_key_exists($appName, $apps))
-				throw new UnexpectedValueException('The application you requested could not be found', 1);
+            if(false == array_key_exists($appName, $apps))
+                throw new UnexpectedValueException('The application you requested could not be found', 1);
 
-			$app = $apps[$appName];
+            $app = $apps[$appName];
 
-			$uri = trim(sprintf($app->downloadUri, $app->version));
+            $uri = trim(sprintf($app->downloadUri, $app->version));
 
-			if (false == $uri)
-				throw new UnexpectedValueException('Invalid application - no uri given', 1);
+            if(false == $uri)
+                throw new UnexpectedValueException('Invalid application - no uri given', 1);
 
-			$fileName = $app->fileName ? : substr($uri, strrpos($uri, '/') + 1);
+            $fileName = $app->fileName ? : substr($uri, strrpos($uri, '/') + 1);
 
-			$CD = 'cd "' . $downloadDir . '"';
+            $CD = 'cd "'.$downloadDir.'"';
 
-			if (file_exists($downloadDir . '/' . $fileName))
-			{
-				//$this->output('The file already exists.', true, 'green');
-				$msg = 'The file already exists. Do you want to reinstall ?';
+            if(file_exists($downloadDir.'/'.$fileName))
+            {
+                //$this->output('The file already exists.', true, 'green');
+                $msg = 'The file already exists. Do you want to reinstall ?';
 
-				exec('kdialog --title "Install" --yesno "'.$msg.'"', $output, $retval);
+                exec('kdialog --title "Install" --yesno "'.$msg.'"', $output, $retval);
 
-				if($retval)
-				{
-					$this->outputTitle('Abort :(', 'yellow');
+                if($retval)
+                {
+                    $this->outputTitle('Abort :(', 'yellow');
 
-					return;
-				}
-			}
-			else
-			{
-				$msg = $app->description . "\n\nDo you wish to continue ?";
+                    return;
+                }
+            }
+            else
+            {
+                $msg = $app->description."\n\nDo you wish to continue ?";
 
-				exec('kdialog --title "Install" --yesno "'.$msg.'"', $output, $retval);
+                exec('kdialog --title "Install" --yesno "'.$msg.'"', $output, $retval);
 
-				if($retval)
-				{
-					$this->outputTitle('Abort :(', 'yellow');
+                if($retval)
+                {
+                    $this->outputTitle('Abort :(', 'yellow');
 
-					return;
-				}
+                    return;
+                }
 
-				$this
-					->output('Download   : ' . $uri)
-					->output('Download to:' . $downloadDir . '/' . $fileName)
-					->output()
-					->output('Downloading...', false)
-					->output('Please wait !', true, 'green', '', 'bold');
+                $this
+                    ->output('Download   : '.$uri)
+                    ->output('Download to:'.$downloadDir.'/'.$fileName)
+                    ->output()
+                    ->output('Downloading...', false)
+                    ->output('Please wait !', true, 'green', '', 'bold');
 
-				$forceFileName = $app->fileName ? ' -O ' . $app->fileName : '';
+                $forceFileName = $app->fileName ? ' -O '.$app->fileName : '';
 
-				passthru($CD . ' && wget "' . $uri . '"' . $forceFileName, $retVar);
+                passthru($CD.' && wget "'.$uri.'"'.$forceFileName, $retVar);
 
-				if (0 != $retVar)
-					throw new Exception('wget finished with exit code: ' . $retVar, $retVar);
-			}
+                if(0 != $retVar)
+                    throw new Exception('wget finished with exit code: '.$retVar, $retVar);
+            }
 
-			$ext = substr($fileName, strrpos($fileName, '.') + 1);
+            $ext = substr($fileName, strrpos($fileName, '.') + 1);
 
-			switch ($ext)
-			{
-				case 'sh':
-					$this->output('Executing the installer...', false);
+            switch($ext)
+            {
+                case 'sh':
+                    $this->output('Executing the installer...', false);
 
-					exec($CD . ' && chmod +x "' . $fileName . '" && ./"' . $fileName . '"');
+                    exec($CD.' && chmod +x "'.$fileName.'" && ./"'.$fileName.'"');
 
-					$this->output('ok', true, 'green');
+                    $this->output('ok', true, 'green');
 
-					break;
+                    break;
 
-				case 'gz' :
-					$test = substr($fileName, 0, strrpos($fileName, '.'));
-					$testE = substr($test, strrpos($test, '.') + 1);
+                case 'gz' :
+                    $test = substr($fileName, 0, strrpos($fileName, '.'));
+                    $testE = substr($test, strrpos($test, '.') + 1);
 
-					if ('tar' != $testE)
-						throw new Exception('Unknown extension in file: ' . $fileName);
+                    if('tar' != $testE)
+                        throw new Exception('Unknown extension in file: '.$fileName);
 
-					$destPath = ($app->destPath) ? ' -C ' . $app->destPath : '';
+                    $destPath = ($app->destPath) ? ' -C '.$app->destPath : '';
 
-					$this->output('Unzipping to ' . ($destPath ? : $downloadDir) . '...', false);
+                    $this->output('Unzipping to '.($destPath ? : $downloadDir).'...', false);
 
-					exec($CD . ' && tar -xzvf ' . $fileName . $destPath . ' 2>&1', $output, $retval);
+                    exec($CD.' && tar -xzvf '.$fileName.$destPath.' 2>&1', $output, $retval);
 
-					$this->output('ok', true, 'green');
+                    $this->output('ok', true, 'green');
 
-					if ($retval)
-						throw new Exception(print_r($output, 1), $retval);
-					break;
+                    if($retval)
+                        throw new Exception(print_r($output, 1), $retval);
+                    break;
 
-				default :
-					throw new Exception('Unknown extension: ' . $ext, 1);
-			}
+                default :
+                    throw new Exception('Unknown extension: '.$ext, 1);
+            }
 
-			$path = $home.'/Desktop/Scripts/IDEs/'.$app->name.'.desktop';
+            $path = $home.'/Desktop/Scripts/IDEs/'.$app->name.'.desktop';
 
-			$ini = new JdlProcessorIni($path);
+            $ini = new JdlProcessorIni($path);
 
-			$ini->set('Name[en_US]', $app->title, '[Desktop Entry]');
-			$ini->set('Name', $app->title, '[Desktop Entry]');
+            $ini->set('Name[en_US]', $app->title, '[Desktop Entry]');
+            $ini->set('Name', $app->title, '[Desktop Entry]');
 
-			//$ini->set('Terminal', 'true', '[Desktop Entry]');
-			$ini->set('Terminal', 'false', '[Desktop Entry]');
-			//$ini->set('TerminalOptions', '\s--noclose', '[Desktop Entry]');
-			$ini->set('TerminalOptions', '', '[Desktop Entry]');
+            //$ini->set('Terminal', 'true', '[Desktop Entry]');
+            $ini->set('Terminal', 'false', '[Desktop Entry]');
+            //$ini->set('TerminalOptions', '\s--noclose', '[Desktop Entry]');
+            $ini->set('TerminalOptions', '', '[Desktop Entry]');
 
-			$ini->write($path);
+            $ini->write($path);
 
-			$this->output()
-				->output('Your may execute the application now from your beakermenu.', 'true', 'yellow', '', 'bold')
-				->output()
-				->outputTitle('Finished =;)', 'green');
+            $this->output()
+                ->output('Your may execute the application now from your beakermenu.', 'true', 'yellow', '', 'bold')
+                ->output()
+                ->outputTitle('Finished =;)', 'green');
 
-		}
-		catch (JdlExceptionIncomplete $e)
-		{
-			$msg = $e->getMessage();
+        }
+        catch(JdlExceptionIncomplete $e)
+        {
+            $msg = $e->getMessage();
 
-			if ($msg) $this->outputTitle($e->getMessage(), 'yellow');
+            if($msg) $this->outputTitle($e->getMessage(), 'yellow');
 
-			$this->output()
-				->help();
-		}
-	}
+            $this->output()
+                ->help();
+        }
+    }
 
-	private function fetchApps()
-	{
-		$apps = array();
+    private function fetchApps()
+    {
+        $apps = array();
 
-		foreach ($this->configXml->install->application as $app)
-		{
-			$apps[(string) $app->name] = $app;
-		}
+        foreach($this->configXml->install->application as $app)
+        {
+            $apps[(string)$app->name] = $app;
+        }
 
-		return $apps;
-	}
+        return $apps;
+    }
 
-	private function listApps()
-	{
-		$this->output('Application List', true, 'yellow', '', 'bold')
-			->out();
+    private function listApps()
+    {
+        $this->output('Application List', true, 'yellow', '', 'bold')
+            ->out();
 
-		foreach ($this->fetchApps() as $app)
-		{
-			$this->output('== ' . $app->title . ' ==', true, '', '', 'bold')
-				->output('Alias:         ' . $app->name)
-				->output('Version:       ' . $app->version)
-				->output('Download from: ' . trim(sprintf($app->downloadUri, $app->version)))
-				->output('Install to:    ' . $app->destPath)
-				->output()
-				->output($app->description)
-				->output();
-		}
-	}
+        foreach($this->fetchApps() as $app)
+        {
+            $this->output('== '.$app->title.' ==', true, '', '', 'bold')
+                ->output('Alias:         '.$app->name)
+                ->output('Version:       '.$app->version)
+                ->output('Download from: '.trim(sprintf($app->downloadUri, $app->version)))
+                ->output('Install to:    '.$app->destPath)
+                ->output()
+                ->output($app->description)
+                ->output();
+        }
+    }
 
-	private function help()
-	{
-		$exe = substr($this->input->executable, strrpos($this->input->executable, '/') + 1);
+    private function help()
+    {
+        $exe = substr($this->input->executable, strrpos($this->input->executable, '/') + 1);
 
-		$this->output('Usage', true, 'yellow', '', 'bold')
-			->out()
-			->output($exe . ' --app <application name>')
-			->out()
-			->output($exe . ' <option>')
-			->out()
-			->output('Options', true, '', '', 'bold')
-			->out('--help   -h  This help.')
-			->out('--list       Show available applications.');
-	}
+        $this->output('Usage', true, 'yellow', '', 'bold')
+            ->out()
+            ->output($exe.' --app <application name>')
+            ->out()
+            ->output($exe.' <option>')
+            ->out()
+            ->output('Options', true, '', '', 'bold')
+            ->out('--help   -h  This help.')
+            ->out('--list       Show available applications.');
+    }
 }
 
 /*
@@ -235,31 +235,31 @@ class JdlInstall extends JdlApplicationCli
  */
 try
 {
-	$application = JApplicationCli::getInstance('JdlInstall');
+    $application = JApplicationCli::getInstance('JdlInstall');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
-	$application->execute();
+    $application->execute();
 }
-catch (Exception $e)
+catch(Exception $e)
 {
-	if (COLORS)
-	{
-		$color = new Console_Color2;
+    if(COLORS)
+    {
+        $color = new Console_Color2;
 
-		$msg = $color->color('red', null, 'grey')
-			. 'Error: ' . $e->getMessage()
-			. $color->color('reset')
-			. NL;
-	}
-	else
-	{
-		$msg = 'ERROR: ' . $e->getMessage() . NL;
-	}
+        $msg = $color->color('red', null, 'grey')
+            .'Error: '.$e->getMessage()
+            .$color->color('reset')
+            .NL;
+    }
+    else
+    {
+        $msg = 'ERROR: '.$e->getMessage().NL;
+    }
 
-	echo $msg;
+    echo $msg;
 
-	echo NL . $e->getTraceAsString() . NL;
+    echo NL.$e->getTraceAsString().NL;
 
-	exit($e->getCode() ? : 1);
+    exit($e->getCode() ? : 1);
 }

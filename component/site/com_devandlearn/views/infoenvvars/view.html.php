@@ -10,7 +10,6 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-
 jimport('joomla.application.component.view');
 
 /**
@@ -23,7 +22,7 @@ class DevAndLearnViewInfoenvvars extends JViewLegacy
 {
     protected $infoEnvvars = null;
 
-    protected $path = '';
+    protected $path = '/etc/profile.local';
 
     /**
      * DevAndLearnList view display method.
@@ -36,14 +35,10 @@ class DevAndLearnViewInfoenvvars extends JViewLegacy
     {
         $this->infoEnvvars = new stdClass;
 
-        $user = exec('echo $JDL_USER');
-
-        $this->path = '/etc/profile.local';
-
         $this->infoEnvvars->raw = JFile::read($this->path);
 
         DalToolbarHelper::setup();
 
         parent::display($tpl);
-    }//function
-}//class
+    }
+}

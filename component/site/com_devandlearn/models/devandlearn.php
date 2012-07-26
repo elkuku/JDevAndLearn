@@ -10,7 +10,6 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-
 jimport('joomla.application.component.model');
 
 /**

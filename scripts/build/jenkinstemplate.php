@@ -37,11 +37,11 @@ class JdlJenkinstemplate extends JdlApplicationCli
         $this->setup()
             ->setupRepo()
             ->setupJenkins()
-	        ->output()
+            ->output()
             ->output(jgettext('Your repository is located at: '), false)
-	        ->output(JdlPath::join($this->repoDir, $this->projectName), true, 'yellow', '', 'bold')
-	        ->output()
-	        ->outputTitle(jgettext('Finished =;)'), 'green');
+            ->output(JdlPath::join($this->repoDir, $this->projectName), true, 'yellow', '', 'bold')
+            ->output()
+            ->outputTitle(jgettext('Finished =;)'), 'green');
     }
 
     private function setup()
@@ -92,7 +92,7 @@ class JdlJenkinstemplate extends JdlApplicationCli
 
         unset($output);
 
-	    $this->copyProjectFiles();
+        $this->copyProjectFiles();
 
         $this->output(jgettext('Performing initial commit'), true, 'yellow');
 
@@ -112,37 +112,37 @@ class JdlJenkinstemplate extends JdlApplicationCli
         return $this;
     }
 
-	private function copyProjectFiles()
-	{
-		$path = $this->repoDir.'/'.$this->projectName;
+    private function copyProjectFiles()
+    {
+        $path = $this->repoDir.'/'.$this->projectName;
 
-		$folders = array('build', 'component', 'tests');
+        $folders = array('build', 'component', 'tests');
 
-		foreach ($folders as $folder)
-		{
-			JFolder::copy($this->templatePath.'/project/'.$folder, $path.'/'.$folder);
-		}
+        foreach($folders as $folder)
+        {
+            JFolder::copy($this->templatePath.'/project/'.$folder, $path.'/'.$folder);
+        }
 
-		$files = JFolder::files($path);
+        $files = JFolder::files($path);
 
-		foreach ($files as $file)
-		{
-			$contents = JFile::read($file);
+        foreach($files as $file)
+        {
+            $contents = JFile::read($file);
 
-			$contents = $this->replace($contents);
+            $contents = $this->replace($contents);
 
-			JFile::write($file, $contents);
-		}
+            JFile::write($file, $contents);
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
     private function setupJenkins()
     {
         $path = $this->jenkinsPath.'/jobs/'.$this->projectName;
 
         $this->output(jgettext('Setting up Jenkins project in '), false, 'yellow')
-	        ->output($path);
+            ->output($path);
 
         if(false == JFolder::create($path))
             throw new DomainException(sprintf(
@@ -179,8 +179,8 @@ class JdlJenkinstemplate extends JdlApplicationCli
      * using a subsequent with the postfix _<n>.
      *
      * @param string $checkPath The base path
-     * @param string $folder The folder name
-     * @param int $cnt
+     * @param string $folder    The folder name
+     * @param int    $cnt
      *
      * @return string
      */
@@ -205,9 +205,9 @@ try
 {
     $application = JApplicationCli::getInstance('JdlJenkinstemplate');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
-	$application->execute();
+    $application->execute();
 }
 catch(Exception $e)
 {

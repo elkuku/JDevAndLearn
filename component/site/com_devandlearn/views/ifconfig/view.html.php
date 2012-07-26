@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') || die('=;)');
 /**
  * @package    DevAndLearn
  * @subpackage Views
@@ -6,10 +6,6 @@
  * @author     Created on 27-Jun-2012
  * @license    GNU/GPL
  */
-
-//-- No direct access
-defined('_JEXEC') || die('=;)');
-
 
 jimport('joomla.application.component.view');
 
@@ -23,6 +19,8 @@ class DevAndLearnViewIfconfig extends JViewLegacy
 {
     protected $ifconfigInfo = null;
 
+    protected $path = '/sbin/ifconfig';
+
     /**
      * DevAndLearnList view display method.
      *
@@ -34,7 +32,7 @@ class DevAndLearnViewIfconfig extends JViewLegacy
     {
         $this->ifconfigInfo = new stdClass;
 
-        exec('/sbin/ifconfig', $output);
+        exec($this->path, $output);
 
         $this->ifconfigInfo->raw = implode("\n", $output);
 

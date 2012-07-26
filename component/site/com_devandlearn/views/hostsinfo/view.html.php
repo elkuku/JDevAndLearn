@@ -10,7 +10,6 @@
 //-- No direct access
 defined('_JEXEC') || die('=;)');
 
-
 jimport('joomla.application.component.view');
 
 /**
@@ -22,6 +21,7 @@ jimport('joomla.application.component.view');
 class DevAndLearnViewHostsInfo extends JViewLegacy
 {
     protected $hostsInfo = null;
+
     /**
      * DevAndLearnList view display method.
      *

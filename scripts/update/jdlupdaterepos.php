@@ -64,16 +64,16 @@ class JdlUpdateRepos extends JdlApplicationCli
             passthru($cmd, $ret);
 
             if(0 !== $ret)
-	            $this->output(jgettext('ERROR'), true, 'red', '', 'bold');
-                //throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
+                $this->output(jgettext('ERROR'), true, 'red', '', 'bold');
+            //throw new DomainException('Something went wrong pulling the repo', ERR_DOMAIN);
         }
 
         $this->output()
             ->output(str_repeat('=', 30))
             ->output(sprintf(jgettext('Execution time: %s secs.')
-                , time() - $this->get('execution.timestamp')))
+            , time() - $this->get('execution.timestamp')))
             ->output(str_repeat('=', 30))
-	        ->output()
+            ->output()
             ->outputTitle(jgettext('Finished =;)'), 'green');
 
         if(1)
@@ -108,11 +108,11 @@ class JdlUpdateRepos extends JdlApplicationCli
 
 try
 {
-	$application = JApplicationCli::getInstance('JdlUpdateRepos');
+    $application = JApplicationCli::getInstance('JdlUpdateRepos');
 
-	JFactory::$application = $application;
+    JFactory::$application = $application;
 
-	$application->execute();
+    $application->execute();
 }
 catch(Exception $e)
 {

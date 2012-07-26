@@ -11,10 +11,8 @@ class DalToolbarHelper
 {
     protected static $buttonGroups = array();
 
-    public static function addButton(DalToolbarButton $button, $group = '')
+    public static function addButton(DalToolbarButton $button, $group = 'default')
     {
-        $group = $group ?: 'default';
-
         if(false == isset(self::$buttonGroups[$group]))
             self::$buttonGroups[$group] = array();
 
@@ -52,56 +50,56 @@ class DalToolbarHelper
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=&task='),
             'icon' => 'icon-dashboard',
-            'text' => 'Dashboard',//jgettext..
+            'text' => 'Dashboard', //jgettext..
             'class' => $input->get('view', 'devandlearn') == 'devandlearn' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=phpinfo&task='),
             'icon' => 'icon-info',
-            'text' => 'PHP',//jgettext..
+            'text' => 'PHP', //jgettext..
             'class' => $input->get('view') == 'phpinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=gitinfo&task='),
             'icon' => 'icon-info',
-            'text' => 'Git',//jgettext..
+            'text' => 'Git', //jgettext..
             'class' => $input->get('view') == 'gitinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=infolocalconf&task='),
             'icon' => 'icon-info',
-            'text' => 'Local config',//jgettext..
+            'text' => 'Local config', //jgettext..
             'class' => $input->get('view') == 'infolocalconf' ? 'active' : ''
         )), 'actions');
 
-	    self::addButton(new DalToolbarButton(array(
-		    'href' => JRoute::_('&view=pear&task='),
-		    'icon' => 'icon-info',
-		    'text' => 'Pear packages',//jgettext..
-		    'class' => $input->get('view') == 'pear' ? 'active' : ''
-	    )), 'actions');
+        self::addButton(new DalToolbarButton(array(
+            'href' => JRoute::_('&view=pear&task='),
+            'icon' => 'icon-info',
+            'text' => 'Pear packages', //jgettext..
+            'class' => $input->get('view') == 'pear' ? 'active' : ''
+        )), 'actions');
 
-	    self::addButton(new DalToolbarButton(array(
+        self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=hostsinfo&task='),
             'icon' => 'icon-info',
-            'text' => 'Hosts',//jgettext..
+            'text' => 'Hosts', //jgettext..
             'class' => $input->get('view') == 'hostsinfo' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=infoenvvars&task='),
             'icon' => 'icon-info',
-            'text' => 'Environment vars',//jgettext..
+            'text' => 'Environment vars', //jgettext..
             'class' => $input->get('view') == 'infoenvvars' ? 'active' : ''
         )), 'actions');
 
         self::addButton(new DalToolbarButton(array(
             'href' => JRoute::_('&view=ifconfig&task='),
             'icon' => 'icon-info',
-            'text' => 'Ifconfig',//jgettext..
+            'text' => 'Ifconfig', //jgettext..
             'class' => $input->get('view') == 'ifconfig' ? 'active' : ''
         )), 'actions');
 

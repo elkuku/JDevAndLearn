@@ -9,54 +9,52 @@
 
 class DalHtdocsDirectory
 {
-	public $base = '';
+    public $base = '';
 
-	public $baseUri = '';
+    public $baseUri = '';
 
-	public $path = '';
+    public $path = '';
 
-	public $type = '';
+    public $type = '';
 
-	public $title = '';
+    public $title = '';
 
-	public $icon = '';
+    public $icon = '';
 
-	public $symLinkerLink = '';
+    public $symLinkerLink = '';
 
-	public $isSqlite = false;
+    public $isSqlite = false;
 
-	public $linkAdminer = '';
+    public $linkAdminer = '';
 
+    public function __construct(DirectoryIterator $dirInfo, $rootUri)
+    {
+        //$this->path = $fInfo->getPath();
+        $this->base = $dirInfo->getBasename();
 
-	public function __construct(DirectoryIterator $dirInfo, $rootUri)
-	{
-		//$this->path = $fInfo->getPath();
-		$this->base = $dirInfo->getBasename();
+        $this->path = $dirInfo->getPathname();
 
-		$this->path = $dirInfo->getPathname();
+        $this->baseUri = $rootUri.'/'.$this->base;
 
-		$this->baseUri = $rootUri . '/' . $this->base;
+        $this->symLinkerLink = (file_exists($this->path.'/symlinker.php'))
+            ? $this->baseUri.'/symlinker.php' : '';
 
-		$this->symLinkerLink = (file_exists($this->path . '/symlinker.php'))
-			? $this->baseUri . '/symlinker.php' : '';
+        if(JFolder::exists($this->path.'/administrator')
+            && JFile::exists($this->path.'/configuration.php')
+        )
+        {
+            $this->type = 'joomlacms';
+            $this->title = 'Joomla! CMS';
+            $this->icon = 'icon-joomla-bw ';
+        }
 
-		if (JFolder::exists($this->path . '/administrator')
-			&& JFile::exists($this->path . '/configuration.php')
-		)
-		{
-			$this->type = 'joomlacms';
-			$this->title = 'Joomla! CMS';
-//			$this->icon = 'iconJoomla';
-			$this->icon = 'icon-skills_icon_joomla2 ';
-		}
+        if(file_exists($this->path.'/db/database.sqlite'))
+        {
+            $this->isSqlite = true;
 
-		if(file_exists($this->path . '/db/database.sqlite'))
-		{
-			$this->isSqlite = true;
-
-			$this->linkAdminer = 'http://dev.local/adminer-3.4.0.php'
-				.'?sqlite=&username='
-				.'&db='.$this->path . '/db/database.sqlite';
-		}
-	}
+            $this->linkAdminer = 'http://dev.local/adminer-3.4.0.php'
+                .'?sqlite=&username='
+                .'&db='.$this->path.'/db/database.sqlite';
+        }
+    }
 }

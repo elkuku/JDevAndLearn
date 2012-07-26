@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://phpdox.de/config" silent="false">
-    <bootstrap />
+    <bootstrap/>
     <project name="Demo" source="component" workdir="./docs">
         <collector publiconly="false">
-            <include mask="*.php" />
-            <exclude mask="" />
+            <include mask="*.php"/>
+            <exclude mask=""/>
 
         </collector>
 
@@ -16,7 +16,7 @@
             </build>
 
             <build engine="todo" enabled="true" output="todo">
-                <file name="todo.txt" encoding="utf-8" />
+                <file name="todo.txt" encoding="utf-8"/>
             </build>
 
             <!--

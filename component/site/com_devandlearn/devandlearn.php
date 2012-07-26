@@ -25,7 +25,7 @@ JFactory::getApplication()->enqueueMessage('success', 'success');
 JFactory::getApplication()->enqueueMessage('ANYTHING', 'ANYTHING');
 JFactory::getApplication()->enqueueMessage('message or empty');
 JFactory::getApplication()->enqueueMessage('error', 'error');
-*/
+ */
 
 try
 {

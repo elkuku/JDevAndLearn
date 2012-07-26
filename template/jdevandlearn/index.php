@@ -83,7 +83,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
 
         <footer>
             <jdoc:include type="modules" name="position-12"/>
-	        <p class="pull-right">Powered by <a href="http://joomla.org" class="icon-skills_icon_joomla2"> Joomla!</a></p>
+	        <p class="pull-right">Powered by <a href="http://joomla.org" class="icon-joomla-bw"> Joomla!</a></p>
             <p>
                 <a href="https://github.com/PhpDevBox/PhpDevBox">
                 PHP <i class="icon-lab"></i> DevBox Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?> <i class="icon-creative-commons"></i>

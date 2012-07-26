@@ -33,24 +33,24 @@ class DalConfigGit
 
     public static function write($path, array $values)
     {
-            $s = array();
+        $s = array();
 
-            foreach($values as $key => $val)
+        foreach($values as $key => $val)
+        {
+            if(is_array($val))
             {
-                if(is_array($val))
-                {
-                    $s[] = "[$key]";
+                $s[] = "[$key]";
 
-                    foreach($val as $skey => $sval)
-                    {
-                        $s[] = "\t$skey = ".(is_numeric($sval) ? $sval : '"'.$sval.'"');
-                    }
-                }
-                else
+                foreach($val as $skey => $sval)
                 {
-                    $s[] = "\t$key = ".(is_numeric($val) ? $val : '"'.$val.'"');
+                    $s[] = "\t$skey = ".(is_numeric($sval) ? $sval : '"'.$sval.'"');
                 }
             }
+            else
+            {
+                $s[] = "\t$key = ".(is_numeric($val) ? $val : '"'.$val.'"');
+            }
+        }
 
         $content = implode("\n", $s);
 

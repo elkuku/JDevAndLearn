@@ -25,7 +25,7 @@ a.httpLink {
 }
 
 div.httpDir div.row {
-line-height: 25px;
+    line-height: 25px;
     /*
     outline: 1px solid grey;
     */
