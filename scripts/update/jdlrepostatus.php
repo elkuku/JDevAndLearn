@@ -41,8 +41,6 @@ class JdlRepoStatus extends JdlApplicationCli
      */
     public function doExecute()
     {
-        jimport('joomla.filesystem.folder');
-
         $this->setup();
 
         $this->outputTitle(jgettext('Repository Status'))

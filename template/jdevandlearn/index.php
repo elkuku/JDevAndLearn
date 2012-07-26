@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') || die('=;)');
 /**
  * @package    JDevAndLearn
  * @subpackage Base
@@ -6,9 +6,6 @@
  * @author     Created on 14-Jun-2012
  * @license    GNU/GPL
  */
-
-//-- No direct access
-defined('_JEXEC') || die('=;)');
 
 //-- "Override the system message renderer
 include 'classes/renderer/message.php';
@@ -26,11 +23,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
     <head>
         <jdoc:include type="head" />
         <link rel="stylesheet" href="<?= $baseLink.'/css/bootstrap'.$min.'.css'; ?>" type="text/css" />
-        <!--
-        <link rel="stylesheet" href="<?= $baseLink.'/css/bootstrap-responsive'.$min.'.css'; ?>" type="text/css" />
-        <link rel="stylesheet" href="<?= $baseLink.'/css/font-awesome.css'; ?>" type="text/css" />
-        -->
-	    <link rel="stylesheet" href="<?= $baseLink.'/css/icomoon.css'; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?= $baseLink.'/css/icomoon.css'; ?>" type="text/css" />
         <link rel="stylesheet" href="<?= $baseLink.'/css/template'.$min.'.css'; ?>" type="text/css" />
     </head>
     <body>
@@ -48,17 +41,6 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
                     <i class="icon-lab"></i> DevBox
                 </a>
                 <div class="btn-group pull-right">
-                    <!--
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-user"></i> Username
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Sign Out</a></li>
-                        </ul>
-                    -->
                     <a href="index.php/team" class="btn btn-admin"><i class="icon-user"></i> Team</a>
                     <a href="administrator" class="btn btn-admin"><i class="icon-key"></i> Admin</a>
                     <jdoc:include type="modules" name="position-4" />
@@ -83,7 +65,7 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
 
         <footer>
             <jdoc:include type="modules" name="position-12"/>
-	        <p class="pull-right">Powered by <a href="http://joomla.org" class="icon-joomla-bw"> Joomla!</a></p>
+            <p class="pull-right">Powered by <a href="http://joomla.org" class="icon-joomla-bw"> Joomla!</a></p>
             <p>
                 <a href="https://github.com/PhpDevBox/PhpDevBox">
                 PHP <i class="icon-lab"></i> DevBox Team 2012<?= (date('Y') != '2012')?' - '.date('Y'):''; ?> <i class="icon-creative-commons"></i>
