@@ -1,5 +1,23 @@
 # Preparation
 
+## Update the repositories
+
+One of the first things to do is updating the repositories. You might want to do this on a regular basis.
+
+{{icon|beakermenu}} Update &rArr; Repositories
+
+## Jenkins Server
+
+The Jenkins server has to be started manually - if you plan to use it.
+
+{{icon|beakermenu}} Server &rArr; Jenkins
+
+## Selenium Server
+
+The Selenium server **can be** started manually **or** by your system tests.
+
+{{icon|beakermenu}} Server &rArr; Selenium
+
 ## PostgreSQL
 
 The PostgreSQL server comes preinstalled. However it has not been possible (yet) to setup the password for the postgres administrator.
@@ -16,7 +34,7 @@ password:
 ```
 </div>
 
-Now change the user to **postres** and start the postgres console with psql
+Now change the user to **postgres** and start the postgres console with psql
 <div class="console">
 ```
 # su postgres -c psql postgres

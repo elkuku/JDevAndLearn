@@ -12,7 +12,9 @@ What's inside: [[Environment Specifications]](Environment)
 
 ## Preparation
 
-PHP <i class="icon-lab"></i> DevBox should work out of the box for a variety of tasks. Some special tasks require some [[preparation]](Preparation).
+PHP <i class="icon-lab"></i> DevBox should work out of the box for a variety of tasks.
+
+Some special tasks require [[preparation]](Preparation).
 
 ## The Main Menu
 
@@ -21,10 +23,10 @@ PHP <i class="icon-lab"></i> DevBox should work out of the box for a variety of 
 * |_ {{icon|backup}} [[Backup]](Beaker/Backup)
 * |_ {{icon|ides}} [[IDEs]](Beaker/IDEs)
 * |_ {{icon|install}} [[Install]](Beaker/Install)
-* |_ {{icon|}} [[Install Joomla!]](Beaker/Install_Joomla)
-* |_ {{icon|}} [[Server]](Beaker/Server)
+* |_ {{icon|server}} [[Server]](Beaker/Server)
 * |_ {{icon|update}} [[Update]](Beaker/Update)
-* |_ {{icon|}} [[Utilities]](Beaker/Utilities)
+* |_ {{icon|utilities}} [[Utilities]](Beaker/Utilities)
+* |_ {{icon|joomla}} [[Webscripts]](Beaker/Webscripts)
 
 ## Web Scripts
 
@@ -47,6 +49,10 @@ Other great software (like [Dokuwiki](http://dokuwiki.org), [Drupal](http://drup
 ## Various little helpers
 
 There are various little [[Helpers]] that will do the "hard work" for you.
+
+## What else ?
+
+There are severals ideas where to go from here... read [[Ideas]]
 
 ## MarkdownGitWiki
 

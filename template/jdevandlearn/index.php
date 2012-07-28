@@ -55,10 +55,10 @@ echo '<?xml version="1.0" encoding="utf-8"?'.'>';
         </div>
     </div>
 
-    <jdoc:include type="message" />
 
     <div class="container">
 
+        <jdoc:include type="message" />
         <jdoc:include type="component" />
 
         <hr>

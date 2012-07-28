@@ -18,17 +18,11 @@ h1.DalHeader {
 }
 
 a.httpLink {
-    display: inline-block;
-    min-width: 150px;
-    padding-left: 20px;
-    vertical-align: middle;
+    display: block;
 }
 
 div.httpDir div.row {
     line-height: 25px;
-    /*
-    outline: 1px solid grey;
-    */
 }
 
 .ajaxload5 {

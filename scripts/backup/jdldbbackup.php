@@ -54,16 +54,12 @@ class JdlDbBackup extends JdlApplicationCli
 
         foreach($this->configXml->backups->database as $database)
         {
-            //$this->out($database);
-
             $fileName = $database.'.sql';
 
             $compact = ' --compact';
             $compact = '';
 
             $command = 'mysqldump -u root --add-drop-database'.$compact.' --databases '.$database.' > '.$this->tmpDir.'/'.$fileName.' 2>&1';
-
-            // $this->out($command);
 
             $this->output('Backup database: ', false)
                 ->output($database.'...', false, 'yellow');

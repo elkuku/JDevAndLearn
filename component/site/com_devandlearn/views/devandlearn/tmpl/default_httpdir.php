@@ -23,13 +23,13 @@
 
 <? foreach($this->httpList as $dir) : /* @var DalHtdocsDirectory $dir */ ?>
 <div class="row">
-    <div class="span2">
+    <div class="span3">
         <a target="_blank" class="httpLink <?= $dir->icon ?>" href="<?= $this->httpUrl.'/'.$dir->base ?>">
             <?= $dir->base ?>
         </a>
     </div>
 
-    <div class="span2">
+    <div class="span1">
         <div class="btn-group pull-right">
             <? if($dir->symLinkerLink) : ?>
             <a target="_blank" href="<?= $dir->symLinkerLink ?>"
